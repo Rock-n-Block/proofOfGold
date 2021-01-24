@@ -1,0 +1,12 @@
+.btn {
+  font-family: MB;
+  padding: 9px 10px;
+  border: none;
+  height: auto;
+  background: $btn;
+  border-radius: 4px;
+  &:hover {
+    background: $btn;
+    color: inherit;
+  }
+}

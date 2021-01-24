@@ -1,0 +1,29 @@
+@import './reset';
+@import './fonts';
+@import './vars';
+@import './typography';
+@import '~antd/dist/antd.css';
+@import './components/index.scss';
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: MM;
+  background: #000000;
+}
+
+.row {
+  max-width: 1240px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+a {
+  &:hover {
+    color: $gold;
+  }
+  &.active {
+    color: $gold;
+  }
+}
