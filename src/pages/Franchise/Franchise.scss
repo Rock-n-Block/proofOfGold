@@ -1,0 +1,141 @@
+@import '../../styles/vars';
+
+.franchise {
+  &__presentation {
+    padding: 120px 80px 100px;
+    background: $light-black;
+
+    &_second {
+      padding-top: 100px;
+    }
+
+    &-container {
+      display: grid;
+      grid-template-columns: auto 531px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    &_first &-container {
+      height: 399px;
+      grid-template-rows: 128px auto;
+    }
+
+    &_second &-container {
+      grid-template-rows: 79px repeat(3, auto);
+    }
+
+    &-title {
+      width: 465px !important;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+
+      &_h2 {
+        grid-column: span 2;
+        margin-bottom: 33px;
+      }
+    }
+
+    &-text {
+      grid-column: 1;
+      width: 465px;
+
+      &-bottom {
+        text-transform: uppercase;
+        margin-top: 49px;
+      }
+    }
+
+    &-images {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 399px 88px;
+      grid-gap: 10px;
+      width: 531px;
+
+      &_first {
+        grid-column: span 2;
+        width: 100%;
+        height: 399px;
+      }
+    }
+
+    &_second &-images {
+      grid-row: 2 / span 1;
+      margin-bottom: 100px;
+    }
+
+    &-items {
+      grid-column: span 2;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      grid-gap: 72px;
+      z-index: 1;
+
+      &-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 330px;
+        height: 210px;
+        padding: 0 35px;
+        background: $light-black;
+        background-clip: padding-box;
+        border: solid 5px transparent;
+        box-shadow: 0 4px 25px rgba(157, 132, 36, 0.3), inset 0 4px 25px rgba(157, 132, 36, 0.3);
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          margin: -5px;
+          background: $gold-bg;
+        }
+
+        @mixin icon($number) {
+          &:nth-child(#{$number}) &-icon {
+            background-image: url('/assets/img/franchise/items-icon-#{$number}.svg');
+          }
+        }
+
+        &-icon {
+          &-container {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 26px;
+            border-radius: 50%;
+            background: $gold-bg;
+          }
+
+          width: 100%;
+          height: 100%;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+
+        @for $icon-number from 1 to 7 {
+          @include icon($icon-number);
+        }
+
+        &-text {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__background-image {
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+  }
+}

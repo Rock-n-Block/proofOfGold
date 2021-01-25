@@ -35,7 +35,7 @@ const Header: React.FC = () => {
                 <NavLink exact to="/3" className="header__nav-item text-md">
                   Gold coins
                 </NavLink>
-                <NavLink exact to="/4" className="header__nav-item text-md">
+                <NavLink exact to="/franchise" className="header__nav-item text-md">
                   POG Franchise
                 </NavLink>
                 <NavLink exact to="/5" className="header__nav-item text-md">
