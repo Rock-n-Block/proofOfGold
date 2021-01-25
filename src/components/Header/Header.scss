@@ -3,6 +3,7 @@
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 100;
   left: 0;
   padding: 25px 0;
   background: #000;
@@ -25,6 +26,7 @@
     color: white;
     font-size: 12px;
     line-height: 15px;
+    font-family: MM;
     & + & {
       margin-left: 20px;
     }

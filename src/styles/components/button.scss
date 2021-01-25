@@ -3,10 +3,13 @@
   padding: 9px 10px;
   border: none;
   height: auto;
-  background: $btn;
+  background: $gold-bg;
   border-radius: 4px;
   &:hover {
-    background: $btn;
-    color: inherit;
+    background: $gold-bg;
+    color: black;
+  }
+  &-lg {
+    padding: 20px;
   }
 }

@@ -5,4 +5,26 @@
     font-size: 15px;
     line-height: 18px;
   }
+  &-gradient {
+    width: fit-content;
+    background: $gold-bg;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.h1 {
+  &-lg {
+    font-size: 40px;
+    line-height: 49px;
+  }
+}
+
+.h2 {
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.h3 {
+  font-size: 22px;
+  line-height: 27px;
 }
