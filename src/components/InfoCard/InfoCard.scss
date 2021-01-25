@@ -1,0 +1,51 @@
+.i-card {
+  box-shadow: 0px 4px 25px rgba(157, 132, 36, 0.5);
+  padding: 5px;
+  background: linear-gradient(
+      46.19deg,
+      #fac929 10.42%,
+      #fef8c2 55.03%,
+      #fac929 96.91%
+    ),
+    #c19f2a;
+  &.centered {
+    text-align: center;
+  }
+  &.only-text {
+    .i-card {
+      &__text {
+        font-family: MB;
+      }
+      &__wrapper {
+        display: grid;
+        grid-template-rows: 84px 1fr;
+        grid-row-gap: 33px;
+        align-items: center;
+      }
+      &__icon {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &.lg {
+    .i-card {
+      &__wrapper {
+        padding: 40px 50px 75px;
+      }
+    }
+  }
+  &__wrapper {
+    background: #ffe787;
+    padding: 25px;
+    height: 100%;
+  }
+  &__icon {
+    display: block;
+    margin: 0 auto 33px;
+  }
+  &__title {
+    font-family: MB;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+}

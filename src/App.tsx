@@ -11,7 +11,7 @@ function App() {
     <div className="proof">
       <Header />
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
       </Switch>
     </div>
   );

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, EffectFade } from 'swiper';
 import { Link } from 'react-router-dom';
 
-import { Button } from '../../components';
+import { Button, InfoCard } from '../../components';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -14,8 +14,60 @@ import slideImg1 from '../../assets/img/home/slide-1.jpg';
 import slideImg2 from '../../assets/img/home/slide-2.jpg';
 import slideImg3 from '../../assets/img/home/slide-3.jpg';
 import coinImg from '../../assets/img/coins/5gram.svg';
+import icon1 from '../../assets/img/icons/1.svg';
+import icon2 from '../../assets/img/icons/2.svg';
+import icon3 from '../../assets/img/icons/3.svg';
+import icon4 from '../../assets/img/icons/4.svg';
+import icon5 from '../../assets/img/icons/5.svg';
+import icon6 from '../../assets/img/icons/6.svg';
 
 SwiperCore.use([Pagination, EffectFade]);
+
+const features = [
+  {
+    img: icon1,
+    text:
+      'Limited edition and in quantities based on the Fibonacci order on the DucatusX blockchain',
+  },
+  {
+    img: icon2,
+    text:
+      'Ongoing Lucky Gram Promotion for all buyers of any sold-out series, Ducatus will give away gold as prize',
+  },
+  {
+    img: icon3,
+    text: 'Exclusive to POG Gold Trading',
+  },
+];
+
+const about = [
+  {
+    img: icon4,
+    text:
+      'POG offers gold investors all around the world with the highest quality precious metal assets facilitated by a multinational team that is based in Singapore and Dubai, two of the world’s most formidable financial centres.',
+    title: 'Global Reach',
+  },
+  {
+    img: icon5,
+    text:
+      'POG makes it easy for buyers to purchase a known traditional asset. Simply sign up to create an account, browse through our growing line-up of products, and choose your preferred payment method (Credit card, Bank transfer, PayPal or Cryptocurrency) upon checkout.',
+    title: (
+      <Fragment>
+        Seamless<br></br> Transactions
+      </Fragment>
+    ),
+  },
+  {
+    img: icon6,
+    text:
+      'POG offers investors an exclusive selection of limited and carefully crafted 999.99 gold products that are priced at competitive market rates.',
+    title: (
+      <Fragment>
+        Best<br></br> Available Pricing
+      </Fragment>
+    ),
+  },
+];
 
 const HomePage: React.FC = () => {
   return (
@@ -136,10 +188,25 @@ const HomePage: React.FC = () => {
           </div>
           <div className="home__proof-features">
             <div className="h3 home__proof-features-title">Key Features</div>
+            <div className="home__proof-features-cards">
+              {features.map((card, index) => (
+                <InfoCard key={index} {...card} centered={true} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-      <div className="row"></div>
+      <div className="home__content home__about">
+        <div className="row">
+          <div className="home__about-title h2">About POG (Proof of Gold)</div>
+
+          <div className="home__about-cards">
+            {about.map((card, index) => (
+              <InfoCard key={index} {...card} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
