@@ -1,3 +1,4 @@
+@import '../../styles/vars';
 .header {
   position: fixed;
   top: 0;
@@ -37,6 +38,48 @@
       font-family: MB;
       & + & {
         margin-left: 30px;
+      }
+    }
+  }
+  &__icon {
+    path {
+      transition: 0.3s;
+    }
+    &-counter {
+      border-radius: 50%;
+      padding: 4px 5px;
+      font-size: 11px;
+      line-height: 10px;
+      font-family: MB;
+      color: #2e2e2e;
+      position: absolute;
+      background: #fbd54e;
+      border: 2px solid #000000;
+      bottom: calc(100% - 10px);
+      left: calc(100% - 10px);
+    }
+    &-search {
+      cursor: pointer;
+      path,
+      circle {
+        transition: 0.3s;
+      }
+      &:hover {
+        path,
+        circle {
+          stroke: $gold;
+        }
+      }
+    }
+    &-link {
+      position: relative;
+      margin: 0 24px;
+      &:hover {
+        svg {
+          path {
+            fill: $gold;
+          }
+        }
       }
     }
   }

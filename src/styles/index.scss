@@ -11,6 +11,7 @@
 body {
   font-family: MM;
   background: #000000;
+  padding-top: 131px;
 }
 
 .row {
@@ -25,5 +26,8 @@ a {
   }
   &.active {
     color: $gold;
+    path {
+      fill: $gold;
+    }
   }
 }

@@ -6,13 +6,17 @@ import { Button } from '../../components';
 import './Header.scss';
 
 import LogoImg from '../../assets/img/logo.svg';
+import { ReactComponent as Cart } from '../../assets/img/cart.svg';
+import { ReactComponent as Search } from '../../assets/img/search.svg';
 
 const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="row">
         <div className="header__content">
-          <img src={LogoImg} alt="" />
+          <NavLink to="/">
+            <img src={LogoImg} alt="" />
+          </NavLink>
           <div className="">
             <div className="header__box">
               <NavLink exact to="/0" className="header__link">
@@ -39,6 +43,11 @@ const Header: React.FC = () => {
                 </NavLink>
               </div>
               <Button>Shop NOW</Button>
+              <NavLink to="/cart" className="header__icon-link">
+                <Cart className="header__icon" />
+                <div className="header__icon-counter">4</div>
+              </NavLink>
+              <Search className="header__icon-search" />
             </div>
           </div>
         </div>
