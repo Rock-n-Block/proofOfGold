@@ -5,7 +5,8 @@
     position: relative;
     border: solid 5px transparent;
     background-clip: padding-box;
-    box-shadow: 0 4px 25px rgba(157, 132, 36, 0.3), inset 0 4px 25px rgba(157, 132, 36, 0.3);
+    box-shadow: 0 4px 25px rgba(157, 132, 36, 0.3),
+      inset 0 4px 25px rgba(157, 132, 36, 0.3);
 
     &:before {
       content: '';
@@ -26,4 +27,7 @@
     justify-content: space-between;
     grid-row-gap: 90px;
   }
+}
+.products {
+  padding: 60px 0 175px;
 }

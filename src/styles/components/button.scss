@@ -12,7 +12,8 @@
   font-family: MB;
   text-transform: uppercase;
 
-  &:hover {
+  &:hover,
+  &:active {
     background: $gold-bg;
     color: $dark-grey-1;
   }
