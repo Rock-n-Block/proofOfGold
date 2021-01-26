@@ -7,9 +7,10 @@ interface ButtonProps {
   centered?: boolean;
   colorScheme?: 'black';
   onClick?: () => void;
+  className?: string;
 }
 
-const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   className,
   size,

@@ -1,5 +1,9 @@
 export const validateForm = ({ isAuth, values, errors }: any) => {
-  const rules = {
+  interface IRules {
+    [key: string]: Function;
+  }
+
+  const rules: IRules = {
     email: (value: string): void => {
       if (!value) {
         errors.email = 'Enter your email';
@@ -36,7 +40,9 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
     },
   };
 
-  Object.keys(values).forEach((key) => rules[key] && rules[key](values[key]));
+  Object.keys(values).forEach(
+    (key: any) => rules[key] && rules[key](values[key]),
+  );
 };
 
 export const validateField = (key: any, touched: any, errors: any) => {
