@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCard> = ({ name, cost, img }) => {
       <div className="p-card__box">
         <div className="p-card__name">{name}</div>
         <div className="p-card__cost h2">${cost}</div>
-        <Button type="sm" centered={true}>
+        <Button size="sm" centered={true}>
           <Cart className="p-card__cart" />
           ADD to cart
         </Button>

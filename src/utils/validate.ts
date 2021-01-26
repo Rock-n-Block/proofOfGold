@@ -1,0 +1,52 @@
+export const validateForm = ({ isAuth, values, errors }: any) => {
+  const rules = {
+    email: (value: string): void => {
+      if (!value) {
+        errors.email = 'Enter your email';
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+        errors.email = 'Uncorrect address';
+      }
+    },
+    password: (value: string): void => {
+      if (!value) {
+        errors.password = 'Введите ваш пароль';
+      } else if (
+        !isAuth &&
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)
+      ) {
+        errors.password = 'Ваш пароль слишком легкий';
+      }
+    },
+    username: (value: string): void => {
+      if (!value) {
+        errors.username = 'Enter your name';
+      }
+    },
+    message: (value: string): void => {
+      if (!value) {
+        errors.message = 'Enter your message';
+      }
+    },
+    confirm_password: (value: string): void => {
+      if (!values.password || !values.confirm_password) {
+        errors.confirm_password = 'Повторите пароль';
+      } else if (values.password !== value) {
+        errors.confirm_password = 'Пароли не совпадают';
+      }
+    },
+  };
+
+  Object.keys(values).forEach((key) => rules[key] && rules[key](values[key]));
+};
+
+export const validateField = (key: any, touched: any, errors: any) => {
+  if (touched[key]) {
+    if (errors[key]) {
+      return 'error';
+    } else {
+      return 'success';
+    }
+  } else {
+    return '';
+  }
+};

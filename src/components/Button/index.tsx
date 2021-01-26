@@ -3,23 +3,30 @@ import { Button as BtnAntd } from 'antd';
 import classNames from 'classnames';
 
 interface ButtonProps {
-  type?: 'lg' | 'sm';
+  size?: 'lg' | 'sm';
   centered?: boolean;
-  colorScheme?: "black";
+  colorScheme?: 'black';
+  onClick?: () => void;
 }
 
 const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
   children,
   className,
-  type,
+  size,
   centered,
-  colorScheme
+  colorScheme,
 }) => {
   return (
     <BtnAntd
-      className={classNames(className, 'text-md btn', `btn-${type}`, `btn-${colorScheme}`, {
-        centered: centered,
-      })}>
+      className={classNames(
+        className,
+        'text-md btn',
+        `btn-${size}`,
+        `btn-${colorScheme}`,
+        {
+          centered: centered,
+        },
+      )}>
       {children}
     </BtnAntd>
   );

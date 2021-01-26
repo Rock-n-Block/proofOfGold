@@ -4,6 +4,7 @@ import SwiperCore, { Pagination, EffectFade } from 'swiper';
 import { Link } from 'react-router-dom';
 
 import { Button, InfoCard, ProductCard } from '../../components';
+import { ContactUsForm } from '../../modules';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -164,7 +165,7 @@ const HomePage: React.FC = () => {
               who would like to&nbsp;explore the wealth and prosperity that
               comes with a&nbsp;time-honoured asset like gold.
             </div>
-            <Button className="home__info-btn" type="lg">
+            <Button className="home__info-btn" size="lg">
               View Products
             </Button>
           </div>
@@ -262,6 +263,33 @@ const HomePage: React.FC = () => {
             {about.map((card, index) => (
               <InfoCard key={index} {...card} />
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="home__contact">
+        <div className="row home__contact-row">
+          <div className="home__contact-box">
+            <div className="home__contact-title h2 text-gradient">
+              Contact Us
+            </div>
+            <div className="home__contact-text text">
+              <p>DENARIUS FINANCIAL SERVICES AG.</p>
+              <p>Bahnhofstrasse 216300 Zug,</p>
+              <p>Switzerland</p>
+              <p>
+                email:
+                <a href="mailto:Office@denariusglobal.com">
+                  Office@denariusglobal.com
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="home__contact-box">
+            <div className="home__contact-title home__contact-form-title h2 text-gradient">
+              Drop us a note and we’ll get back to you shortly.
+            </div>
+            <ContactUsForm />
           </div>
         </div>
       </div>

@@ -133,4 +133,31 @@
       color: white;
     }
   }
+  &__contact {
+    padding: 105px 0 100px;
+    &-row {
+      display: flex;
+    }
+    &-box {
+      & + & {
+        margin-left: 13vw;
+      }
+    }
+    &-title {
+      max-width: 400px;
+      text-transform: uppercase;
+    }
+    &-text {
+      margin-top: 45px;
+      a {
+        margin-left: 5px;
+        color: white;
+      }
+    }
+    &-form {
+      &-title {
+        margin-bottom: 35px;
+      }
+    }
+  }
 }
