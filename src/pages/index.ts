@@ -1,4 +1,2 @@
-import HomePage from "./Home";
-import FranchisePage from "./Franchise";
-
-export { HomePage, FranchisePage };
+export { default as HomePage } from './Home';
+export { default as FranchisePage } from './Franchise';

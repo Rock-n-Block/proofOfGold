@@ -1,14 +1,30 @@
+@import '../../styles/vars';
+
 .btn {
-  font-family: MB;
+  height: auto;
   padding: 9px 10px;
   border: none;
-  height: auto;
-  background: $gold-bg;
   border-radius: 4px;
+  background: $gold-bg;
+  color: $dark-grey;
+  font-family: MB;
+  text-transform: uppercase;
+
   &:hover {
     background: $gold-bg;
-    color: black;
+    color: $dark-grey;
   }
+
+  &-black {
+    background: $light-black-2;
+    color: white;
+
+    &:hover {
+      background: $light-black-2;
+      color: white;
+    }
+  }
+
   &-lg {
     padding: 20px;
   }

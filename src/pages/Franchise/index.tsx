@@ -7,34 +7,72 @@ import presentation1_img1 from "../../assets/img/franchise/presentation-1-image-
 import presentation2_img1 from "../../assets/img/franchise/presentation-2-image-1.png";
 import presentation2_img2 from "../../assets/img/franchise/presentation-2-image-2.png";
 import presentation2_img3 from "../../assets/img/franchise/presentation-2-image-3.png";
+import items1_icon1 from "../../assets/img/franchise/items-1-icon-1.svg";
+import items1_icon2 from "../../assets/img/franchise/items-1-icon-2.svg";
+import items1_icon3 from "../../assets/img/franchise/items-1-icon-3.svg";
+import items1_icon4 from "../../assets/img/franchise/items-1-icon-4.svg";
+import items1_icon5 from "../../assets/img/franchise/items-1-icon-5.svg";
+import items1_icon6 from "../../assets/img/franchise/items-1-icon-6.svg";
+import items2_icon1 from "../../assets/img/icons/4.svg";
+import items2_icon2 from "../../assets/img/icons/5.svg";
+import { Button } from '../../components';
+import { InfoCard } from "../../components";
 
-const itemsTexts = [
+const items: [any[], any[], any[]] = [
   [
-    'Accepts scrap gold',
-    'Sale of gold bullion and bars',
-    'Sale of Ducatus Prime Gold Coins',
-    'Consignment of jewellery (on a monthly basis)',
-    'Auction held (last day of every month)',
-    'New collections every start of the month'
+    {
+      img: items1_icon1,
+      text: 'Accepts scrap gold'
+    },
+    {
+      img: items1_icon2,
+      text: 'Sale of gold bullion and bars'
+    },
+    {
+      img: items1_icon3,
+      text: 'Sale of Ducatus Prime Gold Coins'
+    },
+    {
+      img: items1_icon4,
+      text: 'Consignment of jewellery (on a monthly basis)'
+    },
+    {
+      img: items1_icon5,
+      text: 'Auction held (last day of every month)'
+    },
+    {
+      img: items1_icon6,
+      text: 'New collections every start of the month'
+    }
+  ],
+  [
+    {
+      img: items2_icon1,
+      title: 'Stability and Innovation',
+      text: 'POG is both traditional and innovative. It offers gold, which is a hedge against inflation and a proven store of value for hundreds of years, using blockchain technology delivering transparency and authenticity like never before.  '
+    },
+    {
+      img: items2_icon2,
+      title: 'Community-Supported',
+      text: 'POG goes beyond the conventional franchise business model. Through crowdfunding, franchisees are to invest 21% of the required capital while the remaining 79% is raised through lease tokens issued and marketed under Centurion’s Lease and Earn portal. '
+
+    }
+  ],
+  [
+    {
+      text: 'An individual or enterprise who want to operate shops in their hometown for an initial tenure of 5 years.'
+    },
+    {
+      text: 'The franchisee will hold a minimum number of lease tokens equivalent to 21% of the required capital at any given time.'
+    },
+    {
+      text: 'The number of lease tokens issued per store varies, depending on the capital required to set up the franchise in the given location.'
+    }
   ]
 ]
 
 
 const FranchisePage: React.FC = () => {
-  const items: [any[], any[]] = [[], []];
-  itemsTexts[0].map((text) =>
-    items[0].push(
-      <div className="franchise__presentation-items-item">
-        <div className="franchise__presentation-items-item-icon-container">
-          <div className="franchise__presentation-items-item-icon" />
-        </div>
-        <div className="franchise__presentation-items-item-text text text-bold">
-          { text }
-        </div>
-      </div>
-    )
-  );
-
   return (
     <div className="franchise">
       <div className="franchise__presentation franchise__presentation_first">
@@ -91,8 +129,66 @@ const FranchisePage: React.FC = () => {
           </div>
 
           <div className="franchise__presentation-items">
-            { items }
+            {
+              items[0].map((item, index) =>
+                  <div className="franchise__presentation-items-item box-border-gradient" key={index}>
+                    <div className="franchise__presentation-items-item-icon-container">
+                      <img className="franchise__presentation-items-item-icon" src={item.img} alt=""/>
+                    </div>
+                    <div className="franchise__presentation-items-item-text text text-bold">
+                      { item.text }
+                    </div>
+                  </div>
+              )
+            }
           </div>
+        </div>
+      </div>
+
+      <div className="franchise__gold-presentation">
+        <div className="franchise__gold-presentation-container">
+          <div className="franchise__gold-presentation-title text-bold h1-lg">
+            The Franchise Opportunity
+          </div>
+
+          <div className="franchise__gold-presentation-text text">
+            POG is a future-proof opportunity that elevates the age-old business of gold retailing to the digital and
+            cashless age.
+          </div>
+
+          <div className="franchise__gold-presentation-items">
+            {
+              items[1].map((item, index) => <InfoCard key={index} {...item} centered={true} />)
+            }
+          </div>
+
+          <Button className="franchise__gold-presentation-button" colorScheme="black" type="lg">
+            Find out more about Lease & Earn
+          </Button>
+        </div>
+      </div>
+
+      <div className="franchise__presentation franchise__presentation_third">
+        <div className="franchise__presentation-container">
+          <div className="franchise__presentation-title text-gradient text-bold h1-lg">
+            The Franchisee
+          </div>
+
+          <div className="franchise__presentation-items">
+            {
+              items[2].map((item, index) =>
+                <div className="franchise__presentation-items-item box-border-gradient" key={index}>
+                  <div className="franchise__presentation-items-item-text text text-bold">
+                    { item.text }
+                  </div>
+                </div>
+              )
+            }
+          </div>
+
+          <Button className="franchise__presentation-button" type="lg">
+            Find out more about being a Franchisee
+          </Button>
         </div>
       </div>
     </div>

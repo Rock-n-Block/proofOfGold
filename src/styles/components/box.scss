@@ -1,0 +1,22 @@
+@import '../../styles/vars';
+
+.box {
+  &-border-gradient {
+    position: relative;
+    border: solid 5px transparent;
+    background-clip: padding-box;
+    box-shadow: 0 4px 25px rgba(157, 132, 36, 0.3), inset 0 4px 25px rgba(157, 132, 36, 0.3);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      margin: -5px;
+      background: $gold-bg;
+    }
+  }
+}
