@@ -111,5 +111,26 @@
   }
   &__products {
     padding: 105px 0 50px;
+    &-box {
+      margin-top: 75px;
+    }
+    &-disclaimer {
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      font-family: MB;
+      margin-top: 100px;
+      p + p {
+        margin-top: 15px;
+      }
+    }
+  }
+  &__bg {
+    padding: 180px 0;
+    background: url(../../assets/img/home/bg.jpg);
+    background-size: cover;
+    &-title {
+      color: white;
+    }
   }
 }
