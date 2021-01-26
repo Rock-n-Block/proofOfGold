@@ -1,0 +1,20 @@
+.input {
+  background-color: #363636 !important;
+  border-radius: 12px !important;
+  border: none;
+  padding: 20px;
+  font-family: MB;
+  font-size: 14px;
+  line-height: 17px;
+  resize: none !important;
+  box-shadow: none;
+  color: white !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #363636 inset !important;
+  -webkit-text-fill-color: white !important;
+}

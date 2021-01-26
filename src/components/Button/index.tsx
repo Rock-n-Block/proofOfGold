@@ -1,21 +1,24 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React from 'react';
 import { Button as BtnAntd } from 'antd';
 import classNames from 'classnames';
 
 interface ButtonProps {
-  type?: 'lg' | 'sm';
+  size?: 'lg' | 'sm';
   centered?: boolean;
+  onClick?: () => void;
 }
 
 const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
   children,
   className,
-  type,
+  size,
   centered,
+  onClick,
 }) => {
   return (
     <BtnAntd
-      className={classNames(className, 'text-md btn', `btn-${type}`, {
+      onClick={onClick}
+      className={classNames(className, 'text-md btn', `btn-${size}`, {
         centered: centered,
       })}>
       {children}
