@@ -14,6 +14,7 @@ import slideImg1 from '../../assets/img/home/slide-1.jpg';
 import slideImg2 from '../../assets/img/home/slide-2.jpg';
 import slideImg3 from '../../assets/img/home/slide-3.jpg';
 import coinImg from '../../assets/img/products/5gram.svg';
+import goldImg from '../../assets/img/products/gold.jpg';
 import icon1 from '../../assets/img/icons/1.svg';
 import icon2 from '../../assets/img/icons/2.svg';
 import icon3 from '../../assets/img/icons/3.svg';
@@ -203,13 +204,52 @@ const HomePage: React.FC = () => {
             DUCATUS PRIME GOLD COINS
           </div>
           <div className="home__products-box box-products">
-            {new Array(5).fill(0).map((coin, index) => (
+            {new Array(5).fill(0).map((_, index) => (
               <ProductCard
+                key={index}
                 img={coinImg}
                 name="5 grams – Ducatus Prime Gold Coin"
                 cost="472"
               />
             ))}
+          </div>
+          <div className="home__products-disclaimer">
+            <p>Disclaimer*</p>
+            <p>
+              Prices are subject to change depending on prevailing gold market
+              value. Card designs are for illustration purposes only.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="home__bg">
+        <div className="row">
+          <h1 className="home__bg-title h1-xl">PROOF OF GOLD</h1>
+        </div>
+      </div>
+
+      <div className="home__products">
+        <div className="row">
+          <div className="home__products-title text-gradient h2">
+            DUCATUS PRIME GOLD BARS
+          </div>
+          <div className="home__products-box box-products">
+            {new Array(5).fill(0).map((_, index) => (
+              <ProductCard
+                key={index}
+                img={goldImg}
+                name="144 grams – Ducatus Prime Gold Bar"
+                cost="12,144"
+              />
+            ))}
+          </div>
+          <div className="home__products-disclaimer">
+            <p>Disclaimer*</p>
+            <p>
+              Prices are subject to change depending on prevailing gold market
+              value. Card designs are for illustration purposes only.
+            </p>
           </div>
         </div>
       </div>
