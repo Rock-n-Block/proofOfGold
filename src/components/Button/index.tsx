@@ -15,9 +15,11 @@ const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
   size,
   centered,
   colorScheme,
+  onClick,
 }) => {
   return (
     <BtnAntd
+      onClick={onClick}
       className={classNames(
         className,
         'text-md btn',
