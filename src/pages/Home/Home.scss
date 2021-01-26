@@ -89,5 +89,27 @@
         font-family: MB;
       }
     }
+    &-features {
+      &-cards {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 340px);
+        grid-column-gap: 30px;
+      }
+    }
+  }
+  &__about {
+    padding-bottom: 55px;
+    background: $gold-bg;
+    color: $gray;
+    &-cards {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 340px);
+      grid-column-gap: 30px;
+    }
+  }
+  &__products {
+    padding: 105px 0 50px;
   }
 }

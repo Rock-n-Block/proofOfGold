@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Header } from './components';
-import { HomePage, FranchisePage } from './pages';
+import { HomePage } from './pages';
 
 import './styles/index.scss';
 
@@ -11,8 +11,7 @@ function App() {
     <div className="proof">
       <Header />
       <Switch>
-        <Route path="/franchise" component={FranchisePage} />
-        <Route path="/" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
       </Switch>
     </div>
   );
