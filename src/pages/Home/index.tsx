@@ -196,6 +196,15 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className="home__products">
+        <div className="row">
+          <div className="home__products-title text-gradient h2">
+            DUCATUS PRIME GOLD COINS
+          </div>
+        </div>
+      </div>
+
       <div className="home__content home__about">
         <div className="row">
           <div className="home__about-title h2">About POG (Proof of Gold)</div>
