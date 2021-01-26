@@ -1,18 +1,18 @@
 @import '../../styles/vars';
 
 .footer {
-  padding: 80px 300px 26px 150px;
+  padding: 80px 0 26px;
   background: $dark-grey-2;
 
   &__content {
     display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    max-width: 1000px;
+    grid-template-columns: 1fr 1.5fr;
     margin: 0 auto;
 
     &-links {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
+      grid-gap: 30%;
       margin-bottom: 51px;
 
       &-block {
@@ -41,23 +41,17 @@
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1350px) {
   .footer {
     padding: 50px 0 30px;
 
     &__content {
       grid-template-columns: 1fr;
-      width: 70%;
+      width: 80%;
 
       &-links {
         justify-content: flex-start;
         margin: 60px 0;
-
-        &-block {
-          &:nth-child(1) {
-            margin-right: 30%;
-          }
-        }
       }
     }
   }
@@ -76,7 +70,6 @@
 
         &-block {
           &:nth-child(1) {
-            margin-right: 0;
             margin-bottom: 60px;
           }
         }
