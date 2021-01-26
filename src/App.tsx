@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Header } from './components';
-import { HomePage, FranchisePage } from './pages';
+import { HomePage, FranchisePage, ShopPage } from './pages';
 
 import './styles/index.scss';
 
@@ -13,6 +13,7 @@ function App() {
       <Switch>
         <Route exact path="/franchise" component={FranchisePage} />
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/shop" component={ShopPage} />
       </Switch>
     </div>
   );
