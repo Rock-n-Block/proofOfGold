@@ -1,0 +1,42 @@
+@import '../../styles/vars';
+
+.footer {
+  padding: 80px 300px 26px 150px;
+  background: $dark-grey-2;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    &-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 51px;
+
+      &-block {
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+
+        &-title {
+          margin-bottom: 13px;
+        }
+
+        &-link {
+          color: white;
+
+          & + & {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+    &-copyright {
+      font-family: MM;
+      text-transform: uppercase;
+    }
+  }
+}
