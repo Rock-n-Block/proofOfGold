@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Footer.scss';
 
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/img/logo.svg';
 
@@ -15,32 +15,50 @@ const Footer: React.FC = () => {
 
           <div className="footer__content-links">
             <div className="footer__content-links-block">
-              <span className="footer__content-links-block-title text-gradient h3">Store</span>
-              <NavLink to="/shop" className="footer__content-links-block-link text-md" target="_blank">
+              <span className="footer__content-links-block-title text-gradient h3">
+                Store
+              </span>
+              <Link
+                to="/shop"
+                className="footer__content-links-block-link text-md">
                 Products
-              </NavLink>
-              <NavLink to="/product-category/gold_coins" className="footer__content-links-block-link text-md" target="_blank">
+              </Link>
+              <Link
+                to="/coins"
+                className="footer__content-links-block-link text-md">
                 Gold Coins
-              </NavLink>
-              <NavLink to="/product-category/gold_bars" className="footer__content-links-block-link text-md" target="_blank">
+              </Link>
+              <Link
+                to="/bars"
+                className="footer__content-links-block-link text-md">
                 Gold Bars
-              </NavLink>
+              </Link>
             </div>
 
             <div className="footer__content-links-block">
-              <span className="footer__content-links-block-title text-gradient h3">Useful Links</span>
-              <NavLink to="/my-account" className="footer__content-links-block-link text-md" target="_blank">
+              <span className="footer__content-links-block-title text-gradient h3">
+                Useful Links
+              </span>
+              <Link
+                to="/my-account"
+                className="footer__content-links-block-link text-md">
                 My Account
-              </NavLink>
-              <NavLink to="/orders" className="footer__content-links-block-link text-md" target="_blank">
+              </Link>
+              <Link
+                to="/orders"
+                className="footer__content-links-block-link text-md">
                 Order History
-              </NavLink>
-              <NavLink to="/delivery-information" className="footer__content-links-block-link text-md" target="_blank">
+              </Link>
+              <Link
+                to="/delivery-information"
+                className="footer__content-links-block-link text-md">
                 Delivery Information
-              </NavLink>
-              <NavLink to="/legal" className="footer__content-links-block-link text-md" target="_blank">
+              </Link>
+              <Link
+                to="/legal"
+                className="footer__content-links-block-link text-md">
                 Legal Page
-              </NavLink>
+              </Link>
             </div>
           </div>
 
