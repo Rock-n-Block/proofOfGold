@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                 <NavLink exact to="/" className="header__nav-item text-md">
                   Home
                 </NavLink>
-                <NavLink exact to="/3" className="header__nav-item text-md">
+                <NavLink exact to="/coins" className="header__nav-item text-md">
                   Gold coins
                 </NavLink>
                 <NavLink
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
                   className="header__nav-item text-md">
                   POG Franchise
                 </NavLink>
-                <NavLink exact to="/5" className="header__nav-item text-md">
+                <NavLink exact to="/bars" className="header__nav-item text-md">
                   Gold bars
                 </NavLink>
               </div>
