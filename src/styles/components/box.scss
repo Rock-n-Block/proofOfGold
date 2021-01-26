@@ -1,0 +1,6 @@
+.box-products {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: space-between;
+  grid-row-gap: 90px;
+}

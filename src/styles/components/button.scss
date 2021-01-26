@@ -2,6 +2,9 @@
   font-family: MB;
   padding: 9px 10px;
   border: none;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
   height: auto;
   background: $gold-bg;
   border-radius: 4px;
@@ -9,7 +12,15 @@
     background: $gold-bg;
     color: black;
   }
+  &.centered {
+    margin: 0 auto;
+  }
   &-lg {
     padding: 20px;
+  }
+  &-sm {
+    font-size: 10px;
+    line-height: 12px;
+    padding: 14.5px 10px;
   }
 }

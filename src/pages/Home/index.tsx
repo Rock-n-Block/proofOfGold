@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, EffectFade } from 'swiper';
 import { Link } from 'react-router-dom';
 
-import { Button, InfoCard } from '../../components';
+import { Button, InfoCard, ProductCard } from '../../components';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -13,7 +13,7 @@ import './Home.scss';
 import slideImg1 from '../../assets/img/home/slide-1.jpg';
 import slideImg2 from '../../assets/img/home/slide-2.jpg';
 import slideImg3 from '../../assets/img/home/slide-3.jpg';
-import coinImg from '../../assets/img/coins/5gram.svg';
+import coinImg from '../../assets/img/products/5gram.svg';
 import icon1 from '../../assets/img/icons/1.svg';
 import icon2 from '../../assets/img/icons/2.svg';
 import icon3 from '../../assets/img/icons/3.svg';
@@ -201,6 +201,15 @@ const HomePage: React.FC = () => {
         <div className="row">
           <div className="home__products-title text-gradient h2">
             DUCATUS PRIME GOLD COINS
+          </div>
+          <div className="home__products-box box-products">
+            {new Array(5).fill(0).map((coin, index) => (
+              <ProductCard
+                img={coinImg}
+                name="5 grams – Ducatus Prime Gold Coin"
+                cost="472"
+              />
+            ))}
           </div>
         </div>
       </div>
