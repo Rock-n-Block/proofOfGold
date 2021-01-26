@@ -1,26 +1,43 @@
+@import '../../styles/vars';
+
 .btn {
-  font-family: MB;
-  padding: 9px 10px;
-  border: none;
   display: flex;
   align-items: center;
-  text-transform: uppercase;
   height: auto;
-  background: $gold-bg;
+  padding: 9px 10px;
+  border: none;
   border-radius: 4px;
+  background: $gold-bg;
+  color: $dark-grey;
+  font-family: MB;
+  text-transform: uppercase;
+
   &:hover {
     background: $gold-bg;
-    color: black;
+    color: $dark-grey;
   }
+
   &.centered {
     margin: 0 auto;
   }
+
   &-lg {
     padding: 20px;
   }
+
   &-sm {
     font-size: 10px;
     line-height: 12px;
     padding: 14.5px 10px;
+  }
+
+  &-black {
+    background: $light-black-2;
+    color: white;
+
+    &:hover {
+      background: $light-black-2;
+      color: white;
+    }
   }
 }

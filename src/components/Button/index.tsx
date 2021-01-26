@@ -1,10 +1,11 @@
-import React, { ImgHTMLAttributes } from 'react';
+import React from 'react';
 import { Button as BtnAntd } from 'antd';
 import classNames from 'classnames';
 
 interface ButtonProps {
   type?: 'lg' | 'sm';
   centered?: boolean;
+  colorScheme?: "black";
 }
 
 const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
@@ -12,10 +13,11 @@ const Button: React.FC<React.HTMLAttributes<HTMLDivElement> & ButtonProps> = ({
   className,
   type,
   centered,
+  colorScheme
 }) => {
   return (
     <BtnAntd
-      className={classNames(className, 'text-md btn', `btn-${type}`, {
+      className={classNames(className, 'text-md btn', `btn-${type}`, `btn-${colorScheme}`, {
         centered: centered,
       })}>
       {children}
