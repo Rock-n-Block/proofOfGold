@@ -79,8 +79,8 @@ const FranchisePage: React.FC = () => {
   return (
     <div className="franchise">
       <div className="franchise__presentation franchise__presentation_first">
-        <div className="franchise__presentation-container">
-          <div className="franchise__presentation-title text-gradient text-bold h1-lg">
+        <div className="franchise__presentation-container row">
+          <div className="franchise__presentation-title text-gradient h1-lg">
             About the POG Franchise
           </div>
 
@@ -109,8 +109,8 @@ const FranchisePage: React.FC = () => {
       />
 
       <div className="franchise__presentation franchise__presentation_second">
-        <div className="franchise__presentation-container">
-          <div className="franchise__presentation-title text-gradient text-bold h1-lg">
+        <div className="franchise__presentation-container row">
+          <div className="franchise__presentation-title text-gradient h1-lg">
             POG Stores
           </div>
 
@@ -144,7 +144,7 @@ const FranchisePage: React.FC = () => {
             <img src={presentation2_img3} alt="" />
           </div>
 
-          <div className="franchise__presentation-title_h2 text-bold h2-md">
+          <div className="franchise__presentation-title_h2 h2-md">
             Products and Services
           </div>
 
@@ -170,7 +170,7 @@ const FranchisePage: React.FC = () => {
       </div>
 
       <div className="franchise__gold-presentation">
-        <div className="franchise__gold-presentation-container">
+        <div className="franchise__gold-presentation-container row">
           <div className="franchise__gold-presentation-title text-bold h1-lg">
             The Franchise Opportunity
           </div>
@@ -196,7 +196,7 @@ const FranchisePage: React.FC = () => {
       </div>
 
       <div className="franchise__presentation franchise__presentation_third">
-        <div className="franchise__presentation-container">
+        <div className="franchise__presentation-container row">
           <div className="franchise__presentation-title text-gradient text-bold h1-lg">
             The Franchisee
           </div>
