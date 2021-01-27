@@ -31,6 +31,16 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
         errors.message = 'Enter your message';
       }
     },
+    review: (value: string): void => {
+      if (!value) {
+        errors.review = 'Enter your review';
+      }
+    },
+    rate: (value: number): void => {
+      if (!value) {
+        errors.rate = 'Enter your rate';
+      }
+    },
     confirm_password: (value: string): void => {
       if (!values.password || !values.confirm_password) {
         errors.confirm_password = 'Повторите пароль';

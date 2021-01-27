@@ -46,7 +46,7 @@ const ContactUsForm: React.FC<FormikProps<ContactUsFormProps>> = ({
         <Input
           id="email"
           className="c-form__input input"
-          placeholder="Eamil"
+          placeholder="Email"
           size="large"
           onChange={handleChange}
           onBlur={handleBlur}

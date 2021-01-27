@@ -8,6 +8,7 @@ import {
   ShopPage,
   CoinsPage,
   BarsPage,
+  ProductPage,
 } from './pages';
 
 import './styles/index.scss';
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/shop" component={ShopPage} />
         <Route exact path="/coins" component={CoinsPage} />
         <Route exact path="/bars" component={BarsPage} />
+        <Route exact path="/product/:productId" component={ProductPage} />
       </Switch>
       <Footer />
     </div>
