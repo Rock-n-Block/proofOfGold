@@ -88,12 +88,6 @@
         padding: 0 35px;
         background: $light-black-1;
 
-        @mixin icon-image($number) {
-          &.icon-#{$number} {
-            background-image: url('/assets/img/franchise/items-icon-#{$number}.svg');
-          }
-        }
-
         &-icon {
           &-container {
             display: flex;
