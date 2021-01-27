@@ -1,8 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Progress } from 'antd';
+import classNames from 'classnames';
 
 import { Counter, Button } from '../../components';
+import { ProductReviewForm } from '../../modules';
 
 import './Product.scss';
 
@@ -14,6 +16,7 @@ interface ParamTypes {
 }
 
 const ProductPage = () => {
+  const [activeTab, setActiveTab] = React.useState(1);
   const { productId } = useParams<ParamTypes>();
   const product = {
     img: goldImg,
@@ -85,6 +88,40 @@ const ProductPage = () => {
         <div className="product__img">
           <img src={product.img} alt="" />
         </div>
+      </div>
+      <div className="row">
+        <div className="product__nav">
+          <div
+            onClick={() => setActiveTab(0)}
+            className={classNames('product__nav-item text-lg', {
+              active: activeTab === 0,
+            })}>
+            Description
+          </div>
+          <div
+            onClick={() => setActiveTab(1)}
+            className={classNames('product__nav-item text-lg', {
+              active: activeTab === 1,
+            })}>
+            REVIEWS (0)
+          </div>
+        </div>
+        {activeTab === 0 && (
+          <div className="product__descr">
+            <p> Disclaimer*</p>
+            <p>
+              Prices are subject to change depending on prevailing gold market
+              value. Card designs are for illustration purposes only.
+            </p>
+          </div>
+        )}
+        {activeTab === 1 && (
+          <div className="product__reviews">
+            <div className="product__review-make">
+              <ProductReviewForm />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

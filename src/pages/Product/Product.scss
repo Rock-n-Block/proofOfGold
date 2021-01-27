@@ -1,3 +1,4 @@
+@import '../../styles/vars';
 .product {
   padding: 80px 0 50px;
   &__row {
@@ -80,5 +81,48 @@
     color: #b99b55;
     text-transform: uppercase;
     font-family: MB;
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px;
+    &-item {
+      text-transform: uppercase;
+      transition: 0.3s;
+      padding-bottom: 8px;
+      position: relative;
+      cursor: pointer;
+      & + & {
+        margin-left: 55px;
+      }
+      &::after {
+        content: '';
+        opacity: 0;
+        transition: 0.3s;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: $gold;
+      }
+      &.active {
+        color: $gold;
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__descr {
+    text-align: center;
+    padding: 50px 0 0;
+  }
+  &__review {
+    &-make {
+      width: fit-content;
+      margin: 50px auto 0;
+    }
   }
 }
