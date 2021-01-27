@@ -14,7 +14,7 @@ const Counter: React.FC<CounterProps> = ({ min, max, value = 0, onChange }) => {
 
   const handleDecrease = () => {
     let curValue: number = stateValue;
-    if (min) {
+    if (min !== undefined) {
       if (stateValue - 1 >= min) {
         curValue = stateValue - 1;
         setStateValue(stateValue - 1);
