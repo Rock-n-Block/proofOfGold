@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Header } from './components';
+import { Header, Footer } from './components';
 import {
   HomePage,
   FranchisePage,
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/coins" component={CoinsPage} />
         <Route exact path="/bars" component={BarsPage} />
       </Switch>
+      <Footer />
     </div>
   );
 }
