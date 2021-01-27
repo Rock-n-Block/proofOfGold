@@ -127,11 +127,6 @@ const FranchisePage: React.FC = () => {
             <br />
             The ideal location for a Proof of Gold store is in an area of high
             visibility, such as a shopping district or a shopping mall.
-            <div className="franchise__presentation-text-bottom text-lg text-gradient text-bold">
-              Minimum Space: 30 square metres
-              <br />
-              Ideal Location: Shopping District / Shopping Mall
-            </div>
           </div>
 
           <div className="franchise__presentation-images">
@@ -144,7 +139,13 @@ const FranchisePage: React.FC = () => {
             <img src={presentation2_img3} alt="" />
           </div>
 
-          <div className="franchise__presentation-title_h2 h2-md">
+          <div className="franchise__presentation-text-bottom text-lg text-gradient text-bold">
+            Minimum Space: 30 square metres
+            <br />
+            Ideal Location: Shopping District / Shopping Mall
+          </div>
+
+          <div className="franchise__presentation-title franchise__presentation-title_h2 h2-md">
             Products and Services
           </div>
 
@@ -197,7 +198,7 @@ const FranchisePage: React.FC = () => {
 
       <div className="franchise__presentation franchise__presentation_third">
         <div className="franchise__presentation-container row">
-          <div className="franchise__presentation-title text-gradient text-bold h1-lg">
+          <div className="franchise__presentation-title text-gradient h1-lg">
             The Franchisee
           </div>
 

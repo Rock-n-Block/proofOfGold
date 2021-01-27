@@ -11,9 +11,11 @@
   color: $dark-grey-1;
   font-family: MB;
   text-transform: uppercase;
+  white-space: normal;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     background: $gold-bg;
     color: $dark-grey-1;
   }
@@ -36,7 +38,9 @@
     background: $light-black-2;
     color: white;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       background: $light-black-2;
       color: white;
     }

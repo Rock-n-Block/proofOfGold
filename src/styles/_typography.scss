@@ -59,3 +59,12 @@
   text-transform: uppercase;
   margin-bottom: 80px;
 }
+
+@media (max-width: 760px) {
+  .h1 {
+    &-lg {
+      font-size: 26px;
+      line-height: 32px;
+    }
+  }
+}
