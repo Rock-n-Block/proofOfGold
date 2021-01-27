@@ -1,0 +1,50 @@
+.counter {
+  padding: 6px 7px;
+  background: #272727;
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  &__btn {
+    width: 30px;
+    height: 30px;
+    background: #393837;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    &::before {
+      content: '';
+      display: block;
+      width: 15px;
+      height: 2px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      border-radius: 3px;
+    }
+  }
+  &__plus {
+    &::before {
+      width: 14px;
+    }
+    &::after {
+      content: '';
+      display: block;
+      height: 14px;
+      width: 2px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      border-radius: 3px;
+    }
+  }
+  &__content {
+    margin: 7px 20px 0;
+    font-family: KB;
+  }
+}

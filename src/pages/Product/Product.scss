@@ -1,0 +1,84 @@
+.product {
+  padding: 80px 0 50px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__img {
+    width: 550px;
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    max-width: 500px;
+  }
+  &__name {
+    font-size: 34px;
+    line-height: 41px;
+    text-transform: uppercase;
+    font-family: MB;
+    margin-bottom: 35px;
+  }
+  &__wrapper {
+    margin: 22px 0 50px;
+    display: flex;
+    align-items: center;
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 17px;
+    font-family: MB;
+    margin: 15px 0 50px;
+  }
+  .ant-progress {
+    &-line {
+      width: 392px;
+    }
+    &-inner {
+      background: #41403e;
+      border-radius: 12px;
+    }
+    &-bg {
+      height: 16px !important;
+      background: linear-gradient(
+          46.19deg,
+          #fac929 10.42%,
+          #fef8c2 55.03%,
+          #fac929 96.91%
+        ),
+        #d6b955;
+    }
+  }
+  &__add {
+    margin-left: 20px;
+  }
+  &__info {
+    margin-bottom: 30px;
+    &-item {
+      display: flex;
+      align-items: center;
+      & + & {
+        margin-top: 10px;
+      }
+      &-value {
+        font-family: MB;
+      }
+      &-title {
+        min-width: 265px;
+        margin-right: 20px;
+      }
+    }
+    &-descr {
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 30px;
+    }
+  }
+  &__instok {
+    font-size: 14px;
+    line-height: 17px;
+    color: #b99b55;
+    text-transform: uppercase;
+    font-family: MB;
+  }
+}
