@@ -5,3 +5,4 @@ export { default as CoinsPage } from './Coins';
 export { default as BarsPage } from './Bars';
 export { default as ProductPage } from './Product';
 export { default as CartPage } from './Cart';
+export { default as LoginPage } from './Login';

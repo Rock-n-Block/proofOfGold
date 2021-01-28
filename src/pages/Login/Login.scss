@@ -1,0 +1,20 @@
+.login {
+  padding: 80px 0 65px;
+  &__title {
+    margin-bottom: 45px;
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info {
+    margin-top: 100px;
+    max-width: 985px;
+    p + p {
+      margin-top: 15px;
+    }
+  }
+  &__link {
+    font-family: MB;
+  }
+}

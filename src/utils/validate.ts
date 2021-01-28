@@ -13,12 +13,12 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
     },
     password: (value: string): void => {
       if (!value) {
-        errors.password = 'Введите ваш пароль';
+        errors.password = 'Enter your password';
       } else if (
         !isAuth &&
         !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)
       ) {
-        errors.password = 'Ваш пароль слишком легкий';
+        errors.password = 'Your password too light';
       }
     },
     username: (value: string): void => {

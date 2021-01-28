@@ -1,0 +1,12 @@
+.l-form {
+  border-radius: 12px;
+  height: fit-content;
+  width: 500px;
+  padding: 30px;
+  background: #191919;
+  &__title {
+    color: $gold;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+}

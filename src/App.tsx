@@ -10,6 +10,7 @@ import {
   BarsPage,
   ProductPage,
   CartPage,
+  LoginPage,
 } from './pages';
 
 import './styles/index.scss';
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/coins" component={CoinsPage} />
         <Route exact path="/bars" component={BarsPage} />
         <Route exact path="/cart" component={CartPage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="/product/:productId" component={ProductPage} />
       </Switch>
       <Footer />

@@ -9,6 +9,31 @@
   resize: none !important;
   box-shadow: none;
   color: white !important;
+  &__label {
+    font-size: 14px;
+    line-height: 17px;
+    font-family: MB;
+  }
+  &__star {
+    position: relative;
+    &::before {
+      content: '*';
+      position: absolute;
+      font-family: MB;
+      font-size: 14px;
+      line-height: 17px;
+      color: #fce075;
+      right: 0;
+      bottom: calc(100% + 4px);
+    }
+  }
+  &__forget {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 15px;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 input:-webkit-autofill,
@@ -17,4 +42,7 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #363636 inset !important;
   -webkit-text-fill-color: white !important;
+}
+.ant-form-vertical .ant-form-item-label {
+  padding-bottom: 4px;
 }
