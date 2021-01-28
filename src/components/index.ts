@@ -9,3 +9,4 @@ export { default as LoginForm } from './LoginForm';
 export { default as RegisterForm } from './RegisterForm';
 export { default as Counter } from './Counter';
 export { default as CartItem } from './CartItem';
+export { default as Orders } from './Orders';

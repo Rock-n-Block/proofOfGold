@@ -1,0 +1,52 @@
+@import '../../styles/vars';
+.orders {
+  &__item {
+    border-radius: 12px;
+    background: #191919;
+    padding: 30px;
+  }
+  &__item {
+    & + & {
+      margin-top: 40px;
+    }
+    &-info {
+      &-date {
+        color: $gold;
+      }
+      &-cost {
+        font-family: MB;
+      }
+      &-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & + & {
+          margin-top: 10px;
+        }
+      }
+    }
+    &-product {
+      display: grid;
+      margin-top: 30px;
+      grid-template-columns: 110px 3fr 40px 1fr;
+      grid-column-gap: 20px;
+      font-family: MB;
+      &-element {
+        padding-top: 30px;
+      }
+      &-img {
+        width: 100%;
+      }
+      &-name {
+        text-transform: uppercase;
+        font-size: 16px;
+        line-height: 20px;
+        font-family: MR;
+      }
+      &-cost {
+        width: 100%;
+        text-align: right;
+      }
+    }
+  }
+}

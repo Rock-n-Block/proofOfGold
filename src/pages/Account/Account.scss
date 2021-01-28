@@ -1,0 +1,32 @@
+.account {
+  padding: 80px 0 125px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__wrapper {
+    max-width: 130px;
+  }
+  &__name {
+    font-family: MM;
+    color: white;
+    margin: 30px 0;
+  }
+  &__nav {
+    &-item {
+      display: block;
+      margin-bottom: 30px;
+      color: white;
+      &.active {
+        font-family: MB;
+      }
+    }
+  }
+  &__logout {
+    cursor: pointer;
+  }
+  &__content {
+    width: 100%;
+    max-width: 800px;
+  }
+}

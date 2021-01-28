@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           </NavLink>
           <div className="">
             <div className="header__box">
-              <NavLink exact to="/0" className="header__link">
+              <NavLink to="/account" className="header__link">
                 Account
               </NavLink>
               <NavLink exact to="/1" className="header__link">
