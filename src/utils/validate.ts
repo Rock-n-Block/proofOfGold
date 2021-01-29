@@ -1,4 +1,4 @@
-export const validateForm = ({ isAuth, values, errors }: any) => {
+export const validateForm = ({ values, errors }: any) => {
   interface IRules {
     [key: string]: Function;
   }
@@ -14,11 +14,13 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
     password: (value: string): void => {
       if (!value) {
         errors.password = 'Enter your password';
-      } else if (
-        !isAuth &&
-        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)
-      ) {
-        errors.password = 'Your password too light';
+      }
+    },
+    new_password: (value: string): void => {
+      if (!value) {
+        errors.new_password = 'Enter your password';
+      } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)) {
+        errors.new_password = 'Your password too light';
       }
     },
     username: (value: string): void => {
@@ -29,6 +31,16 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
     message: (value: string): void => {
       if (!value) {
         errors.message = 'Enter your message';
+      }
+    },
+    firstname: (value: string): void => {
+      if (!value) {
+        errors.firstname = 'Enter your first name';
+      }
+    },
+    lastname: (value: string): void => {
+      if (!value) {
+        errors.lastname = 'Enter your last name';
       }
     },
     review: (value: string): void => {
@@ -42,9 +54,9 @@ export const validateForm = ({ isAuth, values, errors }: any) => {
       }
     },
     confirm_password: (value: string): void => {
-      if (!values.password || !values.confirm_password) {
+      if (!values.new_password || !values.confirm_password) {
         errors.confirm_password = 'Повторите пароль';
-      } else if (values.password !== value) {
+      } else if (values.new_password !== value) {
         errors.confirm_password = 'Пароли не совпадают';
       }
     },

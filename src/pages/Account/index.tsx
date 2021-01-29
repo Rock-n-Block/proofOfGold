@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 import { Orders } from '../../components';
+import { AccountDetailsForm } from '../../modules';
 
 import './Account.scss';
 
@@ -36,6 +37,7 @@ const AccountPage = () => {
         <div className="account__content">
           <Switch>
             <Route exact path="/account/orders" component={Orders} />
+            <Route exact path="/account" component={AccountDetailsForm} />
           </Switch>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { withFormik } from 'formik';
 
 import { LoginForm } from '../../components';
 import { validateForm } from '../../utils/validate';
+import { useMst } from '../../store/root';
 
 interface LoginFormProps {
   username: string;
@@ -10,6 +11,7 @@ interface LoginFormProps {
 }
 
 export default () => {
+  const { user } = useMst();
   const FormWithFormik = withFormik<{}, LoginFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
@@ -25,7 +27,7 @@ export default () => {
     },
 
     handleSubmit: (values) => {
-      console.log(values);
+      user.login(values);
     },
 
     displayName: 'LoginForm',

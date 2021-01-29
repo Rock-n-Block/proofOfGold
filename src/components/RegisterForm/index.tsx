@@ -7,7 +7,7 @@ import { Button } from '../../components';
 
 interface RegisterFormProps {
   username: string;
-  password: string;
+  new_password: string;
   email: string;
 }
 
@@ -56,16 +56,16 @@ const RegisterForm: React.FC<FormikProps<RegisterFormProps>> = ({
         </div>
       </Form.Item>
       <Form.Item
-        name="password"
+        name="new_password"
         className="l-form__item input__field"
-        validateStatus={validateField('password', touched, errors)}
-        help={!touched.password ? false : errors.password}
+        validateStatus={validateField('new_password', touched, errors)}
+        help={!touched.new_password ? false : errors.new_password}
         label={
           <span className="text-gradient input__label">Create passwrod</span>
         }>
         <div className="input__star">
           <Input
-            id="password"
+            id="new_password"
             className="l-form__input input"
             size="large"
             type="password"
