@@ -7,3 +7,4 @@ export { default as ProductPage } from './Product';
 export { default as CartPage } from './Cart';
 export { default as LoginPage } from './Login';
 export { default as AccountPage } from './Account';
+export { default as DeliveryPage } from './Delivery';
