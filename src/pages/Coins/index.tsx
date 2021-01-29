@@ -1,27 +1,31 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { ProductCard } from '../../components';
+import { useMst } from '../../store/root';
 
 import coinImg from '../../assets/img/products/5gram.svg';
 
-const ShopPage: React.FC = () => {
+const ShopPage: React.FC = observer(() => {
+  const { productsStore } = useMst();
   return (
     <div className="products">
       <div className="row">
         <h1 className="products-title h2 text-gradient">Gold Coins</h1>
         <div className="box-products">
-          {new Array(5).fill(0).map((_, index) => (
+          {productsStore.getCoins.map((coin) => (
             <ProductCard
-              key={index}
-              img={coinImg}
-              name="5 grams – Ducatus Prime Gold Coin"
-              cost="472"
+              key={coin.id}
+              id={coin.id}
+              name={coin.name}
+              price={coin.price}
+              image={coin.image}
             />
           ))}
         </div>
       </div>
     </div>
   );
-};
+});
 
 export default ShopPage;

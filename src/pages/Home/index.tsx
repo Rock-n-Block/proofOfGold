@@ -2,9 +2,11 @@ import React, { Fragment } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, EffectFade } from 'swiper';
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { Button, InfoCard, ProductCard } from '../../components';
 import { ContactUsForm } from '../../modules';
+import { useMst } from '../../store/root';
 
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -71,7 +73,9 @@ const about = [
   },
 ];
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = observer(() => {
+  const { productsStore } = useMst();
+
   return (
     <div className="home">
       <Swiper
@@ -205,12 +209,13 @@ const HomePage: React.FC = () => {
             DUCATUS PRIME GOLD COINS
           </div>
           <div className="home__products-box box-products">
-            {new Array(5).fill(0).map((_, index) => (
+            {productsStore.getCoins.map((coin) => (
               <ProductCard
-                key={index}
-                img={coinImg}
-                name="5 grams – Ducatus Prime Gold Coin"
-                cost="472"
+                key={coin.id}
+                id={coin.id}
+                name={coin.name}
+                price={coin.price}
+                image={coin.image}
               />
             ))}
           </div>
@@ -236,12 +241,13 @@ const HomePage: React.FC = () => {
             DUCATUS PRIME GOLD BARS
           </div>
           <div className="home__products-box box-products">
-            {new Array(5).fill(0).map((_, index) => (
+            {productsStore.getBars.map((bar) => (
               <ProductCard
-                key={index}
-                img={goldImg}
-                name="144 grams – Ducatus Prime Gold Bar"
-                cost="12,144"
+                key={bar.id}
+                id={bar.id}
+                name={bar.name}
+                price={bar.price}
+                image={bar.image}
               />
             ))}
           </div>
@@ -295,6 +301,6 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default HomePage;

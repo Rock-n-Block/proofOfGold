@@ -10,6 +10,7 @@ export const User = types
   })
   .actions((self) => {
     function updateUserData(data: any) {
+      debugger;
       localStorage.access_token = data.token;
       self = { ...data };
     }
@@ -18,6 +19,7 @@ export const User = types
         console.log(userData, 'register');
         const { data } = yield userApi.register(userData);
 
+        debugger;
         updateUserData({
           ...data,
           isLogin: true,

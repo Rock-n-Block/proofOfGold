@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { Header, Footer } from './components';
 import {
@@ -15,10 +16,16 @@ import {
   DeliveryPage,
   LegalPage,
 } from './pages';
+import { useMst } from './store/root';
 
 import './styles/index.scss';
 
-function App() {
+const App: React.FC = observer(() => {
+  const { productsStore } = useMst();
+
+  React.useEffect(() => {
+    productsStore.loadProducts();
+  }, []);
   return (
     <div className="proof">
       <Header />
@@ -38,6 +45,6 @@ function App() {
       <Footer />
     </div>
   );
-}
+});
 
 export default App;

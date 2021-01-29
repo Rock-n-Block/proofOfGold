@@ -6,6 +6,9 @@
   font-family: MB;
   &__img {
     display: block;
+    img {
+      width: 100%;
+    }
   }
   &__box {
     padding: 35px 20px 20px;

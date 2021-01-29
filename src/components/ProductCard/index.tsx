@@ -2,24 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from '../../components';
+import numberWithCommas from '../../utils/numberWithCommas';
 
 import './ProductCard.scss';
 
 interface ProductCard {
-  img: string;
+  id: number;
+  image: string;
   name: string;
-  cost: string;
+  price: number;
 }
 
-const ProductCard: React.FC<ProductCard> = ({ name, cost, img }) => {
+const ProductCard: React.FC<ProductCard> = ({ id, name, price, image }) => {
   return (
     <div className="p-card">
-      <Link to={`/product/1`} className="p-card__img">
-        <img src={img} alt="" />
+      <Link to={`/product/${id}`} className="p-card__img">
+        <img src={`https://${image}`} alt="" />
       </Link>
       <div className="p-card__box">
         <div className="p-card__name">{name}</div>
-        <div className="p-card__cost h2">${cost}</div>
+        <div className="p-card__cost h2">${numberWithCommas(price)}</div>
         <Button size="sm" centered={true} icon="cart">
           ADD to cart
         </Button>

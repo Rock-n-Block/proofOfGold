@@ -2,9 +2,11 @@ import { useContext, createContext } from 'react';
 import { types, Instance, onSnapshot } from 'mobx-state-tree';
 
 import { User } from './User';
+import { ProductsStore } from './Product';
 
 const RootModel = types.model({
   user: User,
+  productsStore: ProductsStore,
 });
 
 let initialState = RootModel.create({
@@ -14,6 +16,7 @@ let initialState = RootModel.create({
     token: '',
     isLogin: false,
   },
+  productsStore: {},
 });
 
 // const data = localStorage.getItem('rootState');
