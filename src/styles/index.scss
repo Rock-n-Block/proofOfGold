@@ -14,7 +14,14 @@ body {
   background: #000000;
   padding-top: 131px;
 }
-
+#root,
+.proof {
+  height: 100%;
+}
+.proof {
+  display: grid;
+  grid-template-rows: 1fr 342px;
+}
 .row {
   max-width: 1180px;
   padding: 0 20px;

@@ -11,3 +11,4 @@ export { default as Counter } from './Counter';
 export { default as CartItem } from './CartItem';
 export { default as Orders } from './Orders';
 export { default as AccountDetailsForm } from './AccountDetailsForm';
+export { default as ProductReview } from './ProductReview';

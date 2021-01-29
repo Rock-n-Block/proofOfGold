@@ -119,10 +119,15 @@
     text-align: center;
     padding: 50px 0 0;
   }
-  &__review {
+  &__reviews {
     &-make {
       width: fit-content;
       margin: 50px auto 0;
+    }
+    &-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      margin-top: 50px;
     }
   }
 }

@@ -6,6 +6,7 @@ export const User = types
     name: types.string,
     email: types.string,
     token: types.string,
+    isLogin: types.boolean,
   })
   .actions((self) => {
     function updateUserData(data: any) {
@@ -17,7 +18,10 @@ export const User = types
         console.log(userData, 'register');
         const { data } = yield userApi.register(userData);
 
-        updateUserData(data);
+        updateUserData({
+          ...data,
+          isLogin: true,
+        });
       } catch (err) {
         console.log(err, 'register', userData);
       }
@@ -27,7 +31,10 @@ export const User = types
         console.log(userData, 'login');
         const data = yield userApi.login(userData);
 
-        updateUserData(data);
+        updateUserData({
+          ...data,
+          isLogin: true,
+        });
       } catch (err) {
         console.log(err, 'login', userData);
       }

@@ -13,6 +13,7 @@ import {
   LoginPage,
   AccountPage,
   DeliveryPage,
+  LegalPage,
 } from './pages';
 
 import './styles/index.scss';
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/product/:productId" component={ProductPage} />
         <Route path="/account" component={AccountPage} />
         <Route exact path="/delivery-information" component={DeliveryPage} />
+        <Route exact path="/legal" component={LegalPage} />
       </Switch>
       <Footer />
     </div>

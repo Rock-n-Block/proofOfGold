@@ -6,7 +6,7 @@ import './CartItem.scss';
 
 import deleteImg from '../../assets/img/cart/delete.svg';
 
-interface CartItemProps {
+export interface CartItemProps {
   img: string;
   name: string;
   price: string | number;

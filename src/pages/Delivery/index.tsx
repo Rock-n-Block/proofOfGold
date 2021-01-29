@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Delivery.scss';
 
-const DeliveryPage = () => {
+const DeliveryPage: React.FC = () => {
   const shipping = [
     'Orders will be delivered to the buyer’s registered and verified address. For deliveries to a different address, buyers are required to send a request via email: Office@denariusglobal.com. The POG team will then contact the buyer for further verification.',
     'POG will always bear the risk for the delivery until the buyer has signed for the parcel.',

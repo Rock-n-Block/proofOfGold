@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { Button } from '../../components';
+import { useMst } from '../../store/root';
 
 import './Header.scss';
 
@@ -9,7 +11,8 @@ import LogoImg from '../../assets/img/logo.svg';
 import { ReactComponent as Cart } from '../../assets/img/cart.svg';
 import { ReactComponent as Search } from '../../assets/img/search.svg';
 
-const Header: React.FC = () => {
+const Header: React.FC = observer(() => {
+  const { user } = useMst();
   return (
     <header className="header">
       <div className="row">
@@ -19,11 +22,10 @@ const Header: React.FC = () => {
           </NavLink>
           <div className="">
             <div className="header__box">
-              <NavLink to="/account" className="header__link">
+              <NavLink
+                to={user.isLogin ? '/account' : '/login'}
+                className="header__link">
                 Account
-              </NavLink>
-              <NavLink exact to="/1" className="header__link">
-                Shopping Cart
               </NavLink>
             </div>
 
@@ -59,6 +61,6 @@ const Header: React.FC = () => {
       </div>
     </header>
   );
-};
+});
 
 export default Header;

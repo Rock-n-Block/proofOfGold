@@ -12,6 +12,7 @@ let initialState = RootModel.create({
     name: '',
     email: '',
     token: '',
+    isLogin: false,
   },
 });
 

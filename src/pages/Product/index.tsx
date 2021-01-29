@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Progress } from 'antd';
 import classNames from 'classnames';
 
-import { Counter, Button } from '../../components';
+import { Counter, Button, ProductReview } from '../../components';
 import { ProductReviewForm } from '../../modules';
 
 import './Product.scss';
@@ -117,8 +117,13 @@ const ProductPage = () => {
         )}
         {activeTab === 1 && (
           <div className="product__reviews">
-            <div className="product__review-make">
+            <div className="product__reviews-make">
               <ProductReviewForm />
+            </div>
+            <div className="product__reviews-wrapper">
+              {new Array(3).fill(0).map((_, index) => (
+                <ProductReview key={index} name="name" text="123" rate={3} />
+              ))}
             </div>
           </div>
         )}
