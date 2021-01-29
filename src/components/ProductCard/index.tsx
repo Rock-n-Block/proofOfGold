@@ -1,33 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { Button } from '../../components';
 import numberWithCommas from '../../utils/numberWithCommas';
+import { useMst } from '../../store/root';
 
 import './ProductCard.scss';
 
-interface ProductCard {
-  id: number;
-  image: string;
+export interface IProduct {
+  id: string;
+  group: string;
   name: string;
+  image: string;
+  total_supply: number;
+  supply: number;
+  sold: number;
   price: number;
 }
 
-const ProductCard: React.FC<ProductCard> = ({ id, name, price, image }) => {
-  return (
-    <div className="p-card">
-      <Link to={`/product/${id}`} className="p-card__img">
-        <img src={`https://${image}`} alt="" />
-      </Link>
-      <div className="p-card__box">
-        <div className="p-card__name">{name}</div>
-        <div className="p-card__cost h2">${numberWithCommas(price)}</div>
-        <Button size="sm" centered={true} icon="cart">
-          ADD to cart
-        </Button>
+const ProductCard: React.FC<IProduct> = observer(
+  ({ id, name, price, image }) => {
+    const { cart } = useMst();
+    const handleAdd = () => {
+      cart.addProduct(id);
+    };
+    return (
+      <div className="p-card">
+        <Link to={`/product/${id}`} className="p-card__img">
+          <img src={`https://${image}`} alt="" />
+        </Link>
+        <div className="p-card__box">
+          <div className="p-card__name">{name}</div>
+          <div className="p-card__cost h2">${numberWithCommas(price)}</div>
+          <Button size="sm" centered={true} icon="cart" onClick={handleAdd}>
+            ADD to cart
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 export default ProductCard;

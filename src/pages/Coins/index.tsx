@@ -14,13 +14,7 @@ const ShopPage: React.FC = observer(() => {
         <h1 className="products-title h2 text-gradient">Gold Coins</h1>
         <div className="box-products">
           {productsStore.getCoins.map((coin) => (
-            <ProductCard
-              key={coin.id}
-              id={coin.id}
-              name={coin.name}
-              price={coin.price}
-              image={coin.image}
-            />
+            <ProductCard key={coin.id} {...coin} />
           ))}
         </div>
       </div>

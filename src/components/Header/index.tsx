@@ -12,7 +12,7 @@ import { ReactComponent as Cart } from '../../assets/img/cart.svg';
 import { ReactComponent as Search } from '../../assets/img/search.svg';
 
 const Header: React.FC = observer(() => {
-  const { user } = useMst();
+  const { user, cart } = useMst();
   return (
     <header className="header">
       <div className="row">
@@ -52,7 +52,7 @@ const Header: React.FC = observer(() => {
               </Link>
               <NavLink to="/cart" className="header__icon-link">
                 <Cart className="header__icon" />
-                <div className="header__icon-counter">4</div>
+                <div className="header__icon-counter">{cart.subQuantity}</div>
               </NavLink>
               <Search className="header__icon-search" />
             </div>

@@ -1,8 +1,10 @@
-import { types, flow } from 'mobx-state-tree';
+import { types, flow, Instance } from 'mobx-state-tree';
 import { storeApi } from '../utils/api';
 
+export type IProduct = Instance<typeof Product>;
+
 export const Product = types.model({
-  id: types.number,
+  id: types.identifier,
   group: types.string,
   name: types.string,
   image: types.string,
@@ -34,6 +36,11 @@ export const ProductsStore = types
     const loadProducts = flow(function* loadProducts() {
       try {
         const { data } = yield storeApi.getProducts();
+
+        data.items = data.items.map((item: any) => ({
+          ...item,
+          id: item.id + '',
+        }));
         updateProducts(data.items);
       } catch (err) {
         console.log(err, 'loadProducts');

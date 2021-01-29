@@ -6,10 +6,19 @@ interface CounterProps {
   min?: number;
   max?: number;
   value?: number;
-  onChange: (value: number) => void;
+  onChange?: (value: number) => void;
+  onIncrease?: () => void;
+  onDecrease?: () => void;
 }
 
-const Counter: React.FC<CounterProps> = ({ min, max, value = 0, onChange }) => {
+const Counter: React.FC<CounterProps> = ({
+  min,
+  max,
+  value = 0,
+  onChange,
+  onIncrease,
+  onDecrease,
+}) => {
   const [stateValue, setStateValue] = React.useState(value);
 
   const handleDecrease = () => {
@@ -23,7 +32,8 @@ const Counter: React.FC<CounterProps> = ({ min, max, value = 0, onChange }) => {
       curValue = stateValue - 1;
       setStateValue(stateValue - 1);
     }
-    onChange(curValue);
+    onChange && onChange(curValue);
+    onDecrease && onDecrease();
   };
 
   const handleIncrease = () => {
@@ -37,7 +47,8 @@ const Counter: React.FC<CounterProps> = ({ min, max, value = 0, onChange }) => {
       curValue = stateValue + 1;
       setStateValue(stateValue + 1);
     }
-    onChange(curValue);
+    onChange && onChange(curValue);
+    onIncrease && onIncrease();
   };
 
   return (

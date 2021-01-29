@@ -210,13 +210,7 @@ const HomePage: React.FC = observer(() => {
           </div>
           <div className="home__products-box box-products">
             {productsStore.getCoins.map((coin) => (
-              <ProductCard
-                key={coin.id}
-                id={coin.id}
-                name={coin.name}
-                price={coin.price}
-                image={coin.image}
-              />
+              <ProductCard key={coin.id} {...coin} />
             ))}
           </div>
           <div className="home__products-disclaimer">
@@ -242,13 +236,7 @@ const HomePage: React.FC = observer(() => {
           </div>
           <div className="home__products-box box-products">
             {productsStore.getBars.map((bar) => (
-              <ProductCard
-                key={bar.id}
-                id={bar.id}
-                name={bar.name}
-                price={bar.price}
-                image={bar.image}
-              />
+              <ProductCard key={bar.id} {...bar} />
             ))}
           </div>
           <div className="home__products-disclaimer">

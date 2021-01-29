@@ -3,10 +3,12 @@ import { types, Instance, onSnapshot } from 'mobx-state-tree';
 
 import { User } from './User';
 import { ProductsStore } from './Product';
+import { CartStore } from './Cart';
 
 const RootModel = types.model({
   user: User,
   productsStore: ProductsStore,
+  cart: CartStore,
 });
 
 let initialState = RootModel.create({
@@ -17,6 +19,7 @@ let initialState = RootModel.create({
     isLogin: false,
   },
   productsStore: {},
+  cart: {},
 });
 
 // const data = localStorage.getItem('rootState');
