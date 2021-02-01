@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import classNames from 'classnames';
 
 import { CartItem, Button } from '../../components';
 import { useMst } from '../../store/root';
@@ -8,14 +9,14 @@ import numberWithCommas from '../../utils/numberWithCommas';
 
 import './Cart.scss';
 
-import coinImg from '../../assets/img/products/5gram.svg';
-import goldImg from '../../assets/img/products/gold.jpg';
-
 const CartPage: React.FC = observer(() => {
   const { cart } = useMst();
 
   return (
-    <div className="cart">
+    <div
+      className={classNames('cart', {
+        'box-fullpage': !cart.items.length,
+      })}>
       <div className="row">
         {cart.items.length ? (
           <>

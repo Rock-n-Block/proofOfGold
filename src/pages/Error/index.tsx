@@ -7,7 +7,7 @@ import './Error.scss';
 
 const ErrorPage = () => {
   return (
-    <div className="error">
+    <div className="error box-fullpage">
       <div className="row error__row">
         <div className="error__subtitle text-md">404: Page Not Found</div>
         <h1 className="h1-md text-gradient error__title">

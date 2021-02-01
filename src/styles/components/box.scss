@@ -27,6 +27,9 @@
     justify-content: space-between;
     grid-row-gap: 90px;
   }
+  &-fullpage {
+    height: calc(100% - 341px);
+  }
 }
 .products {
   padding: 60px 0 175px;
