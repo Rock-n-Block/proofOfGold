@@ -64,5 +64,5 @@ export const ProductsStore = types
       }
     });
 
-    return { loadProducts, loadProduct };
+    return { loadProducts, loadProduct, updateProducts };
   });

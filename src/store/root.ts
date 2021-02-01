@@ -22,19 +22,22 @@ let initialState = RootModel.create({
   cart: {},
 });
 
-// const data = localStorage.getItem('rootState');
-// if (data) {
-//   const json = JSON.parse(data);
-//   if (RootModel.is(json)) {
-//     initialState = RootModel.create(json);
-//   }
-// }
+const cartData = localStorage.getItem('cart');
+const productsData = localStorage.getItem('products');
+if (productsData) {
+  const cartJson = cartData && JSON.parse(cartData);
+  const productsJson = JSON.parse(productsData);
+
+  initialState.productsStore.updateProducts(productsJson.products);
+  initialState.cart.updateCart(cartJson);
+}
 
 export const rootStore = initialState;
 
 onSnapshot(rootStore, (snapshot) => {
   console.log('Snapshot: ', snapshot);
-  //   localStorage.setItem('rootState', JSON.stringify(snapshot));
+  localStorage.setItem('products', JSON.stringify(snapshot.productsStore));
+  localStorage.setItem('cart', JSON.stringify(snapshot.cart));
 });
 
 export type RootInstance = Instance<typeof RootModel>;
