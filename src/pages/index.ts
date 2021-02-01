@@ -9,3 +9,4 @@ export { default as LoginPage } from './Login';
 export { default as AccountPage } from './Account';
 export { default as DeliveryPage } from './Delivery';
 export { default as LegalPage } from './Legal';
+export { default as ErrorPage } from './Error';
