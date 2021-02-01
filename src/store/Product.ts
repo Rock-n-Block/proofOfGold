@@ -25,13 +25,18 @@ export const ProductsStore = types
     get getBars() {
       return self.products.filter((product) => product.group === 'gold_bars');
     },
-    get getProducts() {
-      return self.products;
+    getProduct(id: string) {
+      return self.products.filter((product) => product.id === id);
     },
   }))
   .actions((self) => {
     function updateProducts(products: any) {
       self.products = products;
+    }
+    function updateProduct(product: any) {
+      let entryProduct = self.products.find((entry) => entry === product.id);
+
+      entryProduct = product;
     }
     const loadProducts = flow(function* loadProducts() {
       try {
@@ -43,9 +48,21 @@ export const ProductsStore = types
         }));
         updateProducts(data.items);
       } catch (err) {
-        console.log(err, 'loadProducts');
+        console.log(err, 'load products');
       }
     });
 
-    return { loadProducts };
+    const loadProduct = flow(function* getProduct(id) {
+      try {
+        const { data } = yield storeApi.getProduct(id);
+
+        updateProduct(data);
+
+        return data;
+      } catch (err) {
+        console.log(err, 'load product');
+      }
+    });
+
+    return { loadProducts, loadProduct };
   });

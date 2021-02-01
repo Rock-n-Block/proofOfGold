@@ -46,3 +46,22 @@ input:-webkit-autofill:active {
 .ant-form-vertical .ant-form-item-label {
   padding-bottom: 4px;
 }
+
+.ant-input-number-handler-wrap {
+  display: none;
+}
+.ant-input-number {
+  border: none !important;
+  border-color: none;
+  outline: none !important;
+  box-shadow: none !important;
+  &:hover,
+  &:focus {
+    box-shadow: none;
+    border-color: none;
+  }
+  &-input {
+    padding: 0;
+    width: 100%;
+  }
+}

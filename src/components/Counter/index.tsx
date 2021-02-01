@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputNumber } from 'antd';
 
 import './Counter.scss';
 
@@ -20,7 +21,6 @@ const Counter: React.FC<CounterProps> = ({
   onDecrease,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
-
   const handleDecrease = () => {
     let curValue: number = stateValue;
     if (min !== undefined) {
@@ -54,7 +54,12 @@ const Counter: React.FC<CounterProps> = ({
   return (
     <div className="counter">
       <div className="counter__btn" onClick={handleDecrease}></div>
-      <div className="counter__content text text-gradient">{stateValue}</div>
+      {/* <div className="counter__content text text-gradient">{stateValue}</div> */}
+      <InputNumber
+        className="counter__content text text-gradient"
+        value={stateValue}
+        onChange={(value: any) => onChange && onChange(value)}
+      />
       <div
         className="counter__btn counter__plus"
         onClick={handleIncrease}></div>
@@ -62,4 +67,4 @@ const Counter: React.FC<CounterProps> = ({
   );
 };
 
-export default Counter;
+export default React.memo(Counter);

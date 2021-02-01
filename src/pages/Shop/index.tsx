@@ -11,7 +11,7 @@ const ShopPage: React.FC = observer(() => {
       <div className="row">
         <h1 className="products-title h2 text-gradient">Products</h1>
         <div className="box-products">
-          {productsStore.getProducts.map((product) => (
+          {productsStore.products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
         </div>

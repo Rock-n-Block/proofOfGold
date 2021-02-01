@@ -50,7 +50,7 @@ export const CartStore = types
       if (!entry) {
         self.items.push({
           product: product,
-          quantity: 1,
+          quantity,
         });
       } else {
         entry.increaseQuantity(quantity);

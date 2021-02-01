@@ -17,7 +17,6 @@ import slideImg1 from '../../assets/img/home/slide-1.jpg';
 import slideImg2 from '../../assets/img/home/slide-2.jpg';
 import slideImg3 from '../../assets/img/home/slide-3.jpg';
 import coinImg from '../../assets/img/products/5gram.svg';
-import goldImg from '../../assets/img/products/gold.jpg';
 import icon1 from '../../assets/img/icons/1.svg';
 import icon2 from '../../assets/img/icons/2.svg';
 import icon3 from '../../assets/img/icons/3.svg';
@@ -92,7 +91,7 @@ const HomePage: React.FC = observer(() => {
             <div className="home__slider-slide-text text">
               POG is powered by blockchain technology.
             </div>
-            <Link to="/">
+            <Link to="/shop">
               <Button>BUY GOLD</Button>
             </Link>
           </div>
@@ -107,7 +106,7 @@ const HomePage: React.FC = observer(() => {
               POG features limited edition gold products of the finest
               craftsmanship.
             </div>
-            <Link to="/">
+            <Link to="/shop">
               <Button>BUY GOLD</Button>
             </Link>
           </div>
@@ -121,7 +120,7 @@ const HomePage: React.FC = observer(() => {
             <div className="home__slider-slide-text text">
               POG delivers innovative alternative gold investments for all.
             </div>
-            <Link to="/">
+            <Link to="/shop">
               <Button>BUY GOLD</Button>
             </Link>
           </div>
@@ -169,9 +168,11 @@ const HomePage: React.FC = observer(() => {
               who would like to&nbsp;explore the wealth and prosperity that
               comes with a&nbsp;time-honoured asset like gold.
             </div>
-            <Button className="home__info-btn" size="lg">
-              View Products
-            </Button>
+            <Link to="/shop">
+              <Button className="home__info-btn" size="lg">
+                View Products
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
