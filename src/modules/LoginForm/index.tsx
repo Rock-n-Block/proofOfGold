@@ -10,9 +10,9 @@ interface LoginFormProps {
   password: string;
 }
 
-export default () => {
+export default ({ history }: any) => {
   const { user } = useMst();
-  const FormWithFormik = withFormik<{}, LoginFormProps>({
+  const FormWithFormik = withFormik<any, LoginFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
       username: '',
@@ -27,7 +27,7 @@ export default () => {
     },
 
     handleSubmit: (values) => {
-      user.login(values);
+      user.login(values).then(() => history.push('/account'));
     },
 
     displayName: 'LoginForm',

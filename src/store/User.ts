@@ -16,11 +16,11 @@ export const User = types
         localStorage.access_token = data.token;
       }
       // self = { ...data };
-      self.email = data.email;
-      self.username = data.username;
-      self.first_name = data.first_name;
-      self.last_name = data.last_name;
-      self.isLogin = data.isLogin;
+      self.email = data.email ? data.email : '';
+      self.username = data.username ? data.username : '';
+      self.first_name = data.first_name ? data.first_name : '';
+      self.last_name = data.last_name ? data.last_name : '';
+      self.isLogin = data.isLogin ? data.isLogin : false;
     }
     const getMe = flow(function* getMe() {
       try {
@@ -39,7 +39,6 @@ export const User = types
         console.log(userData, 'register');
         const { data } = yield userApi.register(userData);
 
-        debugger;
         updateUserData({
           ...data,
           isLogin: true,
@@ -50,16 +49,25 @@ export const User = types
     });
     const login = flow(function* login(userData) {
       try {
-        console.log(userData, 'login');
-        const data = yield userApi.login(userData);
+        const { data } = yield userApi.login(userData);
 
         updateUserData({
           ...data,
           isLogin: true,
         });
+        return true;
       } catch (err) {
         console.log(err, 'login', userData);
       }
     });
-    return { register, login, getMe };
+    const logout = () => {
+      self.email = '';
+      self.username = '';
+      self.first_name = '';
+      self.last_name = '';
+      self.isLogin = false;
+
+      delete localStorage.access_token;
+    };
+    return { register, login, getMe, logout };
   });

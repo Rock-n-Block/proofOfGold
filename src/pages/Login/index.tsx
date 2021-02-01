@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { LoginForm, RegisterForm } from '../../modules';
 
 import './Login.scss';
 
 const LoginPage = () => {
+  const history = useHistory();
   return (
     <div className="login">
       <div className="row">
         <h1 className="login__title h1-md text-gradient">My Account</h1>
         <div className="login__content">
-          <LoginForm />
+          <LoginForm history={history} />
           <RegisterForm />
         </div>
         <div className="login__info text-md">

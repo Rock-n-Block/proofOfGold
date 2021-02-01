@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Switch, Route } from 'react-router-dom';
+import { NavLink, Switch, Route, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 import { Orders } from '../../components';
@@ -11,7 +11,12 @@ import './Account.scss';
 import userImg from '../../assets/img/user.svg';
 
 const AccountPage = observer(() => {
+  const history = useHistory();
   const { user } = useMst();
+  const onLogout = () => {
+    user.logout();
+    history.push('/');
+  };
   return (
     <div className="account">
       <div className="row account__row">
@@ -35,7 +40,9 @@ const AccountPage = observer(() => {
               Account details
             </NavLink>
           </div>
-          <div className="text-md account__logout">Logout</div>
+          <div onClick={onLogout} className="text-md account__logout">
+            Logout
+          </div>
         </div>
         <div className="account__content">
           <Switch>

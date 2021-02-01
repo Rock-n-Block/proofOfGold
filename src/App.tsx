@@ -27,7 +27,9 @@ const App: React.FC = observer(() => {
   React.useEffect(() => {
     productsStore.loadProducts();
 
-    user.getMe();
+    if (localStorage.access_token) {
+      user.getMe();
+    }
   }, []);
   return (
     <div className="proof">
