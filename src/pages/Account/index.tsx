@@ -1,20 +1,23 @@
 import React from 'react';
 import { NavLink, Switch, Route } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import { Orders } from '../../components';
 import { AccountDetailsForm } from '../../modules';
+import { useMst } from '../../store/root';
 
 import './Account.scss';
 
 import userImg from '../../assets/img/user.svg';
 
-const AccountPage = () => {
+const AccountPage = observer(() => {
+  const { user } = useMst();
   return (
     <div className="account">
       <div className="row account__row">
         <div className="account__wrapper">
           <img src={userImg} alt="" />
-          <h3 className="account__name h3">John</h3>
+          <h3 className="account__name h3">{user.username}</h3>
           <div className="account__nav">
             <NavLink
               className="text-md account__nav-item"
@@ -43,6 +46,6 @@ const AccountPage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AccountPage;

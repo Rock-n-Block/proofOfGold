@@ -45,8 +45,8 @@ const Orders: React.FC = () => {
   ];
   return (
     <div className="orders">
-      {orders.map((order) => (
-        <div key={order.id} className="orders__item">
+      {orders.map((order, index) => (
+        <div key={index} className="orders__item">
           <div className="orders__item-info text-md">
             <div className="orders__item-info-box">
               <div className="orders__item-info-date">

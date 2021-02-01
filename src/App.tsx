@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 import { Header, Footer } from './components';
@@ -22,10 +22,12 @@ import { useMst } from './store/root';
 import './styles/index.scss';
 
 const App: React.FC = observer(() => {
-  const { productsStore } = useMst();
+  const { productsStore, user } = useMst();
 
   React.useEffect(() => {
     productsStore.loadProducts();
+
+    user.getMe();
   }, []);
   return (
     <div className="proof">
@@ -39,7 +41,10 @@ const App: React.FC = observer(() => {
         <Route exact path="/cart" component={CartPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/product/:productId" component={ProductPage} />
-        <Route path="/account" component={AccountPage} />
+        <Route
+          path="/account"
+          render={() => (user.isLogin ? <AccountPage /> : <Redirect to="/" />)}
+        />
         <Route exact path="/delivery-information" component={DeliveryPage} />
         <Route exact path="/legal" component={LegalPage} />
         <Route path="*" component={ErrorPage} />

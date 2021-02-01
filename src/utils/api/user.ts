@@ -12,6 +12,7 @@ interface ILogin {
 }
 
 export default {
+  getMe: () => axios.get(`account/${localStorage.access_token}/`),
   register: (data: IRegister) => axios.post('account/register/', data),
   login: (data: ILogin) => axios.post('account/login/', data),
 };

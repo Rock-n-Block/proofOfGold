@@ -1,0 +1,32 @@
+@import '../../styles/vars';
+.legal {
+  padding: 80px 0;
+  &__title {
+    text-transform: uppercase;
+  }
+  &__tabs {
+    margin: 50px 0 80px;
+  }
+  &__info {
+    p + p {
+      margin-top: 20px;
+    }
+    a {
+      color: $gold;
+      font-family: MB;
+    }
+  }
+  &__rights {
+    margin-top: 60px;
+    &-title {
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    &-text {
+      max-width: 984px;
+      p + p {
+        margin-top: 20px;
+      }
+    }
+  }
+}

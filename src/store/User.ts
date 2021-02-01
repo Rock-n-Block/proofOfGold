@@ -1,19 +1,39 @@
 import { types, flow } from 'mobx-state-tree';
 import { userApi } from '../utils/api';
+import user from '../utils/api/user';
 
 export const User = types
   .model({
-    name: types.string,
+    username: types.string,
     email: types.string,
-    token: types.string,
     isLogin: types.boolean,
+    first_name: types.string,
+    last_name: types.string,
   })
   .actions((self) => {
     function updateUserData(data: any) {
-      debugger;
-      localStorage.access_token = data.token;
-      self = { ...data };
+      if (data.token) {
+        localStorage.access_token = data.token;
+      }
+      // self = { ...data };
+      self.email = data.email;
+      self.username = data.username;
+      self.first_name = data.first_name;
+      self.last_name = data.last_name;
+      self.isLogin = data.isLogin;
     }
+    const getMe = flow(function* getMe() {
+      try {
+        const { data } = yield userApi.getMe();
+
+        updateUserData({
+          ...data,
+          isLogin: true,
+        });
+      } catch (err) {
+        console.log(err, 'get me');
+      }
+    });
     const register = flow(function* register(userData) {
       try {
         console.log(userData, 'register');
@@ -41,5 +61,5 @@ export const User = types
         console.log(err, 'login', userData);
       }
     });
-    return { register, login };
+    return { register, login, getMe };
   });

@@ -13,10 +13,11 @@ const RootModel = types.model({
 
 let initialState = RootModel.create({
   user: {
-    name: '',
+    username: '',
     email: '',
-    token: '',
-    isLogin: false,
+    isLogin: localStorage.access_token ? true : false,
+    first_name: '',
+    last_name: '',
   },
   productsStore: {},
   cart: {},
