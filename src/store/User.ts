@@ -43,6 +43,7 @@ export const User = types
           ...data,
           isLogin: true,
         });
+        return true;
       } catch (err) {
         console.log(err, 'register', userData);
       }

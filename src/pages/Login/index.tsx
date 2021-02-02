@@ -13,7 +13,7 @@ const LoginPage = () => {
         <h1 className="login__title h1-md text-gradient">My Account</h1>
         <div className="login__content">
           <LoginForm history={history} />
-          <RegisterForm />
+          <RegisterForm history={history} />
         </div>
         <div className="login__info text-md">
           <p>By creating an account:</p>

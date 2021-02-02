@@ -3,6 +3,15 @@ import { storeApi } from '../utils/api';
 
 export type IProduct = Instance<typeof Product>;
 
+const Review = types.model({
+  // id: types.identifierNumber,
+  rate: types.number,
+  body: types.string,
+  name: types.string,
+  email: types.string,
+  created_at: types.string,
+});
+
 export const Product = types.model({
   id: types.identifier,
   group: types.string,
@@ -12,6 +21,8 @@ export const Product = types.model({
   supply: types.number,
   sold: types.number,
   price: types.number,
+  description: types.maybe(types.string),
+  reviews: types.maybe(types.array(Review)),
 });
 
 export const ProductsStore = types
@@ -26,7 +37,7 @@ export const ProductsStore = types
       return self.products.filter((product) => product.group === 'gold_bars');
     },
     getProduct(id: string) {
-      return self.products.filter((product) => product.id === id);
+      return self.products.find((product) => product.id === id);
     },
   }))
   .actions((self) => {
@@ -34,9 +45,19 @@ export const ProductsStore = types
       self.products = products;
     }
     function updateProduct(product: any) {
-      let entryProduct = self.products.find((entry) => entry === product.id);
+      let entryProduct = self.products.find((entry) => entry.id == product.id);
 
-      entryProduct = product;
+      if (entryProduct) {
+        entryProduct.group = '';
+        entryProduct.name = product.name;
+        entryProduct.image = product.image;
+        entryProduct.total_supply = product.total_supply;
+        entryProduct.supply = product.supply;
+        entryProduct.sold = product.sold;
+        entryProduct.price = product.price;
+        entryProduct.description = product.description;
+        entryProduct.reviews = product.reviews;
+      }
     }
     const loadProducts = flow(function* loadProducts() {
       try {
@@ -64,5 +85,5 @@ export const ProductsStore = types
       }
     });
 
-    return { loadProducts, loadProduct, updateProducts };
+    return { loadProducts, loadProduct, updateProducts, updateProduct };
   });

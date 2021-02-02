@@ -3,6 +3,8 @@ import { withFormik } from 'formik';
 
 import { ProductReviewForm } from '../../components';
 import { validateForm } from '../../utils/validate';
+import { storeApi } from '../../utils/api';
+import { useMst } from '../../store/root';
 
 interface ProductReviewFormProps {
   username: string;
@@ -11,15 +13,24 @@ interface ProductReviewFormProps {
   rate: number;
 }
 
-export default () => {
+export default ({ productId, isLogin, username, email }: any) => {
+  const { productsStore } = useMst();
   const FormWithFormik = withFormik<{}, ProductReviewFormProps>({
     enableReinitialize: true,
-    mapPropsToValues: () => ({
-      username: '',
-      email: '',
-      review: '',
-      rate: 0,
-    }),
+    mapPropsToValues: () =>
+      !isLogin
+        ? {
+            username: '',
+            email: '',
+            review: '',
+            rate: 0,
+          }
+        : {
+            username: username,
+            email: email,
+            review: '',
+            rate: 0,
+          },
     validate: (values) => {
       let errors = {};
 
@@ -29,7 +40,15 @@ export default () => {
     },
 
     handleSubmit: (values) => {
-      console.log(values);
+      storeApi
+        .sendReview({
+          item_id: productId,
+          rate: values.rate,
+          body: values.review,
+          name: values.username,
+          email: values.email,
+        })
+        .then(() => productsStore.loadProduct(productId));
     },
 
     displayName: 'ProductReviewForm',

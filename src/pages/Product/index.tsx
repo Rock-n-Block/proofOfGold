@@ -10,31 +10,27 @@ import { useMst } from '../../store/root';
 
 import './Product.scss';
 
-import coinImg from '../../assets/img/products/5gram.svg';
-import goldImg from '../../assets/img/products/gold.jpg';
-
 interface ParamTypes {
   productId: string | undefined;
 }
 
 const ProductPage = observer(() => {
-  const { productsStore, cart } = useMst();
+  const { productsStore, cart, user } = useMst();
   const [activeTab, setActiveTab] = React.useState(1);
-  // const [quantity, setQuantity] = React.useState(1);
   const { productId } = useParams<ParamTypes>();
-  const [product, setProduct] = React.useState<any>({});
   let quantity = 1;
+
   React.useEffect(() => {
-    productsStore.loadProduct(productId).then((data) => {
-      setProduct(data);
-    });
+    productsStore.loadProduct(productId);
   }, [productId]);
+
+  const product: any = productsStore.getProduct(productId + '');
+
+  console.log(product, 'products asdf');
 
   const handleAdd = () => {
     cart.addProduct(product.id + '', quantity > 0 ? quantity : 1);
   };
-
-  console.log(quantity, 'quantity');
 
   return (
     <div className="product">
@@ -120,7 +116,11 @@ const ProductPage = observer(() => {
                 className={classNames('product__nav-item text-lg', {
                   active: activeTab === 1,
                 })}>
-                REVIEWS (0)
+                REVIEWS (
+                {product.reviews && product.reviews.length
+                  ? product.reviews.length
+                  : 0}
+                )
               </div>
             </div>
             {activeTab === 0 && (
@@ -135,17 +135,27 @@ const ProductPage = observer(() => {
             {activeTab === 1 && (
               <div className="product__reviews">
                 <div className="product__reviews-make">
-                  <ProductReviewForm />
+                  <ProductReviewForm
+                    productId={productId}
+                    isLogin={user.isLogin}
+                    username={user.username}
+                    email={user.email}
+                  />
                 </div>
                 <div className="product__reviews-wrapper">
-                  {new Array(3).fill(0).map((_, index) => (
-                    <ProductReview
-                      key={index}
-                      name="name"
-                      text="123"
-                      rate={3}
-                    />
-                  ))}
+                  {product.reviews &&
+                    product.reviews.length &&
+                    product.reviews
+                      .slice()
+                      .reverse()
+                      .map((review: any, index: any) => (
+                        <ProductReview
+                          key={index}
+                          name={review.name}
+                          text={review.body}
+                          rate={review.rate}
+                        />
+                      ))}
                 </div>
               </div>
             )}

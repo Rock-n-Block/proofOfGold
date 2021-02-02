@@ -11,7 +11,7 @@ interface RegisterFormProps {
   new_password: string;
 }
 
-export default () => {
+export default ({ history }: any) => {
   const { user } = useMst();
   const FormWithFormik = withFormik<{}, RegisterFormProps>({
     enableReinitialize: true,
@@ -34,7 +34,7 @@ export default () => {
         email: values.email,
         password: values.new_password,
       };
-      user.register(postData);
+      user.register(postData).then(() => history.push('/account'));
     },
 
     displayName: 'RegisterForm',
