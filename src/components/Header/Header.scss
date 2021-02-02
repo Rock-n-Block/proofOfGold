@@ -9,6 +9,26 @@
   left: 0;
   padding: 25px 0;
   background: #000;
+  &__row {
+    position: relative;
+  }
+  &__popap {
+    position: absolute;
+    right: 20px;
+    top: calc(100% + 25px);
+    padding: 30px;
+    background: black;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      display: block;
+      background: $gold-bg;
+    }
+  }
   &__content {
     display: flex;
     align-items: center;

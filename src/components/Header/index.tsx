@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
-import { Button } from '../../components';
+import { Button, SearchInput } from '../../components';
 import { useMst } from '../../store/root';
 
 import './Header.scss';
@@ -13,9 +13,38 @@ import { ReactComponent as Search } from '../../assets/img/search.svg';
 
 const Header: React.FC = observer(() => {
   const { user, cart } = useMst();
+  const [isPopapOpen, setPopapOpen] = React.useState(false);
+
+  const searchPopapRef = React.useRef<any>();
+  const searchRef = React.useRef<any>();
+
+  const outsideClick = (e: any) => {
+    const path = e.path || (e.composedPath && e.composedPath());
+    if (
+      !path.includes(searchPopapRef.current) &&
+      !path.includes(searchRef.current)
+    ) {
+      setPopapOpen(false);
+    }
+  };
+  React.useEffect(() => {
+    document.body.addEventListener('click', outsideClick);
+    return () => {
+      document.body.removeEventListener('click', outsideClick);
+    };
+  }, []);
   return (
     <header className="header">
-      <div className="row">
+      <div className="row header__row">
+        {isPopapOpen && (
+          <div ref={searchPopapRef} className="header__popap">
+            <SearchInput
+              handleClose={() => {
+                setPopapOpen(false);
+              }}
+            />
+          </div>
+        )}
         <div className="header__content">
           <NavLink to="/">
             <img src={LogoImg} alt="" />
@@ -54,7 +83,11 @@ const Header: React.FC = observer(() => {
                 <Cart className="header__icon" />
                 <div className="header__icon-counter">{cart.subQuantity}</div>
               </NavLink>
-              <Search className="header__icon-search" />
+              <Search
+                ref={searchRef}
+                onClick={() => setPopapOpen(true)}
+                className="header__icon-search"
+              />
             </div>
           </div>
         </div>
