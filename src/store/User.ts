@@ -75,5 +75,5 @@ export const User = types
 
       delete localStorage.access_token;
     };
-    return { register, login, getMe, logout };
+    return { register, login, getMe, logout, updateUserData };
   });

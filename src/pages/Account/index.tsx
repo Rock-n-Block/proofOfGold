@@ -47,7 +47,11 @@ const AccountPage = observer(() => {
         <div className="account__content">
           <Switch>
             <Route exact path="/account/orders" component={Orders} />
-            <Route exact path="/account" component={AccountDetailsForm} />
+            <Route
+              exact
+              path="/account"
+              render={() => <AccountDetailsForm {...user} />}
+            />
           </Switch>
         </div>
       </div>

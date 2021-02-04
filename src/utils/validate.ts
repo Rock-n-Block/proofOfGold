@@ -23,6 +23,11 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.new_password = 'Your password too light';
       }
     },
+    change_password: (value: string): void => {
+      if (value && !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)) {
+        errors.change_password = 'Your password too light';
+      }
+    },
     username: (value: string): void => {
       if (!value) {
         errors.username = 'Enter your name';
@@ -68,10 +73,15 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.country = 'Enter your contry/region';
       }
     },
+    current_password: (value: string): void => {
+      if (!value && (values.change_password || values.confirm_password)) {
+        errors.current_password = 'Entery your password';
+      }
+    },
     confirm_password: (value: string): void => {
-      if (!values.new_password || !values.confirm_password) {
+      if (values.change_password && !values.confirm_password) {
         errors.confirm_password = 'Повторите пароль';
-      } else if (values.new_password !== value) {
+      } else if (values.change_password !== value) {
         errors.confirm_password = 'Пароли не совпадают';
       }
     },

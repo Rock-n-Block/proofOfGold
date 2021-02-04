@@ -10,11 +10,10 @@ import './AccountDetailsForm.scss';
 interface AccountDetailsFormProps {
   firstname: string;
   lastname: string;
-  usermane: string;
-  email: string;
   username: string;
-  password: string;
-  new_password: string;
+  email: string;
+  current_password: string;
+  change_password: string;
   confirm_password: string;
 }
 
@@ -24,6 +23,7 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
   handleChange,
   handleBlur,
   handleSubmit,
+  values,
 }) => {
   return (
     <Form name="d-form" className="d-form" layout="vertical">
@@ -32,10 +32,12 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         className="d-form__item input__field"
         validateStatus={validateField('firstname', touched, errors)}
         help={!touched.firstname ? false : errors.firstname}
+        initialValue={values.firstname}
         label={<span className="text-gradient input__label">First name</span>}>
         <div className="input__star">
           <Input
             id="firstname"
+            value={values.firstname}
             className="d-form__input input"
             size="large"
             onChange={handleChange}
@@ -48,11 +50,13 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         className="d-form__item input__field"
         validateStatus={validateField('lastname', touched, errors)}
         help={!touched.lastname ? false : errors.lastname}
+        initialValue={values.lastname}
         label={<span className="text-gradient input__label">Last name</span>}>
         <div className="input__star">
           <Input
             id="lastname"
             className="d-form__input input"
+            value={values.lastname}
             size="large"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -64,12 +68,14 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         className="d-form__item input__field"
         validateStatus={validateField('username', touched, errors)}
         help={!touched.username ? false : errors.username}
+        initialValue={values.username}
         label={
           <span className="text-gradient input__label">Display name</span>
         }>
         <div className="input__star">
           <Input
             id="username"
+            value={values.username}
             className="d-form__input input"
             size="large"
             onChange={handleChange}
@@ -83,6 +89,7 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
       </div>
       <Form.Item
         name="email"
+        initialValue={values.email}
         className="d-form__item input__field"
         validateStatus={validateField('email', touched, errors)}
         help={!touched.email ? false : errors.email}
@@ -94,23 +101,24 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
             id="email"
             className="d-form__input input"
             size="large"
+            value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
           />
         </div>
       </Form.Item>
       <Form.Item
-        name="password"
+        name="current_password"
         className="d-form__item input__field"
         validateStatus="error"
-        help={errors.password ? errors.password : false}
+        help={errors.current_password ? errors.current_password : false}
         label={
           <span className="text-gradient input__label">
             Current password (leave blank to leave unchanged)
           </span>
         }>
         <Input
-          id="password"
+          id="current_password"
           className="d-form__input input"
           size="large"
           type="password"
@@ -119,17 +127,17 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         />
       </Form.Item>
       <Form.Item
-        name="new_password"
+        name="change_password"
         className="d-form__item input__field"
         validateStatus="error"
-        help={errors.new_password ? errors.new_password : false}
+        help={errors.change_password ? errors.change_password : false}
         label={
           <span className="text-gradient input__label">
             New password (leave blank to leave unchanged)
           </span>
         }>
         <Input
-          id="new_password"
+          id="change_password"
           className="d-form__input input"
           size="large"
           type="password"

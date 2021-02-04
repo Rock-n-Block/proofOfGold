@@ -1,3 +1,4 @@
+@import '../../styles/vars';
 .account {
   padding: 80px 0 125px;
   &__row {
@@ -24,6 +25,10 @@
   }
   &__logout {
     cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: $gold;
+    }
   }
   &__content {
     width: 100%;

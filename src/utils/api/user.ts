@@ -15,4 +15,6 @@ export default {
   getMe: () => axios.get(`account/${localStorage.access_token}/`),
   register: (data: IRegister) => axios.post('account/register/', data),
   login: (data: ILogin) => axios.post('account/login', data),
+  changeDetails: (data: any) =>
+    axios.patch(`account/${localStorage.access_token}/`, data),
 };

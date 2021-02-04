@@ -51,6 +51,7 @@ const ProductReviewForm: React.FC<
               <Input
                 id="firstname"
                 className="p-form__input input"
+                value={user.first_name}
                 size="large"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -70,6 +71,7 @@ const ProductReviewForm: React.FC<
               <Input
                 id="lastname"
                 className="p-form__input input"
+                value={user.last_name}
                 size="large"
                 onChange={handleChange}
                 onBlur={handleBlur}
