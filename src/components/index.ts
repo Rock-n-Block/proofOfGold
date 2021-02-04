@@ -13,3 +13,6 @@ export { default as Orders } from './Orders';
 export { default as AccountDetailsForm } from './AccountDetailsForm';
 export { default as ProductReview } from './ProductReview';
 export { default as SearchInput } from './SearchInput';
+export { default as PayPal } from './PayPal';
+export { default as ShippingForm } from './ShippingForm';
+export { default as CheckoutOrders } from './CheckoutOrders';

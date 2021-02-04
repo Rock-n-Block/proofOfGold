@@ -11,3 +11,4 @@ export { default as DeliveryPage } from './Delivery';
 export { default as LegalPage } from './Legal';
 export { default as ErrorPage } from './Error';
 export { default as SearchPage } from './Search';
+export { default as CheckoutPage } from './Checkout';

@@ -21,13 +21,18 @@ export default ({ history }: any) => {
     validate: (values) => {
       let errors = {};
 
-      validateForm({ isAuth: true, values, errors });
+      validateForm({ isAuth: true, values, errors, not_required: [] });
 
       return errors;
     },
 
     handleSubmit: (values) => {
-      user.login(values).then(() => history.push('/account'));
+      user
+        .login(values)
+        .then(() => {
+          history.push('/account');
+        })
+        .catch(() => {});
     },
 
     displayName: 'LoginForm',

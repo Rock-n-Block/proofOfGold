@@ -32,6 +32,8 @@ export const User = types
         });
       } catch (err) {
         console.log(err, 'get me');
+        logout();
+        throw new Error(err);
       }
     });
     const register = flow(function* register(userData) {
@@ -46,6 +48,7 @@ export const User = types
         return true;
       } catch (err) {
         console.log(err, 'register', userData);
+        throw new Error(err);
       }
     });
     const login = flow(function* login(userData) {
@@ -56,9 +59,11 @@ export const User = types
           ...data,
           isLogin: true,
         });
+        debugger;
         return true;
       } catch (err) {
         console.log(err, 'login', userData);
+        throw new Error(err);
       }
     });
     const logout = () => {

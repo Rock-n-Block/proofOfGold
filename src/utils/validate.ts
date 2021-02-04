@@ -1,4 +1,4 @@
-export const validateForm = ({ values, errors }: any) => {
+export const validateForm = ({ values, errors, not_required }: any) => {
   interface IRules {
     [key: string]: Function;
   }
@@ -53,6 +53,21 @@ export const validateForm = ({ values, errors }: any) => {
         errors.rate = 'Enter your rate';
       }
     },
+    street: (value: number): void => {
+      if (!value) {
+        errors.street = 'Enter your street address';
+      }
+    },
+    town: (value: number): void => {
+      if (!value) {
+        errors.town = 'Enter your town/city';
+      }
+    },
+    country: (value: number): void => {
+      if (!value) {
+        errors.country = 'Enter your contry/region';
+      }
+    },
     confirm_password: (value: string): void => {
       if (!values.new_password || !values.confirm_password) {
         errors.confirm_password = 'Повторите пароль';
@@ -63,7 +78,8 @@ export const validateForm = ({ values, errors }: any) => {
   };
 
   Object.keys(values).forEach(
-    (key: any) => rules[key] && rules[key](values[key]),
+    (key: any) =>
+      rules[key] && !not_required.includes(key) && rules[key](values[key]),
   );
 };
 

@@ -31,7 +31,7 @@ export default () => {
     validate: (values) => {
       let errors = {};
 
-      validateForm({ isAuth: true, values, errors });
+      validateForm({ isAuth: true, values, errors, not_required: [] });
 
       return errors;
     },

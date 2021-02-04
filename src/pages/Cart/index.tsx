@@ -46,7 +46,9 @@ const CartPage: React.FC = observer(() => {
               <div className="cart__total-cost text-gradient h1-md">
                 ${numberWithCommas(cart.subTotal)}
               </div>
-              <Button>PROCEED TO CHECKOUT</Button>
+              <Link to="/checkout">
+                <Button>PROCEED TO CHECKOUT</Button>
+              </Link>
             </div>
           </>
         ) : (

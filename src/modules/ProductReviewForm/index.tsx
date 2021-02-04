@@ -34,7 +34,7 @@ export default ({ productId, isLogin, username, email }: any) => {
     validate: (values) => {
       let errors = {};
 
-      validateForm({ isAuth: false, values, errors });
+      validateForm({ isAuth: false, values, errors, not_required: [] });
 
       return errors;
     },

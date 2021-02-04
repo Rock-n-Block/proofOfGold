@@ -17,6 +17,7 @@ import {
   LegalPage,
   ErrorPage,
   SearchPage,
+  CheckoutPage,
 } from './pages';
 import { useMst } from './store/root';
 
@@ -51,6 +52,7 @@ const App: React.FC = observer(() => {
         <Route exact path="/delivery-information" component={DeliveryPage} />
         <Route exact path="/legal" component={LegalPage} />
         <Route exact path="/search" component={SearchPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
         <Route path="*" component={ErrorPage} />
       </Switch>
       <Footer />

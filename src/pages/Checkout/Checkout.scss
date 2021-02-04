@@ -1,0 +1,102 @@
+@import '../../styles/vars';
+.checkout {
+  padding: 80px 0;
+  &__login {
+    text-transform: uppercase;
+    padding: 13px 20px;
+    background: $dark;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    a {
+      font-family: MB;
+    }
+  }
+  &__register {
+    margin: 60px 0;
+  }
+  &__content {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 500px 500px;
+    justify-content: space-between;
+  }
+  &__order {
+    background: $dark;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 30px 40px 55px;
+    &-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+    }
+    &-subtitle {
+      display: flex;
+      margin: 35px 0 10px;
+      justify-content: space-between;
+    }
+    &-product {
+      & + & {
+        margin-top: 30px;
+      }
+      &-content {
+        display: flex;
+        justify-content: space-between;
+        & + & {
+          margin-top: 20px;
+          align-items: center;
+        }
+      }
+      &-name {
+        max-width: 240px;
+      }
+    }
+  }
+  &__payments {
+    &-item {
+      border-radius: 12px;
+      background: $dark;
+      padding: 18px 20px;
+      align-items: center;
+      display: flex;
+      cursor: pointer;
+      & + & {
+        margin-top: 10px;
+      }
+      &-circle {
+        width: 24px;
+        height: 24px;
+        margin-right: 30px;
+        border-radius: 50%;
+        background: linear-gradient(0deg, #333333, #333333);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-text {
+        opacity: 0.4;
+      }
+      &.active {
+        .checkout__payments-item {
+          &-circle {
+            background: $gold-bg;
+            &::before {
+              content: '';
+              width: 8px;
+              height: 8.5px;
+              display: block;
+              border-radius: 50%;
+              background: $dark;
+            }
+          }
+          &-text {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
