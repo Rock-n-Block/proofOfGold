@@ -17,4 +17,6 @@ export default {
   login: (data: ILogin) => axios.post('account/login', data),
   changeDetails: (data: any) =>
     axios.patch(`account/${localStorage.access_token}/`, data),
+  activateAccount: (token: string) =>
+    axios.get(`account/register/activate/${token}`),
 };

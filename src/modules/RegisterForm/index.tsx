@@ -3,7 +3,7 @@ import { withFormik } from 'formik';
 
 import { RegisterForm } from '../../components';
 import { validateForm } from '../../utils/validate';
-import { useMst } from '../../store/root';
+import { userApi } from '../../utils/api';
 
 interface RegisterFormProps {
   username: string;
@@ -12,7 +12,6 @@ interface RegisterFormProps {
 }
 
 export default ({ history }: any) => {
-  const { user } = useMst();
   const FormWithFormik = withFormik<{}, RegisterFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
@@ -34,7 +33,13 @@ export default ({ history }: any) => {
         email: values.email,
         password: values.new_password,
       };
-      user.register(postData).then(() => history.push('/account'));
+      userApi
+        .register(postData)
+        .then((res) => {
+          console.log(res, 'register');
+          history.push('/verify');
+        })
+        .catch((err) => console.log(err, 'register'));
     },
 
     displayName: 'RegisterForm',

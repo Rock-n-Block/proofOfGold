@@ -18,6 +18,7 @@ import {
   ErrorPage,
   SearchPage,
   CheckoutPage,
+  VerifyPage,
 } from './pages';
 import { useMst } from './store/root';
 
@@ -53,6 +54,11 @@ const App: React.FC = observer(() => {
         <Route exact path="/legal" component={LegalPage} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path={['/verify', '/verify/:token']}
+          component={VerifyPage}
+        />
         <Route path="*" component={ErrorPage} />
       </Switch>
       <Footer />

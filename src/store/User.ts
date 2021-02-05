@@ -59,11 +59,24 @@ export const User = types
           ...data,
           isLogin: true,
         });
-        debugger;
         return true;
       } catch (err) {
         console.log(err, 'login', userData);
         throw new Error(err);
+      }
+    });
+    const activate = flow(function* activate(token) {
+      try {
+        const { data } = yield userApi.activateAccount(token);
+
+        updateUserData({
+          ...data,
+          isLogin: true,
+        });
+
+        return true;
+      } catch (err) {
+        throw new Error(err.response.data);
       }
     });
     const logout = () => {
@@ -75,5 +88,5 @@ export const User = types
 
       delete localStorage.access_token;
     };
-    return { register, login, getMe, logout, updateUserData };
+    return { register, login, getMe, logout, updateUserData, activate };
   });
