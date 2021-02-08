@@ -61,8 +61,12 @@ export const User = types
         });
         return true;
       } catch (err) {
-        console.log(err, 'login', userData);
-        throw new Error(err);
+        if (err.response.data.status) {
+          throw new Error(err.response.data.status);
+        }
+        if (err.response.data.non_field_errors) {
+          throw new Error('data');
+        }
       }
     });
     const activate = flow(function* activate(token) {

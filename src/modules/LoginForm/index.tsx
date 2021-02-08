@@ -26,13 +26,23 @@ export default ({ history }: any) => {
       return errors;
     },
 
-    handleSubmit: (values) => {
+    handleSubmit: (values, { setErrors }) => {
       user
         .login(values)
         .then(() => {
           history.push('/account');
         })
-        .catch(() => {});
+        .catch(({ message }) => {
+          if (message === 'User is not activated') {
+            history.push('/verify');
+          }
+          if (message === 'data') {
+            setErrors({
+              username: 'Incorrect login or password',
+              password: 'Incorrect login or password',
+            });
+          }
+        });
     },
 
     displayName: 'LoginForm',

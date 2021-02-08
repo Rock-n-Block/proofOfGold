@@ -30,6 +30,10 @@
   &-fullpage {
     height: calc(100% - 341px);
   }
+  &-dark {
+    border-radius: 12px;
+    background: $dark;
+  }
 }
 .products {
   padding: 60px 0 175px;

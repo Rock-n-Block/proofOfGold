@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik';
 
 import numberWithCommas from '../../utils/numberWithCommas';
 import { useMst } from '../../store/root';
-import { PayPal } from '../../components';
+import { Payments } from '../../components';
 
 const CheckoutOrders = observer(() => {
   const { cart } = useMst();
@@ -50,23 +50,7 @@ const CheckoutOrders = observer(() => {
           </div>
         </div>
       </div>
-      <div className="checkout__payments">
-        <div
-          className="checkout__payments-item text-md text-bold text-uppercase"
-          onClick={() => test.handleSubmit()}>
-          <div className="checkout__payments-item-circle"></div>
-          <div className="checkout__payments-item-text">
-            Direct bank transfer (Coming Soon)
-          </div>
-        </div>
-        <div className="checkout__payments-item text-md text-bold text-uppercase active">
-          <div className="checkout__payments-item-circle"></div>
-          <div className="checkout__payments-item-text text-gradient">
-            PayPal
-          </div>
-        </div>
-      </div>
-      <PayPal />
+      <Payments />
     </div>
   );
 });
