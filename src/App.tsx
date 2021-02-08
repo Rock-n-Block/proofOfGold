@@ -19,6 +19,8 @@ import {
   SearchPage,
   CheckoutPage,
   VerifyPage,
+  ResetPasswordPage,
+  ChangePasswordPage,
 } from './pages';
 import { useMst } from './store/root';
 
@@ -59,6 +61,12 @@ const App: React.FC = observer(() => {
           path={['/verify', '/verify/:token']}
           component={VerifyPage}
         />
+        <Route
+          exact
+          path={['/lost', '/lost/check', '/lost/ok']}
+          component={ResetPasswordPage}
+        />
+        <Route exact path="/change/:token" component={ChangePasswordPage} />
         <Route path="*" component={ErrorPage} />
       </Switch>
       <Footer />

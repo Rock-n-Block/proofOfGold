@@ -17,3 +17,5 @@ export { default as PayPal } from './PayPal';
 export { default as ShippingForm } from './ShippingForm';
 export { default as CheckoutOrders } from './CheckoutOrders';
 export { default as InfoBlock } from './InfoBlock';
+export { default as ResetPasswordForm } from './ResetPasswordForm';
+export { default as ChangePasswordForm } from './ChangePasswordForm';

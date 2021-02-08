@@ -23,6 +23,13 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.new_password = 'Your password too light';
       }
     },
+    confirm_new_password: (value: string): void => {
+      if (values.new_password && !value) {
+        errors.confirm_new_password = 'Repeat your password';
+      } else if (values.new_password !== value) {
+        errors.confirm_new_password = 'Passwords do not match';
+      }
+    },
     change_password: (value: string): void => {
       if (value && !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(value)) {
         errors.change_password = 'Your password too light';
@@ -76,6 +83,11 @@ export const validateForm = ({ values, errors, not_required }: any) => {
     current_password: (value: string): void => {
       if (!value && (values.change_password || values.confirm_password)) {
         errors.current_password = 'Entery your password';
+      }
+    },
+    usernameOrEmail: (value: string): void => {
+      if (!value) {
+        errors.usernameOrEmail = 'Enter your username/email';
       }
     },
     confirm_password: (value: string): void => {

@@ -13,3 +13,5 @@ export { default as ErrorPage } from './Error';
 export { default as SearchPage } from './Search';
 export { default as CheckoutPage } from './Checkout';
 export { default as VerifyPage } from './Verify';
+export { default as ResetPasswordPage } from './ResetPassword';
+export { default as ChangePasswordPage } from './ChangePassword';

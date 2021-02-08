@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import { FormikProps } from 'formik';
+import { Link } from 'react-router-dom';
 
 import { validateField } from '../../utils/validate';
 import { Button } from '../../components';
@@ -47,7 +48,9 @@ const LoginForm: React.FC<FormikProps<LoginFormProps>> = ({
         help={!touched.password ? false : errors.password}
         label={<span className="text-gradient input__label">Password</span>}>
         <div className="input__star">
-          <div className="input__forget text-md">Lost your password?</div>
+          <Link to="/lost" className="input__forget text-md">
+            Lost your password?
+          </Link>
           <Input
             id="password"
             className="l-form__input input"
