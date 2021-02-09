@@ -1,0 +1,17 @@
+.modal {
+  padding-bottom: 0;
+  &__box {
+    background: $dark;
+    border-radius: 12px;
+  }
+  .ant-modal {
+    &-body {
+      background: $gold-bg;
+      padding: 1px;
+      border-radius: 12px;
+    }
+    &-content {
+      background: transparent;
+    }
+  }
+}

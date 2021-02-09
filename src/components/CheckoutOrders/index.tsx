@@ -1,6 +1,5 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { useFormikContext } from 'formik';
 
 import numberWithCommas from '../../utils/numberWithCommas';
 import { useMst } from '../../store/root';
@@ -8,10 +7,7 @@ import { Payments } from '../../components';
 
 const CheckoutOrders = observer(() => {
   const { cart } = useMst();
-  const test = useFormikContext();
-  React.useEffect(() => {
-    console.log(test, 'form');
-  }, []);
+
   return (
     <div className="checkout__wrapper">
       <div className="checkout__order">

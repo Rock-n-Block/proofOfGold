@@ -66,14 +66,14 @@ const Header: React.FC = observer(() => {
                 <NavLink exact to="/coins" className="header__nav-item text-md">
                   Gold coins
                 </NavLink>
+                <NavLink exact to="/bars" className="header__nav-item text-md">
+                  Gold bars
+                </NavLink>
                 <NavLink
                   exact
                   to="/franchise"
                   className="header__nav-item text-md">
                   POG Franchise
-                </NavLink>
-                <NavLink exact to="/bars" className="header__nav-item text-md">
-                  Gold bars
                 </NavLink>
               </div>
               <Link to="/shop">

@@ -54,9 +54,9 @@ const ProductReviewForm: React.FC<
           <TextArea
             id="review"
             rows={6}
+            size="large"
             className="p-form__input input"
             placeholder="Your review"
-            size="large"
             onChange={handleChange}
             onBlur={handleBlur}
           />

@@ -16,6 +16,18 @@ interface IChangePassword {
   token: string;
 }
 
+interface IAddresses {
+  first_name: string;
+  last_name: string;
+  company_name: string;
+  country: string;
+  full_address: string;
+  town: string;
+  county: string;
+  phone: string;
+  email: string;
+}
+
 export default {
   getMe: () => axios.get(`account/${localStorage.access_token}/`),
   register: (data: IRegister) => axios.post('account/register/', data),
@@ -29,4 +41,11 @@ export default {
     axios.get(`/account/reset/validate_token/${token}/`),
   changePassword: (data: IChangePassword) =>
     axios.post('/account/reset/confirm/', data),
+  changeBilling: (data: IAddresses) =>
+    axios.patch(`/account/${localStorage.access_token}/billing/`, data),
+  changeShipping: (data: IAddresses) =>
+    axios.patch(`/account/${localStorage.access_token}/shipping/`, data),
+  getBilling: () => axios.get(`/account/${localStorage.access_token}/billing/`),
+  getShipping: () =>
+    axios.get(`/account/${localStorage.access_token}/shipping/`),
 };

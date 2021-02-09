@@ -19,3 +19,5 @@ export { default as InfoBlock } from './InfoBlock';
 export { default as ResetPasswordForm } from './ResetPasswordForm';
 export { default as ChangePasswordForm } from './ChangePasswordForm';
 export { default as Payments } from './Payments';
+export { default as AccountAddresses } from './AccountAddresses';
+export { default as AccountAddressesForm } from './AccountAddressesForm';

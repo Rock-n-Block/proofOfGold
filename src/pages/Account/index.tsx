@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Switch, Route, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
-import { Orders } from '../../components';
+import { Orders, AccountAddresses } from '../../components';
 import { AccountDetailsForm } from '../../modules';
 import { useMst } from '../../store/root';
 
@@ -17,6 +17,12 @@ const AccountPage = observer(() => {
     user.logout();
     history.push('/');
   };
+
+  React.useEffect(() => {
+    user.getBillingAddress();
+    user.getShippingAddress();
+  }, []);
+
   return (
     <div className="account">
       <div className="row account__row">
@@ -32,7 +38,6 @@ const AccountPage = observer(() => {
             </NavLink>
             <NavLink
               className="text-md account__nav-item"
-              exact
               to="/account/addresses">
               Addresses
             </NavLink>
@@ -51,6 +56,15 @@ const AccountPage = observer(() => {
               exact
               path="/account"
               render={() => <AccountDetailsForm {...user} />}
+            />
+            <Route
+              exact
+              path={[
+                '/account/addresses',
+                '/account/addresses/billing',
+                '/account/addresses/shipping',
+              ]}
+              component={AccountAddresses}
             />
           </Switch>
         </div>

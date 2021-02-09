@@ -16,6 +16,11 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.password = 'Enter your password';
       }
     },
+    full_address: (value: string): void => {
+      if (!value) {
+        errors.full_address = 'Enter your full address';
+      }
+    },
     new_password: (value: string): void => {
       if (!value) {
         errors.new_password = 'Enter your password';

@@ -99,4 +99,30 @@
       }
     }
   }
+  &__modal {
+    &-box {
+      padding: 30px 50px;
+      text-align: center;
+    }
+    &-title {
+      font-size: 30px;
+      line-height: 37px;
+      margin: 25px 0 20px;
+    }
+    &-text {
+      color: white;
+      max-width: 375px;
+      margin: 0 auto 30px;
+    }
+    &-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-btn {
+      & + & {
+        margin-left: 40px;
+      }
+    }
+  }
 }

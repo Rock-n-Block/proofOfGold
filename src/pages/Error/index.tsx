@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, SearchInput } from '../../components';
+import { Button } from '../../components';
 
 import './Error.scss';
 
@@ -18,7 +18,6 @@ const ErrorPage = () => {
           <br></br>
           Perhaps you can try a new search.
         </div>
-        <SearchInput />
         <Link to="/">
           <Button centered={true}>BACK TO HOMEPAGE</Button>
         </Link>

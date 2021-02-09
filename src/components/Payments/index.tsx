@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import QRCode from 'qrcode.react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
+import { useFormikContext } from 'formik';
 
 import { Button } from '../../components';
 
@@ -15,6 +16,8 @@ import usdcImg from '../../assets/img/icons/usdc.svg';
 import copyImg from '../../assets/img/icons/copy.svg';
 
 const Payments = () => {
+  const formik = useFormikContext();
+
   const [activePayment, setActivePayment] = React.useState('card');
   const payments = [
     {
@@ -63,7 +66,11 @@ const Payments = () => {
             </div>
           ))}
         </div>
-        <Button size="lg" centered={true} className="payments__continue">
+        <Button
+          size="lg"
+          centered={true}
+          className="payments__continue"
+          onClick={() => formik.handleSubmit()}>
           Continue
         </Button>
       </div>

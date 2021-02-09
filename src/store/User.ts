@@ -1,6 +1,18 @@
-import { types, flow } from 'mobx-state-tree';
+import { types, flow, Instance } from 'mobx-state-tree';
 import { userApi } from '../utils/api';
 import user from '../utils/api/user';
+
+const Address = types.model({
+  first_name: types.string,
+  last_name: types.string,
+  company_name: types.string,
+  country: types.string,
+  full_address: types.string,
+  town: types.string,
+  county: types.string,
+  phone: types.string,
+  email: types.string,
+});
 
 export const User = types
   .model({
@@ -9,18 +21,25 @@ export const User = types
     isLogin: types.boolean,
     first_name: types.string,
     last_name: types.string,
+    billing_address: types.maybe(Address),
+    shipping_address: types.maybe(Address),
   })
   .actions((self) => {
     function updateUserData(data: any) {
       if (data.token) {
         localStorage.access_token = data.token;
       }
-      // self = { ...data };
       self.email = data.email ? data.email : '';
       self.username = data.username ? data.username : '';
       self.first_name = data.first_name ? data.first_name : '';
       self.last_name = data.last_name ? data.last_name : '';
       self.isLogin = data.isLogin ? data.isLogin : false;
+    }
+    function updateBillingAddress(data: Instance<typeof Address>) {
+      self.billing_address = data;
+    }
+    function updateShippingAddress(data: Instance<typeof Address>) {
+      self.shipping_address = data;
     }
     const getMe = flow(function* getMe() {
       try {
@@ -34,6 +53,24 @@ export const User = types
         console.log(err, 'get me');
         logout();
         throw new Error(err);
+      }
+    });
+    const getBillingAddress = flow(function* getBillingAddress() {
+      try {
+        const { data } = yield user.getBilling();
+
+        updateBillingAddress(data);
+      } catch (err) {
+        console.log(err, 'get billing address');
+      }
+    });
+    const getShippingAddress = flow(function* getShippingAddress() {
+      try {
+        const { data } = yield user.getShipping();
+
+        updateShippingAddress(data);
+      } catch (err) {
+        console.log(err, 'get shipping address');
       }
     });
     const register = flow(function* register(userData) {
@@ -92,5 +129,16 @@ export const User = types
 
       delete localStorage.access_token;
     };
-    return { register, login, getMe, logout, updateUserData, activate };
+    return {
+      register,
+      login,
+      getMe,
+      logout,
+      updateUserData,
+      activate,
+      updateBillingAddress,
+      getBillingAddress,
+      updateShippingAddress,
+      getShippingAddress,
+    };
   });

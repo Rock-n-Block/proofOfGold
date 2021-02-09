@@ -1,0 +1,27 @@
+@import '../../styles/vars';
+.addresses {
+  &__title {
+    &-form {
+      margin-bottom: 70px;
+    }
+  }
+  &__box {
+    display: grid;
+    grid-template-columns: 350px 350px;
+    grid-column-gap: 50px;
+    margin-top: 50px;
+  }
+  &__item {
+    padding: 35px 30px 30px;
+    &-title {
+      color: $gold;
+      margin-bottom: 30px;
+    }
+    &-text {
+      margin-bottom: 20px;
+    }
+  }
+  .a-form {
+    max-width: 500px;
+  }
+}
