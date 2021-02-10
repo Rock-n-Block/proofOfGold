@@ -23,22 +23,34 @@ const AccountAddresses: React.FC = observer(() => {
               <div className="addresses__item-title text-uppercase h3">
                 Billing address
               </div>
-              <div className="addresses__item-text text-md">
-                You have not set up this type of address yet.
-              </div>
+              {!user.billing_address?.first_name ? (
+                <div className="addresses__item-text text-md">
+                  You have not set up this type of address yet.
+                </div>
+              ) : (
+                ''
+              )}
               <Link to="/account/addresses/billing">
-                <Button>add</Button>
+                <Button>
+                  {!user.billing_address?.first_name ? 'add' : 'change'}
+                </Button>
               </Link>
             </div>
             <div className="addresses__item box-dark">
               <div className="addresses__item-title text-uppercase h3">
                 Shipping address
               </div>
-              <div className="addresses__item-text text-md">
-                You have not set up this type of address yet.
-              </div>
+              {!user.shipping_address?.first_name ? (
+                <div className="addresses__item-text text-md">
+                  You have not set up this type of address yet.
+                </div>
+              ) : (
+                ''
+              )}
               <Link to="/account/addresses/shipping">
-                <Button>add</Button>
+                <Button>
+                  {!user.shipping_address?.first_name ? 'add' : 'change'}
+                </Button>
               </Link>
             </div>
           </div>

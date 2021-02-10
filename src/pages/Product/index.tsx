@@ -143,19 +143,19 @@ const ProductPage = observer(() => {
                   />
                 </div>
                 <div className="product__reviews-wrapper">
-                  {product.reviews &&
-                    product.reviews.length &&
-                    product.reviews
-                      .slice()
-                      .reverse()
-                      .map((review: any, index: any) => (
-                        <ProductReview
-                          key={index}
-                          name={review.name}
-                          text={review.body}
-                          rate={review.rate}
-                        />
-                      ))}
+                  {product.reviews && product.reviews.length
+                    ? product.reviews
+                        .slice()
+                        .reverse()
+                        .map((review: any, index: any) => (
+                          <ProductReview
+                            key={index}
+                            name={review.name}
+                            text={review.body}
+                            rate={review.rate}
+                          />
+                        ))
+                    : ''}
                 </div>
               </div>
             )}
