@@ -48,5 +48,8 @@
     font-family: KB;
     border: none;
     width: 50px !important;
+    &-noinput {
+      width: auto !important;
+    }
   }
 }

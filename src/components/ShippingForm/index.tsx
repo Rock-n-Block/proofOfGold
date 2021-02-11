@@ -6,6 +6,8 @@ import ReactInputMask from 'react-input-mask';
 import { validateField } from '../../utils/validate';
 import { CheckoutOrders } from '../../components';
 
+import './ShippingForm.scss';
+
 interface ProductReviewFormProps {
   firstname: string;
   lastname: string;
@@ -34,10 +36,10 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
 }: any) => {
   return (
     <div className="checkout__content">
-      <Form name="p-form" className="p-form" layout="vertical">
+      <Form name="ch-form" className="ch-form" layout="vertical">
         <Form.Item
           name="firstname"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           initialValue={values.firstname}
           validateStatus={validateField('firstname', touched, errors)}
           help={!touched.firstname ? false : errors.firstname}
@@ -47,7 +49,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           <div className="input__star">
             <Input
               id="firstname"
-              className="p-form__input input"
+              className="ch-form__input input"
               value={values.firstname}
               size="large"
               onChange={handleChange}
@@ -57,7 +59,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="lastname"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           initialValue={values.lastname}
           validateStatus={validateField('lastname', touched, errors)}
           help={!touched.lastname ? false : errors.lastname}
@@ -65,7 +67,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           <div className="input__star">
             <Input
               id="lastname"
-              className="p-form__input input"
+              className="ch-form__input input"
               value={values.lastname}
               size="large"
               onChange={handleChange}
@@ -75,7 +77,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="company"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('company', touched, errors)}
           initialValue={values.company}
           required={false}
@@ -87,7 +89,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           }>
           <Input
             id="company"
-            className="p-form__input input"
+            className="ch-form__input input"
             size="large"
             value={values.company}
             onChange={handleChange}
@@ -96,7 +98,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="country"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('country', touched, errors)}
           help={!touched.country ? false : errors.country}
           initialValue={values.country}
@@ -106,7 +108,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           <div className="input__star">
             <Input
               id="country"
-              className="p-form__input input"
+              className="ch-form__input input"
               value={values.country}
               size="large"
               onChange={handleChange}
@@ -116,7 +118,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="full_address"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('full_address', touched, errors)}
           help={!touched.full_address ? false : errors.full_address}
           initialValue={values.full_address}
@@ -127,7 +129,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
             <Input
               id="full_address"
               value={values.full_address}
-              className="p-form__input input"
+              className="ch-form__input input"
               size="large"
               onChange={handleChange}
               onBlur={handleBlur}
@@ -136,7 +138,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="town"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('town', touched, errors)}
           help={!touched.town ? false : errors.town}
           initialValue={values.town}
@@ -146,7 +148,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           <div className="input__star">
             <Input
               id="town"
-              className="p-form__input input"
+              className="ch-form__input input"
               value={values.town}
               size="large"
               onChange={handleChange}
@@ -156,7 +158,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="county"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('county', touched, errors)}
           required={false}
           initialValue={values.county}
@@ -168,7 +170,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           }>
           <Input
             id="county"
-            className="p-form__input input"
+            className="ch-form__input input"
             value={values.county}
             size="large"
             onChange={handleChange}
@@ -177,7 +179,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         </Form.Item>
         <Form.Item
           name="phone"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('phone', touched, errors)}
           required={false}
           initialValue={values.phone}
@@ -187,7 +189,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
           }>
           <Input
             id="phone"
-            className="p-form__input input"
+            className="ch-form__input input"
             value={values.phone}
             size="large"
             onChange={handleChange}
@@ -199,7 +201,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
             <div className="checkout__register">
               <Form.Item
                 name="email"
-                className="p-form__item input__field"
+                className="ch-form__item input__field"
                 validateStatus={validateField('email', touched, errors)}
                 help={!touched.email ? false : errors.email}
                 label={
@@ -210,7 +212,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
                 <div className="input__star">
                   <Input
                     id="email"
-                    className="p-form__input input"
+                    className="ch-form__input input"
                     size="large"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -219,7 +221,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
               </Form.Item>
               <Form.Item
                 name="username"
-                className="p-form__item input__field"
+                className="ch-form__item input__field"
                 validateStatus={validateField('username', touched, errors)}
                 required={false}
                 help={!touched.username ? false : errors.username}
@@ -232,7 +234,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
                 <div className="input__star">
                   <Input
                     id="username"
-                    className="p-form__input input"
+                    className="ch-form__input input"
                     size="large"
                     value={values.username}
                     onChange={handleChange}
@@ -242,7 +244,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
               </Form.Item>
               <Form.Item
                 name="password"
-                className="p-form__item input__field"
+                className="ch-form__item input__field"
                 validateStatus={validateField('password', touched, errors)}
                 help={!touched.password ? false : errors.password}
                 label={
@@ -253,7 +255,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
                 <div className="input__star">
                   <Input
                     id="password"
-                    className="p-form__input input"
+                    className="ch-form__input input"
                     size="large"
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -265,7 +267,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
         )}
         <Form.Item
           name="notes"
-          className="p-form__item input__field"
+          className="ch-form__item input__field"
           validateStatus={validateField('notes', touched, errors)}
           help={!touched.notes ? false : errors.notes}
           label={
@@ -277,7 +279,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
             rows={6}
             size="large"
             id="notes"
-            className="p-form__input input"
+            className="ch-form__input input"
             onChange={handleChange}
             onBlur={handleBlur}
           />

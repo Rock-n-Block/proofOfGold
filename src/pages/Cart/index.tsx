@@ -30,6 +30,9 @@ const CartPage: React.FC = observer(() => {
                   quantity={productEntry.quantity}
                   totalPrise={productEntry.price}
                   addMore={() => cart.addProduct(productEntry.product.id)}
+                  setProductQuantity={(quantity) =>
+                    cart.setProductQuantity(productEntry.product.id, quantity)
+                  }
                   deleteOneOf={() =>
                     cart.deleteProduct(productEntry.product.id)
                   }

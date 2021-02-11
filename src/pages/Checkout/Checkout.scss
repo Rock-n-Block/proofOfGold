@@ -126,3 +126,21 @@
     }
   }
 }
+
+@media (max-width: 1024px) {
+  .checkout {
+    &__content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .checkout {
+    padding: 40px 0 70px;
+    &__order {
+      padding: 20px 10px 30px;
+    }
+  }
+}

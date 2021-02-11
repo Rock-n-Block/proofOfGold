@@ -68,14 +68,35 @@ const Orders: React.FC = () => {
                 alt=""
                 className="orders__item-product-img"
               />
-              <div className="orders__item-product-element orders__item-product-name">
-                {product.name}
-              </div>
-              <div className="orders__item-product-element orders__item-product-count text-gradient text-lg">
-                {product.count}
-              </div>
-              <div className="orders__item-product-element orders__item-product-cost text-lg">
-                <span className=" text-gradient">${product.cost}</span>
+              <div className="orders__item-product-info">
+                <div className="orders__item-product-element orders__item-product-name">
+                  {window.innerWidth < 776 ? (
+                    <span className="text-uppercase text-bold">PRODUCT</span>
+                  ) : (
+                    ''
+                  )}
+                  {product.name}
+                </div>
+                <div className="orders__item-product-element orders__item-product-count">
+                  {window.innerWidth < 776 ? (
+                    <span className="text-uppercase">QUANTITY</span>
+                  ) : (
+                    ''
+                  )}
+                  <span className=" text-gradient text-lg">
+                    ${product.count}
+                  </span>
+                </div>
+                <div className="orders__item-product-element orders__item-product-cost">
+                  {window.innerWidth < 776 ? (
+                    <span className="text-uppercase">PRICE</span>
+                  ) : (
+                    ''
+                  )}
+                  <span className=" text-gradient  text-lg">
+                    ${product.cost}
+                  </span>
+                </div>
               </div>
             </div>
           ))}

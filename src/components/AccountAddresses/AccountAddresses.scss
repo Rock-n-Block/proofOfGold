@@ -25,3 +25,16 @@
     max-width: 500px;
   }
 }
+
+@media (max-width: 500px) {
+  .addresses {
+    &__box {
+      display: block;
+    }
+    &__item {
+      & + & {
+        margin-top: 30px;
+      }
+    }
+  }
+}

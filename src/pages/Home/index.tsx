@@ -16,6 +16,9 @@ import './Home.scss';
 import slideImg1 from '../../assets/img/home/slide-1.jpg';
 import slideImg2 from '../../assets/img/home/slide-2.jpg';
 import slideImg3 from '../../assets/img/home/slide-3.jpg';
+import slideMImg1 from '../../assets/img/home/slideM-1.jpg';
+import slideMImg2 from '../../assets/img/home/slideM-2.jpg';
+import slideMImg3 from '../../assets/img/home/slideM-3.jpg';
 import coinImg from '../../assets/img/products/5gram.svg';
 import icon1 from '../../assets/img/icons/1.svg';
 import icon2 from '../../assets/img/icons/2.svg';
@@ -83,7 +86,11 @@ const HomePage: React.FC = observer(() => {
         pagination={{ clickable: true }}
         className="home__slider">
         <SwiperSlide className="home__slider-slide">
-          <img src={slideImg1} alt="" className="home__slider-slide-bg" />
+          {window.innerWidth < 776 ? (
+            <img src={slideMImg1} alt="" className="home__slider-slide-bg" />
+          ) : (
+            <img src={slideImg1} alt="" className="home__slider-slide-bg" />
+          )}
           <div className="row home__slider-slide-row">
             <div className="h1-lg home__slider-slide-title text-gradient">
               Future-Proof
@@ -97,7 +104,11 @@ const HomePage: React.FC = observer(() => {
           </div>
         </SwiperSlide>
         <SwiperSlide className="home__slider-slide">
-          <img src={slideImg2} alt="" className="home__slider-slide-bg" />
+          {window.innerWidth < 776 ? (
+            <img src={slideMImg2} alt="" className="home__slider-slide-bg" />
+          ) : (
+            <img src={slideImg2} alt="" className="home__slider-slide-bg" />
+          )}
           <div className="row home__slider-slide-row">
             <div className="h1-lg home__slider-slide-title text-gradient">
               Unrivalled Quality
@@ -112,7 +123,11 @@ const HomePage: React.FC = observer(() => {
           </div>
         </SwiperSlide>
         <SwiperSlide className="home__slider-slide">
-          <img src={slideImg3} alt="" className="home__slider-slide-bg" />
+          {window.innerWidth < 776 ? (
+            <img src={slideMImg3} alt="" className="home__slider-slide-bg" />
+          ) : (
+            <img src={slideImg3} alt="" className="home__slider-slide-bg" />
+          )}
           <div className="row home__slider-slide-row">
             <div className="h1-lg home__slider-slide-title text-gradient">
               Innovative Investment
@@ -194,7 +209,9 @@ const HomePage: React.FC = observer(() => {
             </div>
           </div>
           <div className="home__proof-features">
-            <div className="h3 home__proof-features-title">Key Features</div>
+            <div className="h3 home__proof-features-title text-uppercase text-bold">
+              Key Features
+            </div>
             <div className="home__proof-features-cards">
               {features.map((card, index) => (
                 <InfoCard key={index} {...card} centered={true} />
@@ -205,11 +222,11 @@ const HomePage: React.FC = observer(() => {
       </div>
 
       <div className="home__products">
-        <div className="row">
+        <div className="row home__products-row">
           <div className="home__products-title text-gradient h2">
             DUCATUS PRIME GOLD COINS
           </div>
-          <div className="home__products-box box-products">
+          <div className="home__products-box box-products box-products-mobile-scroll">
             {productsStore.getCoins.map((coin) => (
               <ProductCard key={coin.id} {...coin} />
             ))}
@@ -231,11 +248,11 @@ const HomePage: React.FC = observer(() => {
       </div>
 
       <div className="home__products">
-        <div className="row">
+        <div className="row home__products-row">
           <div className="home__products-title text-gradient h2">
             DUCATUS PRIME GOLD BARS
           </div>
-          <div className="home__products-box box-products">
+          <div className="home__products-box box-products box-products-mobile-scroll">
             {productsStore.getBars.map((bar) => (
               <ProductCard key={bar.id} {...bar} />
             ))}

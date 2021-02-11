@@ -1,3 +1,9 @@
 .c-form {
   width: 500px;
 }
+
+@media (max-width: 776px) {
+  .c-form {
+    width: 100%;
+  }
+}

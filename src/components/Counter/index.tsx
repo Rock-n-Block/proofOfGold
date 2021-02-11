@@ -10,6 +10,7 @@ interface CounterProps {
   onChange?: (value: number) => void;
   onIncrease?: () => void;
   onDecrease?: () => void;
+  isInput?: boolean;
 }
 
 const Counter: React.FC<CounterProps> = ({
@@ -19,6 +20,7 @@ const Counter: React.FC<CounterProps> = ({
   onChange,
   onIncrease,
   onDecrease,
+  isInput = true,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
   const handleDecrease = () => {
@@ -55,11 +57,20 @@ const Counter: React.FC<CounterProps> = ({
     <div className="counter">
       <div className="counter__btn" onClick={handleDecrease}></div>
       {/* <div className="counter__content text text-gradient">{stateValue}</div> */}
-      <InputNumber
-        className="counter__content text text-gradient"
-        value={stateValue}
-        onChange={(value: any) => onChange && onChange(value)}
-      />
+      {isInput ? (
+        <InputNumber
+          className="counter__content text text-gradient"
+          value={stateValue}
+          onChange={(value: any) => {
+            onChange && onChange(value);
+            setStateValue(value);
+          }}
+        />
+      ) : (
+        <div className="counter__content counter__content-noinput text text-gradient">
+          {stateValue}
+        </div>
+      )}
       <div
         className="counter__btn counter__plus"
         onClick={handleIncrease}></div>

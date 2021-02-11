@@ -8,6 +8,7 @@ import { useMst } from '../../store/root';
 import './Header.scss';
 
 import LogoImg from '../../assets/img/logo.svg';
+import LogoMImg from '../../assets/img/logo-mobile.svg';
 import { ReactComponent as Cart } from '../../assets/img/cart.svg';
 import { ReactComponent as Search } from '../../assets/img/search.svg';
 
@@ -47,7 +48,11 @@ const Header: React.FC = observer(() => {
         )}
         <div className="header__content">
           <NavLink to="/">
-            <img src={LogoImg} alt="" />
+            {window.innerWidth < 776 ? (
+              <img src={LogoMImg} alt="" />
+            ) : (
+              <img src={LogoImg} alt="" />
+            )}
           </NavLink>
           <div className="">
             <div className="header__box">
@@ -58,7 +63,7 @@ const Header: React.FC = observer(() => {
               </NavLink>
             </div>
 
-            <div className="header__box">
+            <div className="header__box header__box-navbar">
               <div className="header__nav">
                 <NavLink exact to="/" className="header__nav-item text-md">
                   Home
@@ -76,18 +81,20 @@ const Header: React.FC = observer(() => {
                   POG Franchise
                 </NavLink>
               </div>
-              <Link to="/shop">
-                <Button>Shop NOW</Button>
-              </Link>
-              <NavLink to="/cart" className="header__icon-link">
-                <Cart className="header__icon" />
-                <div className="header__icon-counter">{cart.subQuantity}</div>
-              </NavLink>
-              <Search
-                ref={searchRef}
-                onClick={() => setPopapOpen(true)}
-                className="header__icon-search"
-              />
+              <div className="header__wrapper">
+                <Link to="/shop" className="mobile-hidden">
+                  <Button>Shop NOW</Button>
+                </Link>
+                <NavLink to="/cart" className="header__icon-link">
+                  <Cart className="header__icon" />
+                  <div className="header__icon-counter">{cart.subQuantity}</div>
+                </NavLink>
+                <Search
+                  ref={searchRef}
+                  onClick={() => setPopapOpen(true)}
+                  className="header__icon-search mobile-hidden"
+                />
+              </div>
             </div>
           </div>
         </div>

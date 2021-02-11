@@ -26,9 +26,16 @@ const AccountPage = observer(() => {
   return (
     <div className="account">
       <div className="row account__row">
+        {window.innerWidth < 776 ? (
+          <h1 className="account__title h2 text-gradient">My Account</h1>
+        ) : (
+          ''
+        )}
         <div className="account__wrapper">
-          <img src={userImg} alt="" />
-          <h3 className="account__name h3">{user.username}</h3>
+          <div className="account__box">
+            <img src={userImg} alt="user" className="account__img" />
+            <h3 className="account__name h3">{user.username}</h3>
+          </div>
           <div className="account__nav">
             <NavLink
               className="text-md account__nav-item"

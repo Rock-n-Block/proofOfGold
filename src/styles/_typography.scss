@@ -69,11 +69,22 @@
   margin-bottom: 80px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 767px) {
   .h1 {
     &-lg {
       font-size: 26px;
       line-height: 32px;
     }
+    &-xl {
+      font-size: 40px;
+      line-height: 49px;
+    }
+    &-md {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+  .products-title {
+    margin-bottom: 30px;
   }
 }

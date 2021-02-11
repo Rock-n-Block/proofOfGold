@@ -22,3 +22,9 @@
     color: $gold;
   }
 }
+
+@media (max-width: 776px) {
+  .p-card {
+    min-width: 285px;
+  }
+}

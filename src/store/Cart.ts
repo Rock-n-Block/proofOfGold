@@ -72,5 +72,18 @@ export const CartStore = types
       }
     };
 
-    return { addProduct, deleteProduct, remove, updateCart };
+    const setProductQuantity = (product: string, quantity: number) => {
+      const entry = self.items.find((entry) => entry.product.id === product);
+      if (entry) {
+        entry.setQuantity(quantity);
+      }
+    };
+
+    return {
+      addProduct,
+      deleteProduct,
+      remove,
+      updateCart,
+      setProductQuantity,
+    };
   });

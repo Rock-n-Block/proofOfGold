@@ -104,6 +104,7 @@ export const User = types
         if (err.response.data.non_field_errors) {
           throw new Error('data');
         }
+        throw new Error(err);
       }
     });
     const activate = flow(function* activate(token) {

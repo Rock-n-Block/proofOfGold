@@ -32,7 +32,7 @@ const AccountAddresses: React.FC = observer(() => {
               )}
               <Link to="/account/addresses/billing">
                 <Button>
-                  {!user.billing_address?.first_name ? 'add' : 'change'}
+                  {!user.billing_address?.first_name ? 'add' : 'edit'}
                 </Button>
               </Link>
             </div>
@@ -49,7 +49,7 @@ const AccountAddresses: React.FC = observer(() => {
               )}
               <Link to="/account/addresses/shipping">
                 <Button>
-                  {!user.shipping_address?.first_name ? 'add' : 'change'}
+                  {!user.shipping_address?.first_name ? 'add' : 'edit'}
                 </Button>
               </Link>
             </div>

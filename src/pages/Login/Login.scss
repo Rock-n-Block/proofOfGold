@@ -4,8 +4,9 @@
     margin-bottom: 45px;
   }
   &__content {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10vw;
   }
   &__info {
     margin-top: 100px;
@@ -16,5 +17,25 @@
   }
   &__link {
     font-family: MB;
+  }
+}
+
+@media (max-width: 1024px) {
+  .login {
+    &__content {
+      grid-column-gap: 5vw;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .login {
+    padding: 40px 0 70px;
+    &__title {
+      margin-bottom: 20px;
+    }
+    &__content {
+      display: block;
+    }
   }
 }

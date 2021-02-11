@@ -108,25 +108,6 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         </div>
       </Form.Item>
       <Form.Item
-        name="current_password"
-        className="d-form__item input__field"
-        validateStatus="error"
-        help={errors.current_password ? errors.current_password : false}
-        label={
-          <span className="text-gradient input__label">
-            Current password (leave blank to leave unchanged)
-          </span>
-        }>
-        <Input
-          id="current_password"
-          className="d-form__input input"
-          size="large"
-          type="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Form.Item>
-      <Form.Item
         name="change_password"
         className="d-form__item input__field"
         validateStatus="error"
@@ -163,6 +144,27 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
+      </Form.Item>
+      <Form.Item
+        name="current_password"
+        className="d-form__item input__field"
+        validateStatus="error"
+        help={errors.current_password ? errors.current_password : false}
+        label={
+          <span className="text-gradient input__label">
+            Current password (leave blank to leave unchanged)
+          </span>
+        }>
+        <div className="input__star">
+          <Input
+            id="current_password"
+            className="d-form__input input"
+            size="large"
+            type="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </div>
       </Form.Item>
       <Button className="d-form__btn" onClick={handleSubmit}>
         SAVE CHANGES

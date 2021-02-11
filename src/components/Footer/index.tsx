@@ -1,17 +1,22 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
+
+import { useMst } from '../../store/root';
 
 import './Footer.scss';
 
-import { Link } from 'react-router-dom';
-
 import logoImg from '../../assets/img/logo.svg';
 
-const Footer: React.FC = () => {
+const Footer: React.FC = observer(() => {
+  const { user } = useMst();
   return (
     <footer className="footer">
       <div className="row">
         <div className="footer__content">
-          <img className="footer__content-logo" src={logoImg} alt="" />
+          <Link to="/">
+            <img className="footer__content-logo" src={logoImg} alt="" />
+          </Link>
 
           <div className="footer__content-links">
             <div className="footer__content-links-block">
@@ -39,11 +44,19 @@ const Footer: React.FC = () => {
               <span className="footer__content-links-block-title text-gradient h3">
                 Useful Links
               </span>
-              <Link
-                to="/my-account"
-                className="footer__content-links-block-link text-md">
-                My Account
-              </Link>
+              {user.isLogin ? (
+                <Link
+                  to="/account"
+                  className="footer__content-links-block-link text-md">
+                  My Account
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="footer__content-links-block-link text-md">
+                  Login
+                </Link>
+              )}
               <Link
                 to="/orders"
                 className="footer__content-links-block-link text-md">
@@ -69,6 +82,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

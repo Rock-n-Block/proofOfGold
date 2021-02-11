@@ -46,6 +46,13 @@ const ProductPage = observer(() => {
               <div className="product__count">
                 {product.sold} units sold out of {product.total_supply}
               </div>
+              {window.innerWidth < 776 ? (
+                <div className="product__img-mobile">
+                  <img src={`https://${product.image}`} alt="" />
+                </div>
+              ) : (
+                ''
+              )}
               <div className="product__cost text-gradient h1-xl">
                 ${product.price}
               </div>

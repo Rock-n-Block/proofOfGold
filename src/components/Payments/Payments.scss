@@ -6,12 +6,12 @@
       display: flex;
       overflow: hidden;
       border-radius: 12px;
-      background: #363636;
       margin-bottom: 30px;
     }
     &-item {
       display: flex;
       align-items: center;
+      background: #363636;
       font-size: 13px;
       line-height: 16px;
       cursor: pointer;
@@ -76,6 +76,43 @@
         padding: 20px;
         background: #fff;
         margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .payments {
+    &__choose {
+      &-box {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .payments {
+    &__choose {
+      &-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 1px;
+      }
+      &-item {
+        & + & {
+          border: none;
+        }
+      }
+    }
+    &__send {
+      &-copy {
+        &-address {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          margin-right: 15px;
+        }
       }
     }
   }
