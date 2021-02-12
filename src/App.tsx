@@ -55,7 +55,13 @@ const App: React.FC = observer(() => {
         <Route exact path="/delivery-information" component={DeliveryPage} />
         <Route exact path="/legal" component={LegalPage} />
         <Route exact path="/search" component={SearchPage} />
-        <Route exact path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path="/checkout"
+          render={() =>
+            user.isLogin ? <CheckoutPage /> : <Redirect to="/login" />
+          }
+        />
         <Route
           exact
           path={['/verify', '/verify/:token']}

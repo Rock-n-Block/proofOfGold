@@ -17,9 +17,6 @@ interface ProductReviewFormProps {
   town: string;
   county: string;
   phone: string;
-  email: string;
-  username: string;
-  password?: string;
   notes: string;
 }
 
@@ -30,9 +27,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
   errors,
   handleChange,
   handleBlur,
-  handleSubmit,
   values,
-  isLogin,
 }: any) => {
   return (
     <div className="checkout__content">
@@ -196,75 +191,6 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
             onBlur={handleBlur}
           />
         </Form.Item>
-        {!isLogin && (
-          <>
-            <div className="checkout__register">
-              <Form.Item
-                name="email"
-                className="ch-form__item input__field"
-                validateStatus={validateField('email', touched, errors)}
-                help={!touched.email ? false : errors.email}
-                label={
-                  <span className="text-gradient input__label">
-                    Email address
-                  </span>
-                }>
-                <div className="input__star">
-                  <Input
-                    id="email"
-                    className="ch-form__input input"
-                    size="large"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </div>
-              </Form.Item>
-              <Form.Item
-                name="username"
-                className="ch-form__item input__field"
-                validateStatus={validateField('username', touched, errors)}
-                required={false}
-                help={!touched.username ? false : errors.username}
-                initialValue={values.username}
-                label={
-                  <span className="text-gradient input__label">
-                    Account username
-                  </span>
-                }>
-                <div className="input__star">
-                  <Input
-                    id="username"
-                    className="ch-form__input input"
-                    size="large"
-                    value={values.username}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </div>
-              </Form.Item>
-              <Form.Item
-                name="password"
-                className="ch-form__item input__field"
-                validateStatus={validateField('password', touched, errors)}
-                help={!touched.password ? false : errors.password}
-                label={
-                  <span className="text-gradient input__label">
-                    Create account passwrod
-                  </span>
-                }>
-                <div className="input__star">
-                  <Input
-                    id="password"
-                    className="ch-form__input input"
-                    size="large"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </div>
-              </Form.Item>
-            </div>
-          </>
-        )}
         <Form.Item
           name="notes"
           className="ch-form__item input__field"

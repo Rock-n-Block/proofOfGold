@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import classNames from 'classnames';
 
@@ -10,7 +10,20 @@ import numberWithCommas from '../../utils/numberWithCommas';
 import './Cart.scss';
 
 const CartPage: React.FC = observer(() => {
-  const { cart } = useMst();
+  const history = useHistory();
+  const { cart, user } = useMst();
+  const [isShowHelp, setShowHelp] = React.useState(false);
+
+  const onRedirect = () => {
+    if (user.isLogin) {
+      history.push('/checkout');
+    } else {
+      setShowHelp(true);
+      setTimeout(() => {
+        history.push('/checkout');
+      }, 3000);
+    }
+  };
 
   return (
     <div
@@ -49,9 +62,12 @@ const CartPage: React.FC = observer(() => {
               <div className="cart__total-cost text-gradient h1-md">
                 ${numberWithCommas(cart.subTotal)}
               </div>
-              <Link to="/checkout">
-                <Button>PROCEED TO CHECKOUT</Button>
-              </Link>
+              <Button onClick={onRedirect}>PROCEED TO CHECKOUT</Button>
+              {isShowHelp && (
+                <div className="cart__info text-md">
+                  You will redirect to login page
+                </div>
+              )}
             </div>
           </>
         ) : (

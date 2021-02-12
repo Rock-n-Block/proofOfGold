@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useFormikContext } from 'formik';
 
 import { Button } from '../../components';
+import { storeApi } from '../../utils/api';
 
 import './Payments.scss';
 
@@ -19,6 +20,7 @@ const Payments = () => {
   const formik = useFormikContext();
 
   const [activePayment, setActivePayment] = React.useState('card');
+  const [addresses, setAddresses] = React.useState<any>(null);
   const payments = [
     {
       name: 'card',
@@ -40,6 +42,16 @@ const Payments = () => {
       image: usdcImg,
     },
   ];
+
+  React.useEffect(() => {
+    storeApi
+      .getCryptoAddresses()
+      .then(({ data }) => {
+        setAddresses(data);
+      })
+      .catch((err) => console.log(err, 'get crypto addresses'));
+  }, []);
+
   const address = '0x39u593u59593593fgdh34uj4i53j5i35';
   return (
     <div className="payments">
@@ -66,46 +78,65 @@ const Payments = () => {
             </div>
           ))}
         </div>
-        <Button
-          size="lg"
-          centered={true}
-          className="payments__continue"
-          onClick={() => formik.handleSubmit()}>
-          Continue
-        </Button>
+        {activePayment === 'card' && (
+          <Button
+            size="lg"
+            centered={true}
+            className="payments__continue"
+            onClick={() => formik.handleSubmit()}>
+            Continue
+          </Button>
+        )}
       </div>
-      {address && activePayment !== 'card' && (
-        <div className="box-dark payments__send">
-          <div className="payments__send-title text-bold text-gradient">
-            Send your 100.0101 {activePayment.toUpperCase()} to the following
-            address
-          </div>
-          <div className="payments__send-copy">
-            <div className="payments__send-copy-address text-bold">
-              {address}
+      {activePayment !== 'card' &&
+        addresses &&
+        addresses[`${activePayment}_address`] && (
+          <div className="box-dark payments__send">
+            <div className="payments__send-title text-bold text-gradient">
+              Send your 100.0101 {activePayment.toUpperCase()} to the following
+              address
             </div>
-            <CopyToClipboard text={address}>
-              <img src={copyImg} alt="copy" />
-            </CopyToClipboard>
-          </div>
-          <div className="payments__send-qr">
-            <div className="payments__send-qr-title text-gradient text-bold">
-              OR scan this QR code
+            <div className="payments__send-copy">
+              <div className="payments__send-copy-address text-bold">
+                {addresses[`${activePayment}_address`]
+                  ? addresses[`${activePayment}_address`]
+                  : ''}
+              </div>
+              <CopyToClipboard
+                text={
+                  addresses[`${activePayment}_address`]
+                    ? addresses[`${activePayment}_address`]
+                    : ''
+                }>
+                <img src={copyImg} alt="copy" />
+              </CopyToClipboard>
             </div>
-            <div className="payments__send-qr-box">
-              <QRCode value={address} bgColor="#fff" fgColor="#000" />
+            <div className="payments__send-qr">
+              <div className="payments__send-qr-title text-gradient text-bold">
+                OR scan this QR code
+              </div>
+              <div className="payments__send-qr-box">
+                <QRCode
+                  value={
+                    addresses[`${activePayment}_address`]
+                      ? addresses[`${activePayment}_address`]
+                      : ''
+                  }
+                  bgColor="#fff"
+                  fgColor="#000"
+                />
+              </div>
+            </div>
+            <div className="payment__send-text">
+              As soon as your transaction is confirmed on the blockchain, your
+              order will be available in{' '}
+              <Link className="text-bold text-gradient" to="/account/orders">
+                My orders
+              </Link>
+              , and you’ll receive an email.
             </div>
           </div>
-          <div className="payment__send-text">
-            As soon as your transaction is confirmed on the blockchain, your
-            order will be available in{' '}
-            <Link className="text-bold text-gradient" to="/account/orders">
-              My orders
-            </Link>
-            , and you’ll receive an email.
-          </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
