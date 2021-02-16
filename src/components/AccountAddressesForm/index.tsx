@@ -25,8 +25,20 @@ const AccountAddresses: React.FC<FormikProps<AccountAddressesProps>> = ({
   handleBlur,
   handleSubmit,
   isBilling,
+  isSubmitting,
   values,
 }: any) => {
+  const [isSubmitted, setSubmitted] = React.useState<boolean>(false);
+  let timeout: ReturnType<typeof setTimeout>;
+  React.useEffect(() => {
+    if (isSubmitting) {
+      setSubmitted(true);
+      timeout = setTimeout(() => {
+        setSubmitted(false);
+        clearTimeout(timeout);
+      }, 3000);
+    }
+  }, [isSubmitting]);
   return (
     <>
       <h1 className="h1-md text-uppercase text-gradient addresses__title-form">
@@ -212,7 +224,14 @@ const AccountAddresses: React.FC<FormikProps<AccountAddressesProps>> = ({
             />
           </div>
         </Form.Item>
-        <Button onClick={handleSubmit}>SAVE CHANGES</Button>
+        <div className="box-flex-row">
+          <Button onClick={handleSubmit}>SAVE CHANGES</Button>
+          {isSubmitted && (
+            <div className="text-gradient a-form__saved text-md">
+              your data is saved
+            </div>
+          )}
+        </div>
       </Form>
     </>
   );

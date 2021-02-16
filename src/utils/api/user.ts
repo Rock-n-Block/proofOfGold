@@ -38,14 +38,16 @@ export default {
     axios.get(`account/register/activate/${token}`),
   resetPassword: (userData: any) => axios.post('account/reset', userData),
   checkResetPasswordToken: (token: string) =>
-    axios.get(`/account/reset/validate_token/${token}/`),
+    axios.get(`account/reset/validate_token/${token}/`),
   changePassword: (data: IChangePassword) =>
-    axios.post('/account/reset/confirm/', data),
+    axios.post('account/reset/confirm/', data),
   changeBilling: (data: IAddresses) =>
-    axios.patch(`/account/${localStorage.access_token}/billing/`, data),
+    axios.patch(`account/${localStorage.access_token}/billing/`, data),
   changeShipping: (data: IAddresses) =>
-    axios.patch(`/account/${localStorage.access_token}/shipping/`, data),
-  getBilling: () => axios.get(`/account/${localStorage.access_token}/billing/`),
+    axios.patch(`account/${localStorage.access_token}/shipping/`, data),
+  getBilling: () => axios.get(`account/${localStorage.access_token}/billing/`),
   getShipping: () =>
-    axios.get(`/account/${localStorage.access_token}/shipping/`),
+    axios.get(`account/${localStorage.access_token}/shipping/`),
+  checkSecurityCode: (code: string) =>
+    axios.post('account/login/check_code', { code }),
 };

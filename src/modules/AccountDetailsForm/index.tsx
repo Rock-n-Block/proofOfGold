@@ -44,9 +44,9 @@ export default ({ username, email, first_name, last_name }: any) => {
         last_name: values.lastname,
         email: values.email,
         username: values.username,
+        password: values.current_password,
       };
-      if (values.current_password && values.change_password) {
-        usrObj.password = values.current_password;
+      if (values.change_password) {
         usrObj.new_password = values.change_password;
       }
       userApi

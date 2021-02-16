@@ -18,10 +18,11 @@ import { ReactComponent as Search } from '../../assets/img/search.svg';
 const Header: React.FC = observer(() => {
   const { user, cart } = useMst();
   const [isPopapOpen, setPopapOpen] = React.useState(false);
-  const [isNavMobileOpen, setNavMobileOpen] = React.useState(true);
+  const [isNavMobileOpen, setNavMobileOpen] = React.useState(false);
 
   const searchPopapRef = React.useRef<any>();
   const searchRef = React.useRef<any>();
+  const searchInputRef = React.useRef<any>();
 
   const outsideClick = (e: any) => {
     const path = e.path || (e.composedPath && e.composedPath());
@@ -38,19 +39,29 @@ const Header: React.FC = observer(() => {
       document.body.removeEventListener('click', outsideClick);
     };
   }, []);
+
+  const onSearchOpen = (): void => {
+    setPopapOpen(true);
+    setTimeout(() => {
+      searchInputRef.current.input.focus();
+    }, 100);
+  };
   return (
     <>
       <header className="header">
         <div className="row header__row">
-          {isPopapOpen && (
-            <div ref={searchPopapRef} className="header__popap">
-              <SearchInput
-                handleClose={() => {
-                  setPopapOpen(false);
-                }}
-              />
-            </div>
-          )}
+          <div
+            ref={searchPopapRef}
+            className={classNames('header__popap', {
+              hidden: !isPopapOpen,
+            })}>
+            <SearchInput
+              ref={searchInputRef}
+              handleClose={() => {
+                setPopapOpen(false);
+              }}
+            />
+          </div>
           <div className="header__content">
             <div
               className="header__nav-open"
@@ -65,7 +76,7 @@ const Header: React.FC = observer(() => {
               {window.innerWidth < 776 ? (
                 <img src={LogoMImg} alt="" />
               ) : (
-                <img src={LogoImg} alt="" />
+                <img src="/logo.svg" alt="" />
               )}
             </NavLink>
             <div className="">
@@ -113,7 +124,7 @@ const Header: React.FC = observer(() => {
                   </NavLink>
                   <Search
                     ref={searchRef}
-                    onClick={() => setPopapOpen(true)}
+                    onClick={onSearchOpen}
                     className="header__icon-search mobile-hidden"
                   />
                 </div>

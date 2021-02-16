@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
 
 import { Counter } from '../../components';
 import numberWithCommas from '../../utils/numberWithCommas';
@@ -11,31 +12,31 @@ import deleteImg from '../../assets/img/cart/delete.svg';
 
 export interface CartItemProps {
   image: string;
+  id: string;
   name: string;
   price: number;
   quantity: number;
   isFirst: boolean;
   totalPrise: number;
   addMore: () => void;
-  setProductQuantity: (quantity: number) => void;
   deleteOneOf: () => void;
   deleteCurrent: () => void;
+  total_supply: number;
 }
 
 const CartItem: React.FC<CartItemProps> = observer(
   ({
+    id,
     image,
     name,
     price,
     quantity,
-    isFirst,
     totalPrise,
     addMore,
     deleteOneOf,
     deleteCurrent,
-    setProductQuantity,
+    total_supply,
   }) => {
-    const { cart } = useMst();
     return (
       <div className="c-item">
         <div className="c-item__wrapper">
@@ -46,7 +47,9 @@ const CartItem: React.FC<CartItemProps> = observer(
               onClick={() => deleteCurrent()}
             />
           </div>
-          <img src={`https://${image}`} alt="" className="c-item__img" />
+          <Link to={`/product/${id}`}>
+            <img src={`https://${image}`} alt="" className="c-item__img" />
+          </Link>
         </div>
         <div className="c-item__box">
           <div className="c-item__elem">
@@ -65,6 +68,7 @@ const CartItem: React.FC<CartItemProps> = observer(
               onIncrease={() => addMore()}
               onDecrease={deleteOneOf}
               min={0}
+              max={total_supply}
               isInput={false}
               value={quantity}
               onChange={() => {}}

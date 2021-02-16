@@ -1,6 +1,6 @@
 import { types, getParent, destroy } from 'mobx-state-tree';
 
-import { Product, IProduct } from './Product';
+import { Product, ProductsStore } from './Product';
 
 const CartEntry = types
   .model({
@@ -50,13 +50,20 @@ export const CartStore = types
     };
 
     const addProduct = (product: string, quantity = 1) => {
+      const parent: any = getParent(self);
       const entry = self.items.find((entry) => entry.product.id === product);
-      if (!entry) {
+      const productObj = parent.productsStore.products.find(
+        (element: any) => element.id === product,
+      );
+      if (!entry && productObj.total_supply >= quantity) {
         self.items.push({
           product: product,
           quantity,
         });
-      } else {
+      } else if (
+        entry &&
+        productObj.total_supply >= entry.quantity + quantity
+      ) {
         entry.increaseQuantity(quantity);
       }
     };

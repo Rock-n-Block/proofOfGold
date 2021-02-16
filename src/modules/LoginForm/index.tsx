@@ -30,7 +30,7 @@ export default ({ history }: any) => {
       user
         .login(values)
         .then(() => {
-          history.push('/account');
+          history.push('/');
         })
         .catch(({ message }) => {
           if (message === 'User is not activated') {

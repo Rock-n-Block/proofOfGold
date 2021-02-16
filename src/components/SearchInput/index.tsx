@@ -4,11 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import './SearchInput.scss';
 
-interface ISearchInput {
-  handleClose?: () => void;
-}
-
-const SearchInput: React.FC<ISearchInput> = ({ handleClose }) => {
+const SearchInput = React.forwardRef(({ handleClose }: any, ref: any) => {
   const history = useHistory();
 
   const handleKeyDown = (e: any) => {
@@ -19,12 +15,13 @@ const SearchInput: React.FC<ISearchInput> = ({ handleClose }) => {
   };
   return (
     <Input
+      ref={ref}
       className="s-input input"
       placeholder="Search"
       allowClear={true}
       onKeyDown={handleKeyDown}
     />
   );
-};
+});
 
 export default SearchInput;

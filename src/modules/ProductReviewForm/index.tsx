@@ -48,7 +48,7 @@ export default ({ productId, isLogin, username, email }: any) => {
           name: values.username,
           email: values.email,
         })
-        .then(() => productsStore.loadProduct(productId));
+        .catch((err) => console.log(err, 'review'));
     },
 
     displayName: 'ProductReviewForm',

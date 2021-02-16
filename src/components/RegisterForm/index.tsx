@@ -61,7 +61,7 @@ const RegisterForm: React.FC<FormikProps<RegisterFormProps>> = ({
         validateStatus={validateField('new_password', touched, errors)}
         help={!touched.new_password ? false : errors.new_password}
         label={
-          <span className="text-gradient input__label">Create passwrod</span>
+          <span className="text-gradient input__label">Create password</span>
         }>
         <div className="input__star">
           <Input

@@ -23,6 +23,8 @@ export const Product = types.model({
   price: types.number,
   description: types.maybe(types.string),
   reviews: types.maybe(types.array(Review)),
+  bonus_coins: types.maybe(types.number),
+  lucky_prize: types.maybe(types.number),
 });
 
 export const ProductsStore = types
@@ -48,7 +50,7 @@ export const ProductsStore = types
       let entryProduct = self.products.find((entry) => entry.id == product.id);
 
       if (entryProduct) {
-        entryProduct.group = '';
+        entryProduct.group = product.group;
         entryProduct.name = product.name;
         entryProduct.image = product.image;
         entryProduct.total_supply = product.total_supply;
@@ -57,6 +59,8 @@ export const ProductsStore = types
         entryProduct.price = product.price;
         entryProduct.description = product.description;
         entryProduct.reviews = product.reviews;
+        entryProduct.bonus_coins = product.bonus_coins;
+        entryProduct.lucky_prize = product.lucky_prize;
       }
     }
     const loadProducts = flow(function* loadProducts() {

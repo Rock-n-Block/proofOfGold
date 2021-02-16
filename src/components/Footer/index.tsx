@@ -57,11 +57,13 @@ const Footer: React.FC = observer(() => {
                   Login
                 </Link>
               )}
-              <Link
-                to="/orders"
-                className="footer__content-links-block-link text-md">
-                Order History
-              </Link>
+              {user.isLogin && (
+                <Link
+                  to="/account/orders"
+                  className="footer__content-links-block-link text-md">
+                  Order History
+                </Link>
+              )}
               <Link
                 to="/delivery-information"
                 className="footer__content-links-block-link text-md">
@@ -74,10 +76,9 @@ const Footer: React.FC = observer(() => {
               </Link>
             </div>
           </div>
-
-          <div className="footer__content-copyright text-sm">
-            &copy;2020 Proof of Gold All rights reserved.
-          </div>
+        </div>
+        <div className="footer__content-copyright text-sm">
+          &copy;2020 Proof of Gold All rights reserved.
         </div>
       </div>
     </footer>

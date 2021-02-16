@@ -15,3 +15,4 @@ export { default as CheckoutPage } from './Checkout';
 export { default as VerifyPage } from './Verify';
 export { default as ResetPasswordPage } from './ResetPassword';
 export { default as ChangePasswordPage } from './ChangePassword';
+export { default as SecurityPage } from './Security';

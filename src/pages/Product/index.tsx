@@ -82,20 +82,22 @@ const ProductPage = observer(() => {
                     {product.total_supply}
                   </div>
                 </div>
-                {/* <div className="product__info-item">
-              <div className="product__info-item-title">
-                Included Ducatus Coin Value:
-              </div>
-              <div className="product__info-item-value text-gradient">
-                {product.coinValue}%
-              </div>
-            </div> */}
-                {/* <div className="product__info-item">
-              <div className="product__info-item-title">*Lucky Gram Prize:</div>
-              <div className="product__info-item-value text-gradient">
-                {product.luckyGram}g
-              </div>
-            </div> */}
+                <div className="product__info-item">
+                  <div className="product__info-item-title">
+                    Included Ducatus Coin Value:
+                  </div>
+                  <div className="product__info-item-value text-gradient">
+                    {product.bonus_coins}%
+                  </div>
+                </div>
+                <div className="product__info-item">
+                  <div className="product__info-item-title">
+                    *Lucky Gram Prize:
+                  </div>
+                  <div className="product__info-item-value text-gradient">
+                    {product.lucky_prize}g
+                  </div>
+                </div>
                 <div className="product__info-descr">
                   Every Ducatus 24K Gold Product carries the Ducatus Quality
                   Seal and is registered on the DucatusX Blockchain.

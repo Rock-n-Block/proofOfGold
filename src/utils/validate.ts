@@ -45,6 +45,11 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.username = 'Enter your name';
       }
     },
+    code: (value: string): void => {
+      if (!value) {
+        errors.code = 'Enter your code';
+      }
+    },
     message: (value: string): void => {
       if (!value) {
         errors.message = 'Enter your message';
@@ -86,7 +91,7 @@ export const validateForm = ({ values, errors, not_required }: any) => {
       }
     },
     current_password: (value: string): void => {
-      if (!value && (values.change_password || values.confirm_password)) {
+      if (!value) {
         errors.current_password = 'Entery your password';
       }
     },

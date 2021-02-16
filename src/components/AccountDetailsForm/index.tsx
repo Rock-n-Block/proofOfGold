@@ -24,7 +24,19 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
   handleBlur,
   handleSubmit,
   values,
+  isSubmitting,
 }) => {
+  const [isSubmitted, setSubmitted] = React.useState<boolean>(false);
+  let timeout: ReturnType<typeof setTimeout>;
+  React.useEffect(() => {
+    if (isSubmitting) {
+      setSubmitted(true);
+      timeout = setTimeout(() => {
+        setSubmitted(false);
+        clearTimeout(timeout);
+      }, 3000);
+    }
+  }, [isSubmitting]);
   return (
     <Form name="d-form" className="d-form" layout="vertical">
       <Form.Item
@@ -148,8 +160,8 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
       <Form.Item
         name="current_password"
         className="d-form__item input__field"
-        validateStatus="error"
-        help={errors.current_password ? errors.current_password : false}
+        validateStatus={validateField('current_password', touched, errors)}
+        help={!touched.current_password ? false : errors.current_password}
         label={
           <span className="text-gradient input__label">
             Current password (leave blank to leave unchanged)
@@ -166,9 +178,16 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
           />
         </div>
       </Form.Item>
-      <Button className="d-form__btn" onClick={handleSubmit}>
-        SAVE CHANGES
-      </Button>
+      <div className="box-flex-row">
+        <Button className="d-form__btn" onClick={handleSubmit}>
+          SAVE CHANGES
+        </Button>
+        {isSubmitted && (
+          <div className="text-gradient a-form__saved text-md">
+            your data is saved
+          </div>
+        )}
+      </div>
     </Form>
   );
 };
