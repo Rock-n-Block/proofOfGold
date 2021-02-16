@@ -92,7 +92,7 @@ export const validateForm = ({ values, errors, not_required }: any) => {
     },
     current_password: (value: string): void => {
       if (!value) {
-        errors.current_password = 'Entery your password';
+        errors.current_password = 'Enter your password';
       }
     },
     usernameOrEmail: (value: string): void => {

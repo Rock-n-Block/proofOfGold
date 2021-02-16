@@ -25,20 +25,9 @@ const AccountAddresses: React.FC<FormikProps<AccountAddressesProps>> = ({
   handleBlur,
   handleSubmit,
   isBilling,
-  isSubmitting,
   values,
+  isSubmitted,
 }: any) => {
-  const [isSubmitted, setSubmitted] = React.useState<boolean>(false);
-  let timeout: ReturnType<typeof setTimeout>;
-  React.useEffect(() => {
-    if (isSubmitting) {
-      setSubmitted(true);
-      timeout = setTimeout(() => {
-        setSubmitted(false);
-        clearTimeout(timeout);
-      }, 3000);
-    }
-  }, [isSubmitting]);
   return (
     <>
       <h1 className="h1-md text-uppercase text-gradient addresses__title-form">

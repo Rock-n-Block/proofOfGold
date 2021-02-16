@@ -19,7 +19,8 @@ interface AccountDetailsFormProps {
 
 export default ({ username, email, first_name, last_name }: any) => {
   const { user } = useMst();
-  const FormWithFormik = withFormik<{}, AccountDetailsFormProps>({
+  let isSubmitted = false;
+  const FormWithFormik = withFormik<any, AccountDetailsFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
       firstname: first_name,
@@ -57,11 +58,17 @@ export default ({ username, email, first_name, last_name }: any) => {
             ...data,
             isLogin: true,
           });
+
+          isSubmitted = true;
+          const timeout = setTimeout(() => {
+            isSubmitted = false;
+            clearTimeout(timeout);
+          }, 3000);
         })
         .catch((err) => console.log(err));
     },
 
     displayName: 'AccountDetailsForm',
   })(AccountDetailsForm);
-  return <FormWithFormik />;
+  return <FormWithFormik isSubmitted={isSubmitted} />;
 };

@@ -15,28 +15,20 @@ interface AccountDetailsFormProps {
   current_password: string;
   change_password: string;
   confirm_password: string;
+  isSubmitted: boolean;
 }
 
-const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
+const AccountDetailsForm: React.FC<
+  FormikProps<AccountDetailsFormProps> | any
+> = ({
   touched,
   errors,
   handleChange,
   handleBlur,
   handleSubmit,
   values,
-  isSubmitting,
+  isSubmitted,
 }) => {
-  const [isSubmitted, setSubmitted] = React.useState<boolean>(false);
-  let timeout: ReturnType<typeof setTimeout>;
-  React.useEffect(() => {
-    if (isSubmitting) {
-      setSubmitted(true);
-      timeout = setTimeout(() => {
-        setSubmitted(false);
-        clearTimeout(timeout);
-      }, 3000);
-    }
-  }, [isSubmitting]);
   return (
     <Form name="d-form" className="d-form" layout="vertical">
       <Form.Item
@@ -179,11 +171,9 @@ const AccountDetailsForm: React.FC<FormikProps<AccountDetailsFormProps>> = ({
         </div>
       </Form.Item>
       <div className="box-flex-row">
-        <Button className="d-form__btn" onClick={handleSubmit}>
-          SAVE CHANGES
-        </Button>
+        <Button onClick={handleSubmit}>SAVE CHANGES</Button>
         {isSubmitted && (
-          <div className="text-gradient a-form__saved text-md">
+          <div className="text-gradient d-form__saved text-md">
             your data is saved
           </div>
         )}

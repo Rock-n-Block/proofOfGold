@@ -33,6 +33,7 @@ export default observer(
     isBilling,
   }: any) => {
     const { user } = useMst();
+    let isSubmitted = false;
     const FormWithFormik = withFormik<any, AccountAddressesFormProps>({
       enableReinitialize: true,
       mapPropsToValues: () => ({
@@ -83,6 +84,12 @@ export default observer(
             .changeShipping(data)
             .then(() => {
               user.updateShippingAddress(data);
+
+              isSubmitted = true;
+              const timeout = setTimeout(() => {
+                isSubmitted = false;
+                clearTimeout(timeout);
+              }, 3000);
             })
             .catch((err) => console.log('change shipping address'));
         }
@@ -90,6 +97,6 @@ export default observer(
 
       displayName: 'AccountAddressesForm',
     })(AccountAddressesForm);
-    return <FormWithFormik isBilling={isBilling} />;
+    return <FormWithFormik isBilling={isBilling} isSubmitted={isSubmitted} />;
   },
 );
