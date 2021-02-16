@@ -76,7 +76,7 @@ const Header: React.FC = observer(() => {
               {window.innerWidth < 776 ? (
                 <img src={LogoMImg} alt="" />
               ) : (
-                <img src="/logo.svg" alt="" />
+                <img src={LogoImg} alt="" />
               )}
             </NavLink>
             <div className="">

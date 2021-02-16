@@ -16,6 +16,7 @@ interface ShippingFormProps {
   email: string;
   username: string;
   notes: string;
+  currency?: string;
 }
 
 export default ({ username, email, shipping_address }: any) => {
@@ -33,6 +34,7 @@ export default ({ username, email, shipping_address }: any) => {
       email: email,
       username: username,
       notes: '',
+      currency: '',
     }),
     validate: (values) => {
       let errors = {};
@@ -47,7 +49,7 @@ export default ({ username, email, shipping_address }: any) => {
       return errors;
     },
 
-    handleSubmit: (values) => {
+    handleSubmit: (values: any) => {
       console.log(values);
     },
 

@@ -27,7 +27,7 @@ export default ({ history }: any) => {
       return errors;
     },
 
-    handleSubmit: (values) => {
+    handleSubmit: (values, { setErrors }) => {
       const postData = {
         username: values.username,
         email: values.email,
@@ -39,7 +39,12 @@ export default ({ history }: any) => {
           console.log(res, 'register');
           history.push('/verify');
         })
-        .catch((err) => console.log(err, 'register'));
+        .catch((err) => {
+          // const errField: string = err.response.data.error
+          // setErrors({
+          //   errField: 'username is already in use'
+          // });
+        });
     },
 
     displayName: 'RegisterForm',

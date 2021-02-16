@@ -21,6 +21,7 @@ const Payments = () => {
 
   const [activePayment, setActivePayment] = React.useState('card');
   const [addresses, setAddresses] = React.useState<any>(null);
+  const [activeAddress, setActiveAddress] = React.useState<string>('');
   const payments = [
     {
       name: 'card',
@@ -43,6 +44,16 @@ const Payments = () => {
     },
   ];
 
+  const onSubmit = (): void => {
+    const values: any = formik.values;
+    formik.setValues({
+      ...values,
+      currency: activePayment,
+    });
+    formik.handleSubmit();
+    onContinue();
+  };
+
   React.useEffect(() => {
     storeApi
       .getCryptoAddresses()
@@ -52,7 +63,15 @@ const Payments = () => {
       .catch((err) => console.log(err, 'get crypto addresses'));
   }, []);
 
-  const address = '0x39u593u59593593fgdh34uj4i53j5i35';
+  const onContinue = (): void => {
+    setActiveAddress(addresses[`${activePayment}_address`]);
+  };
+
+  const onChangeCurrency = (name: string): void => {
+    setActiveAddress('');
+    setActivePayment(name);
+  };
+
   return (
     <div className="payments">
       <div className="payments__choose box-dark">
@@ -60,7 +79,7 @@ const Payments = () => {
           {payments.map((payment, index) => (
             <div
               key={index}
-              onClick={() => setActivePayment(payment.name)}
+              onClick={() => onChangeCurrency(payment.name)}
               className={classNames('payments__choose-item text-bold', {
                 active: activePayment === payment.name,
               })}>
@@ -78,65 +97,46 @@ const Payments = () => {
             </div>
           ))}
         </div>
-        {activePayment === 'card' && (
-          <Button
-            size="lg"
-            centered={true}
-            className="payments__continue"
-            onClick={() => formik.handleSubmit()}>
-            Continue
-          </Button>
-        )}
+        <Button
+          size="lg"
+          centered={true}
+          className="payments__continue"
+          onClick={onSubmit}>
+          Continue
+        </Button>
       </div>
-      {activePayment !== 'card' &&
-        addresses &&
-        addresses[`${activePayment}_address`] && (
-          <div className="box-dark payments__send">
-            <div className="payments__send-title text-bold text-gradient">
-              Send your 100.0101 {activePayment.toUpperCase()} to the following
-              address
+      {activePayment !== 'card' && activeAddress && (
+        <div className="box-dark payments__send">
+          <div className="payments__send-title text-bold text-gradient">
+            Send your 100.0101 {activePayment.toUpperCase()} to the following
+            address
+          </div>
+          <div className="payments__send-copy">
+            <div className="payments__send-copy-address text-bold">
+              {activeAddress}
             </div>
-            <div className="payments__send-copy">
-              <div className="payments__send-copy-address text-bold">
-                {addresses[`${activePayment}_address`]
-                  ? addresses[`${activePayment}_address`]
-                  : ''}
-              </div>
-              <CopyToClipboard
-                text={
-                  addresses[`${activePayment}_address`]
-                    ? addresses[`${activePayment}_address`]
-                    : ''
-                }>
-                <img src={copyImg} alt="copy" />
-              </CopyToClipboard>
+            <CopyToClipboard text={activeAddress}>
+              <img src={copyImg} alt="copy" />
+            </CopyToClipboard>
+          </div>
+          <div className="payments__send-qr">
+            <div className="payments__send-qr-title text-gradient text-bold">
+              OR scan this QR code
             </div>
-            <div className="payments__send-qr">
-              <div className="payments__send-qr-title text-gradient text-bold">
-                OR scan this QR code
-              </div>
-              <div className="payments__send-qr-box">
-                <QRCode
-                  value={
-                    addresses[`${activePayment}_address`]
-                      ? addresses[`${activePayment}_address`]
-                      : ''
-                  }
-                  bgColor="#fff"
-                  fgColor="#000"
-                />
-              </div>
-            </div>
-            <div className="payment__send-text">
-              As soon as your transaction is confirmed on the blockchain, your
-              order will be available in{' '}
-              <Link className="text-bold text-gradient" to="/account/orders">
-                My orders
-              </Link>
-              , and you’ll receive an email.
+            <div className="payments__send-qr-box">
+              <QRCode value={activeAddress} bgColor="#fff" fgColor="#000" />
             </div>
           </div>
-        )}
+          <div className="payment__send-text">
+            As soon as your transaction is confirmed on the blockchain, your
+            order will be available in{' '}
+            <Link className="text-bold text-gradient" to="/account/orders">
+              My orders
+            </Link>
+            , and you’ll receive an email.
+          </div>
+        </div>
+      )}
     </div>
   );
 };

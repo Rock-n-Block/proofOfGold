@@ -18,6 +18,7 @@ interface ProductReviewFormProps {
   county: string;
   phone: string;
   notes: string;
+  currency?: string;
 }
 
 const { TextArea } = Input;
