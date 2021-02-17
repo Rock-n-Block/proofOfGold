@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, InputNumber } from 'antd';
+import { Form, Input, Checkbox } from 'antd';
 import { FormikProps } from 'formik';
 import ReactInputMask from 'react-input-mask';
 
@@ -19,6 +19,8 @@ interface ProductReviewFormProps {
   phone: string;
   notes: string;
   currency?: string;
+  save_shipping: boolean;
+  same_billing: boolean;
 }
 
 const { TextArea } = Input;
@@ -29,6 +31,7 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
   handleChange,
   handleBlur,
   values,
+  isBillingValid,
 }: any) => {
   return (
     <div className="checkout__content">
@@ -211,6 +214,36 @@ const ProductReviewForm: React.FC<FormikProps<ProductReviewFormProps>> = ({
             onBlur={handleBlur}
           />
         </Form.Item>
+        <Form.Item
+          name="save_shipping"
+          className="ch-form__item input__field"
+          validateStatus={validateField('save_shipping', touched, errors)}
+          help={!touched.save_shipping ? false : errors.save_shipping}
+          initialValue={values.save_shipping}>
+          <Checkbox
+            id="save_shipping"
+            className="ch-form__input input"
+            defaultChecked={values.save_shipping}
+            onChange={handleChange}>
+            Want to update your shipping addres?
+          </Checkbox>
+        </Form.Item>
+        {!isBillingValid && (
+          <Form.Item
+            name="same_billing"
+            className="ch-form__item input__field"
+            validateStatus={validateField('same_billing', touched, errors)}
+            help={!touched.same_billing ? false : errors.same_billing}
+            initialValue={values.same_billing}>
+            <Checkbox
+              id="same_billing"
+              className="ch-form__input input"
+              defaultChecked={values.same_billing}
+              onChange={handleChange}>
+              Does your billing address match your shipping address?
+            </Checkbox>
+          </Form.Item>
+        )}
       </Form>
       <CheckoutOrders />
     </div>

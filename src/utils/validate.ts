@@ -85,6 +85,16 @@ export const validateForm = ({ values, errors, not_required }: any) => {
         errors.town = 'Enter your town/city';
       }
     },
+    save_shipping: (value: boolean): void => {
+      if (!value) {
+        errors.save_shipping = 'Your shipping address is not completed';
+      }
+    },
+    same_billing: (value: boolean): void => {
+      if (!value) {
+        errors.same_billing = 'Your billing address is not completed';
+      }
+    },
     country: (value: number): void => {
       if (!value) {
         errors.country = 'Enter your contry/region';

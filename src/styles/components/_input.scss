@@ -70,3 +70,37 @@ input:-webkit-autofill:active {
     width: 100%;
   }
 }
+.ant-checkbox {
+  border-radius: 50%;
+  overflow: hidden;
+  &-inner {
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-checked &-inner {
+    background: $gold-bg;
+    border: none;
+    &::after {
+      border: none;
+      min-width: 10px;
+      min-height: 10px;
+      background: $dark;
+      border-radius: 50%;
+      transform: scale(1);
+    }
+  }
+  &-inner {
+    width: 17px;
+    height: 17px;
+    &::after {
+      position: static !important;
+    }
+  }
+  &-checked {
+    &::after {
+      border: none;
+    }
+  }
+}

@@ -77,6 +77,12 @@ export default observer(
             .changeBilling(data)
             .then(() => {
               user.updateBillingAddress(data);
+
+              isSubmitted = true;
+              const timeout = setTimeout(() => {
+                isSubmitted = false;
+                clearTimeout(timeout);
+              }, 3000);
             })
             .catch((err) => console.log('change billing address'));
         } else {

@@ -16,8 +16,9 @@ const ChackoutPage: React.FC = observer(() => {
   const [isModalVisible, setModalVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    if (!user.shipping_address?.first_name) {
+    if (user.isLogin) {
       user.getShippingAddress();
+      user.getBillingAddress();
     }
   }, []);
 
@@ -25,7 +26,11 @@ const ChackoutPage: React.FC = observer(() => {
     <div className="checkout">
       <div className="row">
         <div className="checkout__title text-gradient h1-md">Checkout</div>
-        <ShippingForm {...user} />
+        <ShippingForm
+          {...user}
+          isBillingValid={!!user.billing_address?.first_name}
+          isShippingValid={!!user.shipping_address?.first_name}
+        />
       </div>
       <Modal
         centered={true}

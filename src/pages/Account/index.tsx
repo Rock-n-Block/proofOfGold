@@ -19,8 +19,10 @@ const AccountPage = observer(() => {
   };
 
   React.useEffect(() => {
-    user.getBillingAddress();
-    user.getShippingAddress();
+    if (user.isLogin) {
+      user.getBillingAddress();
+      user.getShippingAddress();
+    }
   }, []);
 
   return (
