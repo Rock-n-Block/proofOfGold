@@ -41,6 +41,9 @@ export const CartStore = types
     },
   }))
   .actions((self) => {
+    const deleteAll = () => {
+      destroy(self.items);
+    };
     const remove = (product: any) => {
       destroy(product);
     };
@@ -92,5 +95,6 @@ export const CartStore = types
       remove,
       updateCart,
       setProductQuantity,
+      deleteAll,
     };
   });

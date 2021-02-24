@@ -4,8 +4,9 @@ import { observer } from 'mobx-react-lite';
 
 import { ShippingForm } from '../../components';
 import { validateForm } from '../../utils/validate';
-import { userApi } from '../../utils/api';
+import { userApi, payApi } from '../../utils/api';
 import { useMst } from '../../store/root';
+import { ICheckout } from '../../utils/api/pay';
 
 interface ShippingFormProps {
   firstname: string;
@@ -32,7 +33,7 @@ export default observer(
     isBillingValid,
     isShippingValid,
   }: any) => {
-    const { user } = useMst();
+    const { user, cart } = useMst();
     const FormWithFormik = withFormik<any, ShippingFormProps>({
       enableReinitialize: true,
       mapPropsToValues: () => ({
@@ -74,7 +75,7 @@ export default observer(
       },
 
       handleSubmit: async (values: any) => {
-        const data = {
+        const formData = {
           first_name: values.firstname,
           last_name: values.lastname,
           company_name: values.company,
@@ -87,20 +88,39 @@ export default observer(
         };
         if (values.save_shipping) {
           try {
-            await userApi.changeShipping(data);
+            await userApi.changeShipping(formData);
 
-            user.updateShippingAddress(data);
+            user.updateShippingAddress(formData);
           } catch (err) {
             console.log(err, 'change shipping address');
           }
         }
         if (values.same_billing) {
           try {
-            await userApi.changeBilling(data);
-            user.updateBillingAddress(data);
+            await userApi.changeBilling(formData);
+            user.updateBillingAddress(formData);
           } catch (error) {
             console.log('change billing address');
           }
+        }
+
+        try {
+          let apiData: ICheckout = {
+            items: cart.items.map((item) => ({
+              item_id: +item.product.id,
+              quantity: item.quantity,
+            })),
+            currency: values.currency,
+          };
+
+          if (!values.save_shipping) {
+            apiData.shipping_address = formData;
+          }
+
+          const { data }: any = await payApi.checkout(apiData);
+          window.localStorage['order_id'] = data.id;
+        } catch (err) {
+          console.log('checkout');
         }
       },
 

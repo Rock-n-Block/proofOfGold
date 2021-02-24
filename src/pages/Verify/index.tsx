@@ -48,7 +48,12 @@ const VerifyPage: React.FC = observer(() => {
         />
       )}
       {token && isActivated && (
-        <InfoBlock Icon={SuccessImg} text="Your account has been activated" />
+        <InfoBlock
+          Icon={SuccessImg}
+          text="Your account has been activated"
+          btnText="BACK TO HOMEPAGE"
+          link="/"
+        />
       )}
       {alreadyActivated && (
         <InfoBlock Icon={SuccessImg} text="Your account already activated" />

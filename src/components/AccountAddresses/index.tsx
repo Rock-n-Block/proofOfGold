@@ -29,7 +29,7 @@ const AccountAddresses: React.FC = observer(() => {
                 </div>
               ) : (
                 <div className="addresses__item-text text-md">
-                  {`${user.billing_address.first_name} ${user.billing_address.last_name} ${user.billing_address.full_address}, ${user.billing_address.country}`}
+                  {`${user.billing_address.first_name} ${user.billing_address.last_name} ${user.billing_address.full_address}, ${user.billing_address.town}, ${user.billing_address.country}`}
                 </div>
               )}
               <Link to="/account/addresses/billing">
@@ -48,7 +48,7 @@ const AccountAddresses: React.FC = observer(() => {
                 </div>
               ) : (
                 <div className="addresses__item-text text-md">
-                  {`${user.shipping_address.first_name} ${user.shipping_address.last_name} ${user.shipping_address.full_address}, ${user.shipping_address.country}`}
+                  {`${user.shipping_address.first_name} ${user.shipping_address.last_name} ${user.shipping_address.full_address}, ${user.shipping_address.town}, ${user.shipping_address.country}`}
                 </div>
               )}
               <Link to="/account/addresses/shipping">

@@ -14,9 +14,11 @@ const Footer: React.FC = observer(() => {
     <footer className="footer">
       <div className="row">
         <div className="footer__content">
-          <Link to="/">
-            <img className="footer__content-logo" src={logoImg} alt="" />
-          </Link>
+          <div className="">
+            <Link to="/">
+              <img className="footer__content-logo" src={logoImg} alt="" />
+            </Link>
+          </div>
 
           <div className="footer__content-links">
             <div className="footer__content-links-block">

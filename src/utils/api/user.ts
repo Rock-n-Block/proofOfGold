@@ -50,4 +50,5 @@ export default {
     axios.get(`account/${localStorage.access_token}/shipping/`),
   checkSecurityCode: (code: string) =>
     axios.post('account/login/check_code', { code }),
+  getOrders: () => axios.get(`payments/user/${localStorage.access_token}`),
 };

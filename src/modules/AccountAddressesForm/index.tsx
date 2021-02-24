@@ -33,7 +33,7 @@ export default observer(
     isBilling,
   }: any) => {
     const { user } = useMst();
-    let isSubmitted = false;
+    const [isSubmitted, setSubmitted] = React.useState(false);
     const FormWithFormik = withFormik<any, AccountAddressesFormProps>({
       enableReinitialize: true,
       mapPropsToValues: () => ({
@@ -78,9 +78,9 @@ export default observer(
             .then(() => {
               user.updateBillingAddress(data);
 
-              isSubmitted = true;
+              setSubmitted(true);
               const timeout = setTimeout(() => {
-                isSubmitted = false;
+                setSubmitted(false);
                 clearTimeout(timeout);
               }, 3000);
             })
@@ -91,9 +91,9 @@ export default observer(
             .then(() => {
               user.updateShippingAddress(data);
 
-              isSubmitted = true;
+              setSubmitted(true);
               const timeout = setTimeout(() => {
-                isSubmitted = false;
+                setSubmitted(false);
                 clearTimeout(timeout);
               }, 3000);
             })

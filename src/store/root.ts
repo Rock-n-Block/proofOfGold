@@ -11,7 +11,7 @@ const RootModel = types.model({
   cart: CartStore,
 });
 
-let initialState = RootModel.create({
+export let Store = RootModel.create({
   user: {
     username: '',
     email: '',
@@ -29,11 +29,11 @@ if (productsData) {
   const cartJson = cartData && JSON.parse(cartData);
   const productsJson = JSON.parse(productsData);
 
-  initialState.productsStore.updateProducts(productsJson.products);
-  initialState.cart.updateCart(cartJson);
+  Store.productsStore.updateProducts(productsJson.products);
+  Store.cart.updateCart(cartJson);
 }
 
-export const rootStore = initialState;
+export const rootStore = Store;
 
 onSnapshot(rootStore, (snapshot) => {
   console.log('Snapshot: ', snapshot);

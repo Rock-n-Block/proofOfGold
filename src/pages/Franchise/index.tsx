@@ -187,12 +187,17 @@ const FranchisePage: React.FC = () => {
             ))}
           </div>
 
-          <Button
-            className="franchise__gold-presentation-button"
-            colorScheme="black"
-            size="lg">
-            Find out more about Lease & Earn
-          </Button>
+          <a
+            href="https://centuriongm.com/crowdfunding"
+            className="franchise__gold-presentation-link"
+            target="_blank">
+            <Button
+              className="franchise__gold-presentation-button"
+              colorScheme="black"
+              size="lg">
+              Find out more about Lease & Earn
+            </Button>
+          </a>
         </div>
       </div>
 
@@ -213,10 +218,6 @@ const FranchisePage: React.FC = () => {
               </div>
             ))}
           </div>
-
-          <Button className="franchise__presentation-button" size="lg">
-            Find out more about being a Franchisee
-          </Button>
         </div>
       </div>
     </div>

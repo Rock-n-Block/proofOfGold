@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { Button } from '../../components';
 
 import './InfoBlock.scss';
 
@@ -9,13 +12,24 @@ interface InfoBlockProps {
   link?: string;
 }
 
-const InfoBlock: React.FC<InfoBlockProps> = ({ Icon, text }) => {
+const InfoBlock: React.FC<InfoBlockProps> = ({ Icon, text, btnText, link }) => {
   return (
     <div className="i-block box-fullpage">
       <div className="row">
         <div className="i-block__content">
-          {Icon && <Icon />}
-          {text && <div className="i-block__text text-gradient">{text}</div>}
+          {Icon ? <Icon /> : ''}
+          {text ? (
+            <div className="i-block__text text-gradient">{text}</div>
+          ) : (
+            ''
+          )}
+          {btnText && link ? (
+            <Link to={link} className="i-block__btn">
+              <Button centered={true}>{btnText}</Button>
+            </Link>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>

@@ -4,9 +4,11 @@ import QRCode from 'qrcode.react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import { useFormikContext } from 'formik';
+import { observer } from 'mobx-react-lite';
 
 import { Button } from '../../components';
-import { storeApi } from '../../utils/api';
+import { storeApi, payApi } from '../../utils/api';
+import { useMst } from '../../store/root';
 
 import './Payments.scss';
 
@@ -16,11 +18,13 @@ import ethImg from '../../assets/img/icons/eth.svg';
 import usdcImg from '../../assets/img/icons/usdc.svg';
 import copyImg from '../../assets/img/icons/copy.svg';
 
-const Payments = () => {
+const Payments = observer(() => {
+  const { cart } = useMst();
   const formik = useFormikContext();
 
   const [activePayment, setActivePayment] = React.useState('card');
   const [addresses, setAddresses] = React.useState<any>(null);
+  const [rates, setRates] = React.useState<any>({});
   const [activeAddress, setActiveAddress] = React.useState<string>('');
   const payments = [
     {
@@ -61,10 +65,20 @@ const Payments = () => {
         setAddresses(data);
       })
       .catch((err) => console.log(err, 'get crypto addresses'));
+    payApi
+      .getRates()
+      .then(({ data }) => {
+        setRates(data);
+      })
+      .catch((err) => console.log(err, 'get crypto rates'));
   }, []);
 
   const onContinue = (): void => {
-    setActiveAddress(addresses[`${activePayment}_address`]);
+    setActiveAddress(
+      activePayment === 'usdc'
+        ? addresses['eth_address']
+        : addresses[`${activePayment}_address`],
+    );
   };
 
   const onChangeCurrency = (name: string): void => {
@@ -108,8 +122,11 @@ const Payments = () => {
       {activePayment !== 'card' && activeAddress && (
         <div className="box-dark payments__send">
           <div className="payments__send-title text-bold text-gradient">
-            Send your 100.0101 {activePayment.toUpperCase()} to the following
-            address
+            Send your{' '}
+            {activePayment.toUpperCase() === 'USDC'
+              ? cart.subTotal / rates['USDT']
+              : cart.subTotal / rates[activePayment.toUpperCase()]}{' '}
+            {activePayment.toUpperCase()} to the following address
           </div>
           <div className="payments__send-copy">
             <div className="payments__send-copy-address text-bold">
@@ -139,6 +156,6 @@ const Payments = () => {
       )}
     </div>
   );
-};
+});
 
 export default Payments;

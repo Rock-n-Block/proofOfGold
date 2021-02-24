@@ -17,16 +17,16 @@ interface AccountDetailsFormProps {
   confirm_password: string;
 }
 
-export default ({ username, email, first_name, last_name }: any) => {
+export default () => {
   const { user } = useMst();
-  let isSubmitted = false;
+  const [isSubmitted, setSubmitted] = React.useState(false);
   const FormWithFormik = withFormik<any, AccountDetailsFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
-      firstname: first_name,
-      lastname: last_name,
-      email,
-      username,
+      firstname: user.first_name,
+      lastname: user.last_name,
+      email: user.email,
+      username: user.username,
       current_password: '',
       change_password: '',
       confirm_password: '',
@@ -39,7 +39,7 @@ export default ({ username, email, first_name, last_name }: any) => {
       return errors;
     },
 
-    handleSubmit: (values) => {
+    handleSubmit: (values, { setErrors }) => {
       const usrObj: any = {
         first_name: values.firstname,
         last_name: values.lastname,
@@ -59,13 +59,21 @@ export default ({ username, email, first_name, last_name }: any) => {
             isLogin: true,
           });
 
-          isSubmitted = true;
+          setSubmitted(true);
           const timeout = setTimeout(() => {
-            isSubmitted = false;
+            setSubmitted(false);
             clearTimeout(timeout);
           }, 3000);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setErrors({
+            ...err.response.data,
+            [err.response.data.first_name ? 'firstname' : '']: err.response.data
+              .first_name,
+            [err.response.data.last_name ? 'firstname' : '']: err.response.data
+              .last_name,
+          });
+        });
     },
 
     displayName: 'AccountDetailsForm',

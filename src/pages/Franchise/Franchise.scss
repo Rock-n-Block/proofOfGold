@@ -131,6 +131,12 @@
     background: $gold-bg;
     color: $gray;
 
+    &-link {
+      width: fit-content;
+      display: block;
+      margin: 0 auto;
+    }
+
     &-container {
       display: flex;
       flex-direction: column;
