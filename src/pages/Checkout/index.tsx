@@ -17,8 +17,12 @@ const ChackoutPage: React.FC = observer(() => {
 
   React.useEffect(() => {
     if (user.isLogin) {
-      user.getShippingAddress();
-      user.getBillingAddress();
+      if (!user.shipping_address?.first_name) {
+        user.getShippingAddress();
+      }
+      if (!user.billing_address?.first_name) {
+        user.getBillingAddress();
+      }
     }
   }, []);
 

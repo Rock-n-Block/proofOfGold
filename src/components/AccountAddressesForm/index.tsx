@@ -29,7 +29,6 @@ const AccountAddresses: React.FC<FormikProps<AccountAddressesProps>> = observer(
     values,
     isSubmitted,
   }: any) => {
-    console.log(isSubmitted, 'isSubmitted');
     return (
       <>
         <h1 className="h1-md text-uppercase text-gradient addresses__title-form">

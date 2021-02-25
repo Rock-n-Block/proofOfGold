@@ -5,6 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import { useFormikContext } from 'formik';
 import { observer } from 'mobx-react-lite';
+import BigNumber from 'bignumber.js';
 
 import { Button } from '../../components';
 import { storeApi, payApi } from '../../utils/api';
@@ -17,9 +18,10 @@ import btcImg from '../../assets/img/icons/btc.svg';
 import ethImg from '../../assets/img/icons/eth.svg';
 import usdcImg from '../../assets/img/icons/usdc.svg';
 import copyImg from '../../assets/img/icons/copy.svg';
+import user from '../../utils/api/user';
 
 const Payments = observer(() => {
-  const { cart } = useMst();
+  const { cart, user } = useMst();
   const formik = useFormikContext();
 
   const [activePayment, setActivePayment] = React.useState('card');
@@ -122,10 +124,12 @@ const Payments = observer(() => {
       {activePayment !== 'card' && activeAddress && (
         <div className="box-dark payments__send">
           <div className="payments__send-title text-bold text-gradient">
-            Send your{' '}
+            Send your {/* cart.subTotal / rates['USDT'] */}
             {activePayment.toUpperCase() === 'USDC'
               ? cart.subTotal / rates['USDT']
-              : cart.subTotal / rates[activePayment.toUpperCase()]}{' '}
+              : new BigNumber(cart.subTotal)
+                  .dividedBy(rates[activePayment.toUpperCase()])
+                  .toFixed(8)}{' '}
             {activePayment.toUpperCase()} to the following address
           </div>
           <div className="payments__send-copy">

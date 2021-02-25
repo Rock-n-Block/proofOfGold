@@ -34,9 +34,9 @@ const Orders: React.FC = () => {
                 </div>
               </div>
               <div className="orders__item-info-box">
-                <div className="orders__item-info-id">{order.id}</div>
+                <div className="orders__item-info-id">Order # {order.id}</div>
                 <div className="orders__item-info-payment">
-                  Paid Online card
+                  Paid {order.payment}
                 </div>
               </div>
             </div>

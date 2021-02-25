@@ -5,12 +5,12 @@ import user from '../utils/api/user';
 const Address = types.model({
   first_name: types.string,
   last_name: types.string,
-  company_name: types.string,
+  company_name: types.maybeNull(types.string),
   country: types.string,
   full_address: types.string,
   town: types.string,
-  county: types.string,
-  phone: types.string,
+  county: types.maybeNull(types.string),
+  phone: types.maybeNull(types.string),
   email: types.string,
 });
 
