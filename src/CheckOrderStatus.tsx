@@ -18,18 +18,26 @@ class CheckOrderStatus extends Component<RouteComponentProps, any> {
       .then(({ data }) => {
         if (data === 'PAID') {
           Store.cart.deleteAll();
+          delete window.localStorage['order_id'];
+        } else if (data === 'EXPIRED') {
+          delete window.localStorage['order_id'];
         }
       })
       .catch((err) => console.log(err, 'check status'));
   }
   componentDidUpdate(prevProps: RouteComponentProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    if (
+      this.props.location.pathname !== prevProps.location.pathname &&
+      window.localStorage['order_id']
+    ) {
       this.checkOrder();
     }
   }
 
   componentDidMount() {
-    this.checkOrder();
+    if (window.localStorage['order_id']) {
+      this.checkOrder();
+    }
   }
 
   render() {

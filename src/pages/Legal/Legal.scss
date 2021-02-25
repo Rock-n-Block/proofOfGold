@@ -28,5 +28,20 @@
         margin-top: 20px;
       }
     }
+    &-list {
+      margin-top: 20px;
+      li + li {
+        margin-top: 20px;
+      }
+      li {
+        display: flex;
+      }
+      span {
+        margin-right: 5px;
+      }
+      & + p {
+        margin-top: 20px;
+      }
+    }
   }
 }
