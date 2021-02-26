@@ -89,14 +89,14 @@ const LegalPage: React.FC = () => {
               <p>
                 The Terms and Conditions Agreement, Disclaimer and Privacy
                 Policy apply to all users of{' '}
-                <a href="http://www.remusgold.com" className="text-gradient">
-                  http://www.remusgold.com
+                <a href="https://d-pog.com" className="text-gradient">
+                  https://d-pog.com
                 </a>
               </p>
               <p>
                 By accessing, viewing and/or ordering from{' '}
-                <a href="http://www.remusgold.com" className="text-gradient">
-                  http://www.remusgold.com
+                <a href="https://d-pog.com" className="text-gradient">
+                  https://d-pog.com
                 </a>
                 , you acknowledge that you have read and understood these Terms
                 and Conditions and you agree to be bound by them.
@@ -118,24 +118,24 @@ const LegalPage: React.FC = () => {
               <div className="legal__rights-text text-md">
                 <p>
                   Denarius Financial Services AG., the owner of this website (
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                   ), own the trademarks, logos and service mark contained in
                   this website. All other trademarks not owned by{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                   , or its affiliates that appear on this site are the property
                   of their respective owners, who may or may not be affiliated
                   with, connected to, or sponsored by{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                   , or its affiliates. These may not be used without written
                   permission of{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>{' '}
                   or the party owning them.
                 </p>
@@ -151,8 +151,8 @@ const LegalPage: React.FC = () => {
                   herein contained in this Web Site and the Terms and Conditions
                   and descriptions that appear are subject to change at the sole
                   discretion of{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                 </p>
               </div>
@@ -182,14 +182,14 @@ const LegalPage: React.FC = () => {
                   This website may include publications with technical
                   inaccuracies or typographical errors that will be corrected as
                   they are discovered at{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>{' '}
                   discretion. Also, changes are periodically added to the
                   material contained herein. These corrections and changes may
                   be incorporated into the website at a later date.{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>{' '}
                   may at any time make modifications, improvements and/or
                   changes to these Terms and Conditions and the material (names,
@@ -250,8 +250,8 @@ const LegalPage: React.FC = () => {
               <div className="legal__rights-text text-md">
                 <p>
                   We guarantee your satisfaction at{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                   . We provide all our customers with a refund, return and/or
                   exchange policy if the product does not match the description
@@ -260,14 +260,14 @@ const LegalPage: React.FC = () => {
                   their items and notifies us, provided they are kept in their
                   original packaging. On returning related items, the customer
                   may (at{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>{' '}
                   discretion) be required to pay for any market loss on their
                   returns. Any market gain on refunds shall remain the property
                   of{' '}
-                  <a href="http://www.remusgold.com" className="text-gradient">
-                    http://www.remusgold.com
+                  <a href="https://d-pog.com" className="text-gradient">
+                    https://d-pog.com
                   </a>
                   .
                 </p>
