@@ -6,4 +6,5 @@ export default {
   search: (data: any) => axios.post('store/search', data),
   getCryptoAddresses: () =>
     axios.get(`/account/checkout_addresses/${localStorage.access_token}`),
+  contactUs: (data: any) => axios.post('store/contact_us', data),
 };

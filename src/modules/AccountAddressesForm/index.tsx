@@ -84,7 +84,10 @@ export default observer(
                 clearTimeout(timeout);
               }, 3000);
             })
-            .catch((err) => console.log('change billing address'));
+            .catch((err) => {
+              setSubmitted(false);
+              console.log('change billing address');
+            });
         } else {
           userApi
             .changeShipping(data)
@@ -97,7 +100,10 @@ export default observer(
                 clearTimeout(timeout);
               }, 3000);
             })
-            .catch((err) => console.log('change shipping address'));
+            .catch((err) => {
+              setSubmitted(false);
+              console.log('change shipping address');
+            });
         }
       },
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { withFormik } from 'formik';
+import { observer } from 'mobx-react-lite';
 
 import { ProductReviewForm } from '../../components';
 import { validateForm } from '../../utils/validate';
 import { storeApi } from '../../utils/api';
-import { useMst } from '../../store/root';
 
 interface ProductReviewFormProps {
   username: string;
@@ -13,9 +13,9 @@ interface ProductReviewFormProps {
   rate: number;
 }
 
-export default ({ productId, isLogin, username, email }: any) => {
-  const { productsStore } = useMst();
-  const FormWithFormik = withFormik<{}, ProductReviewFormProps>({
+export default observer(({ productId, isLogin, username, email }: any) => {
+  const [isSubmitted, setSubmitted] = React.useState(false);
+  const FormWithFormik = withFormik<any, ProductReviewFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () =>
       !isLogin
@@ -48,10 +48,20 @@ export default ({ productId, isLogin, username, email }: any) => {
           name: values.username,
           email: values.email,
         })
-        .catch((err) => console.log(err, 'review'));
+        .then(() => {
+          setSubmitted(true);
+          const timeout = setTimeout(() => {
+            setSubmitted(false);
+            clearTimeout(timeout);
+          }, 3000);
+        })
+        .catch((err) => {
+          setSubmitted(false);
+          console.log(err, 'send review');
+        });
     },
 
     displayName: 'ProductReviewForm',
   })(ProductReviewForm);
-  return <FormWithFormik />;
-};
+  return <FormWithFormik isSubmitted={isSubmitted} />;
+});

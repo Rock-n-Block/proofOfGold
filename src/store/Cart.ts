@@ -58,17 +58,18 @@ export const CartStore = types
       const productObj = parent.productsStore.products.find(
         (element: any) => element.id === product,
       );
-      if (!entry && productObj.total_supply >= quantity) {
+      if (!entry && productObj.supply >= quantity) {
         self.items.push({
           product: product,
           quantity,
         });
-      } else if (
-        entry &&
-        productObj.total_supply >= entry.quantity + quantity
-      ) {
+      } else if (entry && productObj.supply >= entry.quantity + quantity) {
         entry.increaseQuantity(quantity);
       }
+    };
+
+    const getProduct = (id: string) => {
+      return self.items.find((entry) => entry.product.id === id);
     };
 
     const deleteProduct = (product: string, quantity = 1) => {
@@ -96,5 +97,6 @@ export const CartStore = types
       updateCart,
       setProductQuantity,
       deleteAll,
+      getProduct,
     };
   });

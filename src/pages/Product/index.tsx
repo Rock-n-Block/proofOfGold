@@ -17,16 +17,21 @@ interface ParamTypes {
 const ProductPage = observer(() => {
   const { productsStore, cart, user } = useMst();
   const [activeTab, setActiveTab] = React.useState(1);
+  const [productCartQuantity, setProductCartQuantity] = React.useState<any>(0);
   const { productId } = useParams<ParamTypes>();
-  let quantity = 1;
+  const [quantity, setQuantity] = React.useState(1);
 
   React.useEffect(() => {
     productsStore.loadProduct(productId);
   }, [productId]);
 
-  const product: any = productsStore.getProduct(productId + '');
+  React.useEffect(() => {
+    const productsInCart = cart.getProduct(productId + '')?.quantity;
 
-  console.log(product, 'products asdf');
+    setProductCartQuantity(productsInCart ? productsInCart : 0);
+  }, [cart.getProduct(productId + '')?.quantity]);
+
+  const product: any = productsStore.getProduct(productId + '');
 
   const handleAdd = () => {
     cart.addProduct(product.id + '', quantity > 0 ? quantity : 1);
@@ -60,9 +65,9 @@ const ProductPage = observer(() => {
                 <Counter
                   min={1}
                   value={quantity}
-                  max={product.total_supply - product.sold}
+                  max={product.supply - productCartQuantity}
                   onChange={(value: number) => {
-                    quantity = value;
+                    setQuantity(value);
                   }}
                 />
                 <Button
@@ -103,9 +108,7 @@ const ProductPage = observer(() => {
                   Seal and is registered on the DucatusX Blockchain.
                 </div>
               </div>
-              <div className="product__instok">
-                {product.total_supply - product.sold} in stock
-              </div>
+              <div className="product__instok">{product.supply} in stock</div>
             </div>
             <div className="product__img">
               <img src={`https://${product.image}`} alt="" />

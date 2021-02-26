@@ -17,6 +17,7 @@ export interface CartItemProps {
   price: number;
   quantity: number;
   isFirst: boolean;
+  supply: number;
   totalPrise: number;
   addMore: () => void;
   deleteOneOf: () => void;
@@ -34,8 +35,8 @@ const CartItem: React.FC<CartItemProps> = observer(
     totalPrise,
     addMore,
     deleteOneOf,
+    supply,
     deleteCurrent,
-    total_supply,
   }) => {
     return (
       <div className="c-item">
@@ -65,10 +66,10 @@ const CartItem: React.FC<CartItemProps> = observer(
           <div className="c-item__elem">
             <span>QUANTITY</span>
             <Counter
-              onIncrease={() => addMore()}
+              onIncrease={addMore}
               onDecrease={deleteOneOf}
               min={0}
-              max={total_supply}
+              max={supply}
               isInput={false}
               value={quantity}
               onChange={() => {}}

@@ -76,7 +76,7 @@ const about = [
 ];
 
 const HomePage: React.FC = observer(() => {
-  const { productsStore } = useMst();
+  const { productsStore, user } = useMst();
 
   return (
     <div className="home">
@@ -301,7 +301,7 @@ const HomePage: React.FC = observer(() => {
             <div className="home__contact-title home__contact-form-title h2 text-gradient">
               Drop us a note and we’ll get back to you shortly.
             </div>
-            <ContactUsForm />
+            <ContactUsForm {...user} />
           </div>
         </div>
       </div>

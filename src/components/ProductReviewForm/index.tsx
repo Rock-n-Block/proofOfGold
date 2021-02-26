@@ -28,7 +28,8 @@ const ProductReviewForm: React.FC<
     handleBlur,
     handleSubmit,
     setFieldValue,
-  }) => {
+    isSubmitted,
+  }: any) => {
     const { user } = useMst();
     const handleRateChange = (value: number) => {
       setFieldValue('rate', value);
@@ -93,9 +94,16 @@ const ProductReviewForm: React.FC<
             </Form.Item>
           </>
         )}
-        <Button size="lg" onClick={handleSubmit}>
-          submit
-        </Button>
+        <div className="box-flex-row">
+          <Button size="lg" onClick={handleSubmit}>
+            submit
+          </Button>
+          {isSubmitted && (
+            <div className="text-gradient c-form__saved text-md">
+              Thanks for your review
+            </div>
+          )}
+        </div>
       </Form>
     );
   },
