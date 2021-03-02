@@ -31,3 +31,26 @@
     line-height: 20px;
   }
 }
+
+@media (max-width: 1024px) {
+  .p-review {
+    padding: 10px;
+    &__content {
+      margin-left: 10px;
+    }
+    &__name {
+      font-size: 13px !important;
+      line-height: 15px !important;
+    }
+    .ant-rate-star {
+      width: 15px !important;
+      height: 15px !important;
+    }
+    .anticon-star {
+      width: 100% !important;
+      svg {
+        width: 100% !important;
+      }
+    }
+  }
+}

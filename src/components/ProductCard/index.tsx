@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import classNames from 'classnames';
 
 import { Button } from '../../components';
 import numberWithCommas from '../../utils/numberWithCommas';
@@ -20,13 +21,16 @@ export interface IProduct {
 }
 
 const ProductCard: React.FC<IProduct> = observer(
-  ({ id, name, price, image }) => {
+  ({ id, name, price, image, group }) => {
     const { cart } = useMst();
     const handleAdd = () => {
       cart.addProduct(id);
     };
     return (
-      <div className="p-card">
+      <div
+        className={classNames('p-card', {
+          'p-card__coin': group === 'gold_coins',
+        })}>
         <Link to={`/product/${id}`} className="p-card__img">
           <img src={`https://${image}`} alt="" />
         </Link>

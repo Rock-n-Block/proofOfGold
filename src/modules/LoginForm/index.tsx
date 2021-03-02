@@ -3,7 +3,9 @@ import { withFormik } from 'formik';
 
 import { LoginForm } from '../../components';
 import { validateForm } from '../../utils/validate';
+import getIpFromStr from '../../utils/getIpFromStr';
 import { useMst } from '../../store/root';
+import { userApi } from '../../utils/api';
 
 interface LoginFormProps {
   username: string;
@@ -27,22 +29,34 @@ export default ({ history }: any) => {
     },
 
     handleSubmit: (values, { setErrors }) => {
-      user
-        .login(values)
-        .then(() => {
-          history.push('/');
-        })
-        .catch(({ message }) => {
-          if (message === 'User is not activated') {
-            history.push('/verify');
-          }
-          if (message === 'data') {
-            setErrors({
-              username: 'Incorrect login or password',
-              password: 'Incorrect login or password',
+      userApi
+        .getIp()
+        .then(({ data }: any) => {
+          const ip = getIpFromStr(data);
+          user
+            .login({
+              ...values,
+              ip,
+            })
+            .then(() => {
+              history.push('/');
+            })
+            .catch(({ message }) => {
+              if (message === 'User is not activated') {
+                history.push('/verify');
+              }
+              if (message === 'data') {
+                setErrors({
+                  username: 'Incorrect login or password',
+                  password: 'Incorrect login or password',
+                });
+              }
+              if (message === 'code') {
+                history.push('/security');
+              }
             });
-          }
-        });
+        })
+        .catch((err) => console.log(err, 'get user ip'));
     },
 
     displayName: 'LoginForm',

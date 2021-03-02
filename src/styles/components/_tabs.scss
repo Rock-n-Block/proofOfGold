@@ -29,3 +29,13 @@
     }
   }
 }
+@media (max-width: 1024px) {
+  .tabs {
+    overflow: scroll;
+    &__item {
+      & + & {
+        margin-left: 25px;
+      }
+    }
+  }
+}

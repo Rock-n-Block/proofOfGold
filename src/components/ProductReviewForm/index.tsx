@@ -54,6 +54,8 @@ const ProductReviewForm: React.FC<
           help={!touched.review ? false : errors.review}>
           <TextArea
             id="review"
+            maxLength={500}
+            showCount={true}
             rows={6}
             size="large"
             className="p-form__input input"

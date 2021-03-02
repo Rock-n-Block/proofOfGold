@@ -9,6 +9,21 @@
   resize: none !important;
   box-shadow: none;
   color: white !important;
+  textarea {
+    border: none;
+    font-family: MB;
+    font-size: 14px;
+    line-height: 17px;
+    resize: none !important;
+    box-shadow: none !important;
+    color: white !important;
+    &:hover,
+    &:focus {
+      background-color: #363636 !important;
+      box-shadow: none;
+      border-color: none;
+    }
+  }
   &__label {
     font-size: 14px;
     line-height: 17px;
@@ -103,4 +118,8 @@ input:-webkit-autofill:active {
       border: none;
     }
   }
+}
+.ant-form-item .ant-input-textarea-show-count::after {
+  right: 0;
+  color: white;
 }

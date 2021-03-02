@@ -60,8 +60,7 @@
 
 @media (max-width: 700px) {
   .footer {
-    padding-right: 30px;
-    padding-left: 50px;
+    padding: 50px 0 30px;
 
     &__content {
       width: 100%;
@@ -76,11 +75,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: 450px) {
-  .footer {
-    padding-left: 10px;
   }
 }

@@ -155,9 +155,7 @@ const AccountDetailsForm: React.FC<
         validateStatus={validateField('current_password', touched, errors)}
         help={!touched.current_password ? false : errors.current_password}
         label={
-          <span className="text-gradient input__label">
-            Current password (leave blank to leave unchanged)
-          </span>
+          <span className="text-gradient input__label">Current password</span>
         }>
         <div className="input__star">
           <Input

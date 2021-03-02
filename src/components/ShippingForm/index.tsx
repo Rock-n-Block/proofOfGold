@@ -216,6 +216,8 @@ const ProductReviewForm: React.FC<
             }>
             <TextArea
               rows={6}
+              maxLength={500}
+              showCount={true}
               size="large"
               id="notes"
               className="ch-form__input input"

@@ -42,7 +42,8 @@ const features = [
   },
   {
     img: icon3,
-    text: 'Exclusive to POG Gold Trading',
+    text:
+      'Each gold coin and gold bar exclusive to POG is finely crafted with the highest standards of workmanship in Florence, Italy',
   },
 ];
 
@@ -269,6 +270,23 @@ const HomePage: React.FC = observer(() => {
 
       <div className="home__content home__about">
         <div className="row">
+          <div className="h1-lg">A Truly Golden Opportunity</div>
+          <div className="home__about-text text-lg">
+            <p>
+              Proof that even traditional forms of trading and commerce can
+              further be enhanced by technology, Proof of Gold (POG) integrates
+              blockchain to the business of gold retailing.
+            </p>
+            <p>
+              POG is designed to benefit the modern-day investor, both big and
+              small, and opens the door to global opportunities that can only
+              possible through innovation. Find out how you can benefit from the
+              POG Franchise today!
+            </p>
+          </div>
+          <Link to="/franchise" className="home__about-btn">
+            <Button colorScheme="black">Learn more</Button>
+          </Link>
           <div className="home__about-title h2">About POG (Proof of Gold)</div>
 
           <div className="home__about-cards">

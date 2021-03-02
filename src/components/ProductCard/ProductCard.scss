@@ -4,6 +4,9 @@
   max-width: 350px;
   text-align: center;
   font-family: MB;
+  &__coin &__box {
+    padding-top: 0;
+  }
   &__img {
     display: block;
     img {

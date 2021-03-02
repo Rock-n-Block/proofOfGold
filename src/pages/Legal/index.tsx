@@ -10,6 +10,8 @@ const LegalPage: React.FC = () => {
     <div className="legal">
       <div className="row">
         <h1 className="legal__title text-gradient h1-md">Legal Page</h1>
+      </div>
+      <div className="row legal__row-tabs">
         <div className="legal__tabs tabs">
           {tabs.map((tab, index) => (
             <div
@@ -18,10 +20,12 @@ const LegalPage: React.FC = () => {
                 active: index === activeTab,
               })}
               onClick={() => setActiveTab(index)}>
-              {tab}
+              <span>{tab}</span>
             </div>
           ))}
         </div>
+      </div>
+      <div className="row">
         {activeTab === 0 && (
           <>
             <div className="legal__info text-md">
@@ -103,7 +107,7 @@ const LegalPage: React.FC = () => {
               </p>
               <p>
                 All contents in this website, whether original or submitted to
-                Remus Gold, is subject to change without prior notice.
+                Proof of Gold, is subject to change without prior notice.
               </p>
               <p>
                 Denarius Financial Services AG. reserves the right to refuse

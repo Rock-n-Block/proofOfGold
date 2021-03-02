@@ -29,6 +29,7 @@ interface IAddresses {
 }
 
 export default {
+  getIp: () => axios.get('https://www.cloudflare.com/cdn-cgi/trace'),
   getMe: () => axios.get(`account/${localStorage.access_token}/`),
   register: (data: IRegister) => axios.post('account/register/', data),
   login: (data: ILogin) => axios.post('account/login', data),
@@ -48,7 +49,7 @@ export default {
   getBilling: () => axios.get(`account/${localStorage.access_token}/billing/`),
   getShipping: () =>
     axios.get(`account/${localStorage.access_token}/shipping/`),
-  checkSecurityCode: (code: string) =>
-    axios.post('account/login/check_code', { code }),
+  checkSecurityCode: (data: any) =>
+    axios.post('account/login/check_code', data),
   getOrders: () => axios.get(`payments/user/${localStorage.access_token}`),
 };

@@ -4,6 +4,7 @@ import { withFormik } from 'formik';
 import { RegisterForm } from '../../components';
 import { validateForm } from '../../utils/validate';
 import { userApi } from '../../utils/api';
+import getIpFromStr from '../../utils/getIpFromStr';
 
 interface RegisterFormProps {
   username: string;
@@ -32,19 +33,26 @@ export default ({ history }: any) => {
         username: values.username,
         email: values.email,
         password: values.new_password,
+        ip: '',
       };
-      userApi
-        .register(postData)
-        .then((res) => {
-          console.log(res, 'register');
-          history.push('/verify');
-        })
-        .catch((err) => {
-          // const errField: string = err.response.data.error
-          // setErrors({
-          //   errField: 'username is already in use'
-          // });
-        });
+      userApi.getIp().then(({ data }: any) => {
+        const ip = getIpFromStr(data);
+        postData.ip = ip;
+
+        userApi
+          .register(postData)
+          .then((res) => {
+            console.log(res, 'register');
+            history.push('/verify');
+          })
+          .catch((err) => {
+            if (err.response.data) {
+              setErrors({
+                ...err.response.data,
+              });
+            }
+          });
+      });
     },
 
     displayName: 'RegisterForm',

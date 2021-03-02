@@ -17,6 +17,7 @@ class CheckOrderStatus extends Component<RouteComponentProps, any> {
       .checkOrderStatus(window.localStorage['order_id'])
       .then(({ data }) => {
         if (data === 'PAID') {
+          this.props.history.push('/account/orders');
           Store.cart.deleteAll();
           delete window.localStorage['order_id'];
         } else if (data === 'EXPIRED') {

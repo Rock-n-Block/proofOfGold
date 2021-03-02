@@ -23,7 +23,7 @@ export default ({ history }: any) => {
       return errors;
     },
 
-    handleSubmit: (values) => {
+    handleSubmit: (values, { setErrors }) => {
       userApi
         .resetPassword({
           email: values.usernameOrEmail,
@@ -32,6 +32,9 @@ export default ({ history }: any) => {
           history.push('/lost/check');
         })
         .catch((err) => {
+          setErrors({
+            usernameOrEmail: 'There is no user with this email or username',
+          });
           console.log(err, 'reset password');
         });
     },

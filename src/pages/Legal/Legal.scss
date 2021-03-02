@@ -12,6 +12,9 @@
       margin-top: 20px;
     }
   }
+  a {
+    word-wrap: break-word;
+  }
   &__rights {
     margin-top: 60px;
     &-title {
@@ -37,6 +40,31 @@
       }
       & + p {
         margin-top: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .legal {
+    &__row {
+      &-tabs {
+        padding: 0 !important;
+      }
+    }
+    &__tabs {
+      padding: 0 20px 10px;
+      margin: 20px 0 30px;
+      &-item {
+        min-width: fit-content;
+        &:last-child {
+          padding-right: 20px;
+          &::after {
+            width: calc(100% - 20px);
+          }
+        }
+        span {
+          width: max-content;
+        }
       }
     }
   }

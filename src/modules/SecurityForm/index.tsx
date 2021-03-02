@@ -1,15 +1,19 @@
 import React from 'react';
 import { withFormik } from 'formik';
+import { observer } from 'mobx-react-lite';
 
 import { SecurityForm } from '../../components';
 import { validateForm } from '../../utils/validate';
 import { userApi } from '../../utils/api';
+import getIpFromStr from '../../utils/getIpFromStr';
+import { useMst } from '../../store/root';
 
 interface SecurityFormProps {
   code: string;
 }
 
-export default ({ history }: any) => {
+export default observer(({ history }: any) => {
+  const { user } = useMst();
   const FormWithFormik = withFormik<any, SecurityFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
@@ -24,19 +28,29 @@ export default ({ history }: any) => {
     },
 
     handleSubmit: (values, { setErrors }) => {
-      userApi
-        .checkSecurityCode(values.code)
-        .then(() => {
-          history.push('/login');
-        })
-        .catch(() => {
-          setErrors({
-            code: 'invalid code',
+      userApi.getIp().then(({ data }) => {
+        const ip = getIpFromStr(data);
+        userApi
+          .checkSecurityCode({
+            code: values.code,
+            ip,
+          })
+          .then(({ data }) => {
+            user.updateUserData({
+              ...data,
+              isLogin: true,
+            });
+            history.push('/');
+          })
+          .catch(() => {
+            setErrors({
+              code: 'invalid code',
+            });
           });
-        });
+      });
     },
 
     displayName: 'SecurityForm',
   })(SecurityForm);
   return <FormWithFormik />;
-};
+});

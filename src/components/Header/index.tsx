@@ -187,6 +187,17 @@ const Header: React.FC = observer(() => {
           ) : (
             ''
           )}
+          {!user.isLogin ? (
+            <NavLink
+              exact
+              to="/login"
+              className="header__menu-nav-item text-md"
+              onClick={() => setNavMobileOpen(false)}>
+              Login
+            </NavLink>
+          ) : (
+            ''
+          )}
           <NavLink
             exact
             to="/delivery-information"
@@ -201,6 +212,13 @@ const Header: React.FC = observer(() => {
             onClick={() => setNavMobileOpen(false)}>
             Legal Page
           </NavLink>{' '}
+          <NavLink
+            exact
+            to="/franchise"
+            onClick={() => setNavMobileOpen(false)}
+            className="header__menu-nav-item text-md">
+            POG Franchise
+          </NavLink>
         </div>
       </div>
     </>

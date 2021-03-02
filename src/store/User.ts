@@ -104,6 +104,9 @@ export const User = types
         if (err.response.data.non_field_errors) {
           throw new Error('data');
         }
+        if (err.response.data.alert) {
+          throw new Error('code');
+        }
         throw new Error(err);
       }
     });
