@@ -66,7 +66,9 @@ const ContactUsForm: React.FC<FormikProps<ContactUsFormProps>> = observer(
           validateStatus={validateField('message', touched, errors)}
           help={!touched.message ? false : errors.message}>
           <TextArea
+            maxLength={5000}
             id="message"
+            showCount={true}
             rows={6}
             className="c-form__input input"
             placeholder="Message"
