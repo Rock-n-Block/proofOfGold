@@ -45,7 +45,10 @@ export const CartStore = types
       destroy(self.items);
     };
     const remove = (product: any) => {
-      destroy(product);
+      const entry = self.items.find((entry) => entry.product.id === product);
+      if (entry) {
+        destroy(entry);
+      }
     };
 
     const updateCart = (data: any) => {

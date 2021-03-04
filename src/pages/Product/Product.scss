@@ -56,6 +56,7 @@
   }
   &__info {
     margin-bottom: 30px;
+    margin-top: 50px;
     &-item {
       display: flex;
       align-items: center;
@@ -118,6 +119,9 @@
   &__descr {
     text-align: center;
     padding: 50px 0 0;
+    &-text {
+      margin-bottom: 20px;
+    }
   }
   &__reviews {
     &-make {
@@ -127,7 +131,6 @@
     &-wrapper {
       max-width: 1000px;
       margin: 0 auto;
-      margin-top: 50px;
     }
   }
 }

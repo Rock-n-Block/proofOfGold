@@ -7,7 +7,7 @@ import { useFormikContext } from 'formik';
 import { observer } from 'mobx-react-lite';
 import BigNumber from 'bignumber.js';
 
-import { Button } from '../../components';
+import { Button, Paypal } from '../../components';
 import { storeApi, payApi } from '../../utils/api';
 import { useMst } from '../../store/root';
 
@@ -120,6 +120,7 @@ const Payments = observer(() => {
           onClick={onSubmit}>
           Continue
         </Button>
+        <Paypal />
       </div>
       {activePayment !== 'card' && activeAddress && (
         <div className="box-dark payments__send">

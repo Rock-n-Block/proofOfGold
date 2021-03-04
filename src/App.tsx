@@ -24,9 +24,9 @@ import {
   SecurityPage,
 } from './pages';
 import { useMst } from './store/root';
+import CheckOrderStatus from './CheckOrderStatus';
 
 import './styles/index.scss';
-import axios from './core/axios';
 
 const App: React.FC = observer(() => {
   const { productsStore, user, cart } = useMst();
@@ -37,21 +37,6 @@ const App: React.FC = observer(() => {
     if (localStorage.access_token) {
       user.getMe();
     }
-    axios
-      .get('https://www.cloudflare.com/cdn-cgi/trace?format=jsonp')
-      .then(({ data }) => console.log(data, '\n cloudflare'));
-    // axios
-    //   .get('http://www.geoplugin.net/json.gp')
-    //   .then(({ data }) => console.log(data, '\n geoplugin'));
-    // axios
-    //   .get('http://ip-api.com/json')
-    //   .then(({ data }) => console.log(data, '\n ip-api'));
-    // axios
-    //   .get('https://api.ipify.org?format=jsonp')
-    //   .then(({ data }) => console.log(data, '\n ipdata'));
-    // axios
-    //   .get('https://jsonip.com')
-    //   .then(({ data }) => console.log(data, '\n jsonip'));
   }, []);
   return (
     <div className="proof">
@@ -78,7 +63,9 @@ const App: React.FC = observer(() => {
           render={() =>
             user.isLogin ? (
               cart.items.length ? (
-                <CheckoutPage />
+                <CheckOrderStatus>
+                  <CheckoutPage />
+                </CheckOrderStatus>
               ) : (
                 <Redirect to="/" />
               )

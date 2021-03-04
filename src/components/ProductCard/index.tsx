@@ -21,7 +21,7 @@ export interface IProduct {
 }
 
 const ProductCard: React.FC<IProduct> = observer(
-  ({ id, name, price, image, group }) => {
+  ({ id, name, price, image, group, supply }) => {
     const { cart } = useMst();
     const handleAdd = () => {
       cart.addProduct(id);
@@ -37,9 +37,15 @@ const ProductCard: React.FC<IProduct> = observer(
         <div className="p-card__box">
           <div className="p-card__name">{name}</div>
           <div className="p-card__cost h2">${numberWithCommas(price)}</div>
-          <Button size="sm" centered={true} icon="cart" onClick={handleAdd}>
-            ADD to cart
-          </Button>
+          {supply > 0 ? (
+            <Button size="sm" centered={true} icon="cart" onClick={handleAdd}>
+              ADD to cart
+            </Button>
+          ) : (
+            <Button size="sm" centered={true} disabled={true}>
+              Sold out
+            </Button>
+          )}
         </div>
       </div>
     );

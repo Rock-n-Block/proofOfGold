@@ -26,6 +26,7 @@ import icon3 from '../../assets/img/icons/3.svg';
 import icon4 from '../../assets/img/icons/4.svg';
 import icon5 from '../../assets/img/icons/5.svg';
 import icon6 from '../../assets/img/icons/6.svg';
+import icon7 from '../../assets/img/icons/7.svg';
 
 SwiperCore.use([Pagination, EffectFade]);
 
@@ -42,8 +43,14 @@ const features = [
   },
   {
     img: icon3,
+    text: 'Exclusive to POG Gold Trading',
+  },
+  {
+    img: icon7,
     text:
-      'Each gold coin and gold bar exclusive to POG is finely crafted with the highest standards of workmanship in Florence, Italy',
+      'Stand a chance to win a complete set of Ducatus Prime Limited Edition Gold Coins and Gold Bars from POG.',
+    link: 'https://joinandwin.centuriongm.com/',
+    btnText: 'Join and Win',
   },
 ];
 

@@ -25,6 +25,14 @@ const CartPage: React.FC = observer(() => {
     }
   };
 
+  React.useEffect(() => {
+    cart.items.map((item) => {
+      if (item.product.supply <= 0) {
+        cart.remove(item.product.id);
+      }
+    });
+  }, [cart]);
+
   return (
     <div
       className={classNames('cart', {
@@ -46,12 +54,7 @@ const CartPage: React.FC = observer(() => {
                   deleteOneOf={() =>
                     cart.deleteProduct(productEntry.product.id)
                   }
-                  deleteCurrent={() =>
-                    cart.deleteProduct(
-                      productEntry.product.id,
-                      productEntry.quantity,
-                    )
-                  }
+                  deleteCurrent={() => cart.remove(productEntry.product.id)}
                 />
               ))}
             <div className="cart__total">

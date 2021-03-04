@@ -25,7 +25,6 @@ const Counter: React.FC<CounterProps> = ({
   isInput = true,
 }) => {
   const [stateValue, setStateValue] = React.useState(value);
-  console.log(max, 'max');
   React.useEffect(() => {
     onMount && onMount(stateValue);
   }, []);

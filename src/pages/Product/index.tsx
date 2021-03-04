@@ -16,7 +16,7 @@ interface ParamTypes {
 
 const ProductPage = observer(() => {
   const { productsStore, cart, user } = useMst();
-  const [activeTab, setActiveTab] = React.useState(1);
+  const [activeTab, setActiveTab] = React.useState(0);
   const [productCartQuantity, setProductCartQuantity] = React.useState<any>(0);
   const { productId } = useParams<ParamTypes>();
   const [quantity, setQuantity] = React.useState(1);
@@ -61,23 +61,27 @@ const ProductPage = observer(() => {
               <div className="product__cost text-gradient h1-xl">
                 ${product.price}
               </div>
-              <div className="product__wrapper">
-                <Counter
-                  min={1}
-                  value={quantity}
-                  max={product.supply - productCartQuantity}
-                  onChange={(value: number) => {
-                    setQuantity(value);
-                  }}
-                />
-                <Button
-                  size="sm"
-                  icon="cart"
-                  className="product__add"
-                  onClick={handleAdd}>
-                  ADD to cart
-                </Button>
-              </div>
+              {product.supply > 0 ? (
+                <div className="product__wrapper">
+                  <Counter
+                    min={1}
+                    value={quantity}
+                    max={product.supply - productCartQuantity}
+                    onChange={(value: number) => {
+                      setQuantity(value);
+                    }}
+                  />
+                  <Button
+                    size="sm"
+                    icon="cart"
+                    className="product__add"
+                    onClick={handleAdd}>
+                    ADD to cart
+                  </Button>
+                </div>
+              ) : (
+                ''
+              )}
               <div className="product__info text">
                 <div className="product__info-item">
                   <div className="product__info-item-title">
@@ -137,6 +141,9 @@ const ProductPage = observer(() => {
             </div>
             {activeTab === 0 && (
               <div className="product__descr">
+                <div className="text-lg product__descr-text">
+                  {product.description && product.description}
+                </div>
                 <p> Disclaimer*</p>
                 <p>
                   Prices are subject to change depending on prevailing gold

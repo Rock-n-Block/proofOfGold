@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   icon?: 'cart';
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,10 +22,12 @@ const Button: React.FC<ButtonProps> = ({
   colorScheme,
   onClick,
   icon,
+  disabled = false,
 }) => {
   return (
     <BtnAntd
       onClick={onClick}
+      disabled={disabled}
       className={classNames(
         className,
         'text-md btn',

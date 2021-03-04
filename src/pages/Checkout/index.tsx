@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Modal } from 'antd';
 
 import { useMst } from '../../store/root';
@@ -12,7 +12,8 @@ import './Checkout.scss';
 import successImg from '../../assets/img/icons/success.svg';
 
 const ChackoutPage: React.FC = observer(() => {
-  const { user } = useMst();
+  const { user, cart } = useMst();
+  const history = useHistory();
   const [isModalVisible, setModalVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -25,6 +26,16 @@ const ChackoutPage: React.FC = observer(() => {
       }
     }
   }, []);
+  React.useEffect(() => {
+    cart.items.map((item) => {
+      if (item.product.supply <= 0) {
+        cart.remove(item.product.id);
+      }
+    });
+    if (!cart.items.length) {
+      history.push('/');
+    }
+  }, [cart]);
 
   return (
     <div className="checkout">
