@@ -4,11 +4,13 @@ import { types, Instance, onSnapshot } from 'mobx-state-tree';
 import { User } from './User';
 import { ProductsStore } from './Product';
 import { CartStore } from './Cart';
+import { CheckoutStore } from './Checkout';
 
 const RootModel = types.model({
   user: User,
   productsStore: ProductsStore,
   cart: CartStore,
+  checkout: CheckoutStore,
 });
 
 export let Store = RootModel.create({
@@ -21,6 +23,9 @@ export let Store = RootModel.create({
   },
   productsStore: {},
   cart: {},
+  checkout: {
+    activePayment: 'card',
+  },
 });
 
 const cartData = localStorage.getItem('cart');

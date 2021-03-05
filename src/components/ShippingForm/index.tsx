@@ -8,7 +8,7 @@ import { CheckoutOrders } from '../../components';
 
 import './ShippingForm.scss';
 
-interface ProductReviewFormProps {
+export interface ProductReviewFormProps {
   firstname: string;
   lastname: string;
   company: string;
@@ -35,6 +35,8 @@ const ProductReviewForm: React.FC<
     handleBlur,
     values,
     isBillingValid,
+    isShowAddress,
+    setShowAddress,
   }: any) => {
     return (
       <div className="checkout__content">
@@ -258,7 +260,10 @@ const ProductReviewForm: React.FC<
             </Form.Item>
           )}
         </Form>
-        <CheckoutOrders />
+        <CheckoutOrders
+          setShowAddress={setShowAddress}
+          isShowAddress={isShowAddress}
+        />
       </div>
     );
   },

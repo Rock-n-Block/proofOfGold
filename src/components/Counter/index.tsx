@@ -45,7 +45,7 @@ const Counter: React.FC<CounterProps> = ({
 
   const handleIncrease = () => {
     let curValue: number = stateValue;
-    if (max) {
+    if (max || max === 0) {
       if (stateValue + 1 <= max) {
         curValue = stateValue + 1;
         setStateValue(stateValue + 1);

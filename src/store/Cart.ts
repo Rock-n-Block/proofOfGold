@@ -81,7 +81,7 @@ export const CartStore = types
         if (entry.quantity - quantity > 0) {
           entry.decreaseQuantity(1);
         } else {
-          remove(entry);
+          destroy(entry);
         }
       }
     };

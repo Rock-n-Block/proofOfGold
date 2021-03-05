@@ -4,11 +4,11 @@ import QRCode from 'qrcode.react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import { useFormikContext } from 'formik';
-import { observer } from 'mobx-react-lite';
+import { observer } from 'mobx-react';
 import BigNumber from 'bignumber.js';
 
 import { Button, Paypal } from '../../components';
-import { storeApi, payApi } from '../../utils/api';
+import { payApi } from '../../utils/api';
 import { useMst } from '../../store/root';
 
 import './Payments.scss';
@@ -18,16 +18,12 @@ import btcImg from '../../assets/img/icons/btc.svg';
 import ethImg from '../../assets/img/icons/eth.svg';
 import usdcImg from '../../assets/img/icons/usdc.svg';
 import copyImg from '../../assets/img/icons/copy.svg';
-import user from '../../utils/api/user';
 
-const Payments = observer(() => {
-  const { cart, user } = useMst();
+const Payments = observer(({ isShowAddress, setShowAddress }: any) => {
+  const { checkout, cart } = useMst();
   const formik = useFormikContext();
 
-  const [activePayment, setActivePayment] = React.useState('card');
-  const [addresses, setAddresses] = React.useState<any>(null);
   const [rates, setRates] = React.useState<any>({});
-  const [activeAddress, setActiveAddress] = React.useState<string>('');
   const payments = [
     {
       name: 'card',
@@ -52,21 +48,33 @@ const Payments = observer(() => {
 
   const onSubmit = (): void => {
     const values: any = formik.values;
-    formik.setValues({
-      ...values,
-      currency: activePayment,
-    });
-    formik.handleSubmit();
-    onContinue();
+    if (checkout.activePayment !== 'card') {
+      formik.setValues({
+        ...values,
+        currency: checkout.activePayment,
+      });
+
+      formik.validateForm().then((res) => {
+        if (!Object.keys(res).length) {
+          formik.handleSubmit();
+        } else {
+          let touched: any = {};
+          Object.keys(res).map((key) => {
+            touched[key] = true;
+          });
+
+          formik.setTouched(touched);
+
+          formik.setErrors(res);
+        }
+      });
+    } else {
+      formik.validateForm().then((res) => console.log(res, 'formik'));
+    }
   };
 
   React.useEffect(() => {
-    storeApi
-      .getCryptoAddresses()
-      .then(({ data }) => {
-        setAddresses(data);
-      })
-      .catch((err) => console.log(err, 'get crypto addresses'));
+    checkout.getAddresses();
     payApi
       .getRates()
       .then(({ data }) => {
@@ -75,17 +83,10 @@ const Payments = observer(() => {
       .catch((err) => console.log(err, 'get crypto rates'));
   }, []);
 
-  const onContinue = (): void => {
-    setActiveAddress(
-      activePayment === 'usdc'
-        ? addresses['eth_address']
-        : addresses[`${activePayment}_address`],
-    );
-  };
-
   const onChangeCurrency = (name: string): void => {
-    setActiveAddress('');
-    setActivePayment(name);
+    setShowAddress(false);
+    checkout.clearActiveAddress();
+    checkout.setActivePayment(name);
   };
 
   return (
@@ -97,7 +98,7 @@ const Payments = observer(() => {
               key={index}
               onClick={() => onChangeCurrency(payment.name)}
               className={classNames('payments__choose-item text-bold', {
-                active: activePayment === payment.name,
+                active: checkout.activePayment === payment.name,
               })}>
               {payment.name !== 'card' && (
                 <img
@@ -120,47 +121,59 @@ const Payments = observer(() => {
           onClick={onSubmit}>
           Continue
         </Button>
-        <Paypal />
       </div>
-      {activePayment !== 'card' && activeAddress && (
+      {checkout.activePayment === 'card' &&
+      checkout.getActiveAddress === 'card' ? (
         <div className="box-dark payments__send">
-          <div className="payments__send-title text-bold text-gradient">
-            Send your {/* cart.subTotal / rates['USDT'] */}
-            {activePayment.toUpperCase() === 'USDC'
-              ? cart.subTotal / rates['USDT']
-              : new BigNumber(cart.subTotal)
-                  .dividedBy(rates[activePayment.toUpperCase()])
-                  .toFixed(8)}{' '}
-            {activePayment.toUpperCase()} to the following address
-          </div>
-          <div className="payments__send-copy">
-            <div className="payments__send-copy-address text-bold">
-              {activeAddress}
-            </div>
-            <CopyToClipboard text={activeAddress}>
-              <img src={copyImg} alt="copy" />
-            </CopyToClipboard>
-          </div>
-          <div className="payments__send-qr">
-            <div className="payments__send-qr-title text-gradient text-bold">
-              OR scan this QR code
-            </div>
-            <div className="payments__send-qr-box">
-              <QRCode value={activeAddress} bgColor="#fff" fgColor="#000" />
-            </div>
-          </div>
-          <div className="payment__send-text">
-            As soon as your transaction is confirmed on the blockchain, your
-            order will be available in{' '}
-            <Link className="text-bold text-gradient" to="/account/orders">
-              My orders
-            </Link>
-            , and you’ll receive an email.
-          </div>
+          <Paypal />
         </div>
+      ) : (
+        ''
       )}
+      {checkout.activePayment !== 'card' &&
+        checkout.getActiveAddress &&
+        isShowAddress && (
+          <div className="box-dark payments__send">
+            <div className="payments__send-title text-bold text-gradient">
+              Send your
+              {checkout.activePayment.toUpperCase() === 'USDC'
+                ? cart.subTotal / rates['USDT']
+                : new BigNumber(cart.subTotal)
+                    .dividedBy(rates[checkout.activePayment.toUpperCase()])
+                    .toFixed(8)}{' '}
+              {checkout.activePayment.toUpperCase()} to the following address
+            </div>
+            <div className="payments__send-copy">
+              <div className="payments__send-copy-address text-bold">
+                {checkout.getActiveAddress}
+              </div>
+              <CopyToClipboard text={checkout.getActiveAddress}>
+                <img src={copyImg} alt="copy" />
+              </CopyToClipboard>
+            </div>
+            <div className="payments__send-qr">
+              <div className="payments__send-qr-title text-gradient text-bold">
+                OR scan this QR code
+              </div>
+              <div className="payments__send-qr-box">
+                <QRCode
+                  value={checkout.getActiveAddress}
+                  bgColor="#fff"
+                  fgColor="#000"
+                />
+              </div>
+            </div>
+            <div className="payment__send-text">
+              As soon as your transaction is confirmed on the blockchain, your
+              order will be available in{' '}
+              <Link className="text-bold text-gradient" to="/account/orders">
+                My orders
+              </Link>
+              , and you’ll receive an email.
+            </div>
+          </div>
+        )}
     </div>
   );
 });
-
 export default Payments;

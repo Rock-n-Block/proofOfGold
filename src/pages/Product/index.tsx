@@ -29,6 +29,9 @@ const ProductPage = observer(() => {
     const productsInCart = cart.getProduct(productId + '')?.quantity;
 
     setProductCartQuantity(productsInCart ? productsInCart : 0);
+    return () => {
+      console.log('exit');
+    };
   }, [cart.getProduct(productId + '')?.quantity]);
 
   const product: any = productsStore.getProduct(productId + '');

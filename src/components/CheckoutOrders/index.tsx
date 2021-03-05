@@ -5,7 +5,7 @@ import numberWithCommas from '../../utils/numberWithCommas';
 import { useMst } from '../../store/root';
 import { Payments } from '../../components';
 
-const CheckoutOrders = observer(() => {
+const CheckoutOrders = observer(({ isShowAddress, setShowAddress }: any) => {
   const { cart } = useMst();
 
   return (
@@ -46,7 +46,11 @@ const CheckoutOrders = observer(() => {
           </div>
         </div>
       </div>
-      <Payments />
+      <Payments
+        isShowAddress={isShowAddress}
+        setShowAddress={setShowAddress}
+        cart={cart}
+      />
     </div>
   );
 });

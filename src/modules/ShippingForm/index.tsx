@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import { ShippingForm } from '../../components';
 import { validateForm } from '../../utils/validate';
-import { userApi, payApi } from '../../utils/api';
+import { userApi, payApi, storeApi } from '../../utils/api';
 import { useMst } from '../../store/root';
 import { ICheckout } from '../../utils/api/pay';
 
@@ -32,8 +32,10 @@ export default observer(
     shipping_address,
     isBillingValid,
     isShippingValid,
+    openNotif,
   }: any) => {
     const { user, cart } = useMst();
+    const [isShowAddress, setShowAddress] = React.useState(false);
     const FormWithFormik = withFormik<any, ShippingFormProps>({
       enableReinitialize: true,
       mapPropsToValues: () => ({
@@ -75,6 +77,7 @@ export default observer(
       },
 
       handleSubmit: async (values: any) => {
+        setShowAddress(false);
         const formData = {
           first_name: values.firstname,
           last_name: values.lastname,
@@ -86,6 +89,7 @@ export default observer(
           phone: values.phone,
           email: user.email,
         };
+
         if (values.save_shipping) {
           try {
             await userApi.changeShipping(formData);
@@ -117,8 +121,29 @@ export default observer(
             apiData.shipping_address = formData;
           }
 
-          const { data }: any = await payApi.checkout(apiData);
-          window.localStorage['order_id'] = data.id;
+          let supplyErrors = [];
+
+          for (let index = 0; index < cart.items.length; index++) {
+            const productId = cart.items[index].product.id;
+
+            const { data: productFromApi } = await storeApi.getProduct(
+              productId,
+            );
+
+            if (productFromApi.supply <= 0) {
+              supplyErrors.push(productFromApi.name);
+            }
+
+            console.log(productFromApi, 'product');
+          }
+
+          if (!supplyErrors.length) {
+            const { data }: any = await payApi.checkout(apiData);
+            window.localStorage['order_id'] = data.id;
+            setShowAddress(true);
+          } else {
+            supplyErrors.map((name) => openNotif(name));
+          }
         } catch (err) {
           console.log('checkout');
         }
@@ -126,6 +151,12 @@ export default observer(
 
       displayName: 'ShippingForm',
     })(ShippingForm);
-    return <FormWithFormik isBillingValid={isBillingValid} />;
+    return (
+      <FormWithFormik
+        isBillingValid={isBillingValid}
+        isShowAddress={isShowAddress}
+        setShowAddress={setShowAddress}
+      />
+    );
   },
 );

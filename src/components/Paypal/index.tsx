@@ -18,7 +18,7 @@ const PayPal: React.FC = () => {
       purchase_units: [
         {
           amount: {
-            value: '0.01',
+            value: '0.02',
           },
         },
       ],
@@ -27,6 +27,7 @@ const PayPal: React.FC = () => {
 
   const onApprove = (data: any, actions: any) => {
     console.log(data, actions, 'onApprove');
+    actions.order.get().then((res: any) => console.log(res, 'onApprove get'));
     return actions.order.capture();
   };
   return (

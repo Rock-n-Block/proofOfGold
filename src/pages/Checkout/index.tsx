@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Link, useHistory } from 'react-router-dom';
-import { Modal } from 'antd';
+import { Modal, notification } from 'antd';
 
 import { useMst } from '../../store/root';
 import { ShippingForm } from '../../modules';
@@ -10,11 +10,21 @@ import { Button } from '../../components';
 import './Checkout.scss';
 
 import successImg from '../../assets/img/icons/success.svg';
+import { ReactComponent as CloseImg } from '../../assets/img/icons/close.svg';
 
 const ChackoutPage: React.FC = observer(() => {
   const { user, cart } = useMst();
   const history = useHistory();
   const [isModalVisible, setModalVisible] = React.useState<boolean>(false);
+
+  const openNotificationWithIcon = (name: string) => {
+    notification.open({
+      message: `Sorry but ${name} is already reserved by another buyer`,
+      duration: 0,
+      placement: 'bottomRight',
+      closeIcon: <CloseImg />,
+    });
+  };
 
   React.useEffect(() => {
     if (user.isLogin) {
@@ -43,6 +53,7 @@ const ChackoutPage: React.FC = observer(() => {
         <div className="checkout__title text-gradient h1-md">Checkout</div>
         <ShippingForm
           {...user}
+          openNotif={openNotificationWithIcon}
           isBillingValid={!!user.billing_address?.first_name}
           isShippingValid={!!user.shipping_address?.first_name}
         />
