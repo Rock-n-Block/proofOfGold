@@ -23,6 +23,7 @@ interface ShippingFormProps {
   currency?: string;
   save_shipping: boolean;
   same_billing: boolean;
+  paypal_id?: string;
 }
 
 export default observer(
@@ -34,7 +35,7 @@ export default observer(
     isShippingValid,
     openNotif,
   }: any) => {
-    const { user, cart } = useMst();
+    const { user, cart, checkout } = useMst();
     const [isShowAddress, setShowAddress] = React.useState(false);
     const FormWithFormik = withFormik<any, ShippingFormProps>({
       enableReinitialize: true,
@@ -53,6 +54,7 @@ export default observer(
         currency: '',
         save_shipping: !isShippingValid,
         same_billing: !isBillingValid,
+        paypal_id: '',
       }),
       validate: (values) => {
         let errors = {};
@@ -117,6 +119,10 @@ export default observer(
             currency: values.currency,
           };
 
+          if (values.paypal_id && values.currency === 'paypal') {
+            apiData.paypal_id = values.paypal_id;
+          }
+
           if (!values.save_shipping) {
             apiData.shipping_address = formData;
           }
@@ -133,14 +139,17 @@ export default observer(
             if (productFromApi.supply <= 0) {
               supplyErrors.push(productFromApi.name);
             }
-
-            console.log(productFromApi, 'product');
           }
 
           if (!supplyErrors.length) {
             const { data }: any = await payApi.checkout(apiData);
             window.localStorage['order_id'] = data.id;
-            setShowAddress(true);
+            if (values.currency !== 'paypal') {
+              setShowAddress(true);
+            } else {
+              checkout.changeShowModal(true);
+              cart.deleteAll();
+            }
           } else {
             supplyErrors.map((name) => openNotif(name));
           }

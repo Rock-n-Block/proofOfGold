@@ -48,29 +48,29 @@ const Payments = observer(({ isShowAddress, setShowAddress }: any) => {
 
   const onSubmit = (): void => {
     const values: any = formik.values;
-    if (checkout.activePayment !== 'card') {
-      formik.setValues({
-        ...values,
-        currency: checkout.activePayment,
-      });
+    formik.setValues({
+      ...values,
+      currency: checkout.activePayment,
+    });
 
-      formik.validateForm().then((res) => {
-        if (!Object.keys(res).length) {
+    formik.validateForm().then((res) => {
+      if (!Object.keys(res).length) {
+        if (checkout.activePayment !== 'card') {
           formik.handleSubmit();
         } else {
-          let touched: any = {};
-          Object.keys(res).map((key) => {
-            touched[key] = true;
-          });
-
-          formik.setTouched(touched);
-
-          formik.setErrors(res);
+          checkout.changePaypalShow(true);
         }
-      });
-    } else {
-      formik.validateForm().then((res) => console.log(res, 'formik'));
-    }
+      } else {
+        let touched: any = {};
+        Object.keys(res).map((key) => {
+          touched[key] = true;
+        });
+
+        formik.setTouched(touched);
+
+        formik.setErrors(res);
+      }
+    });
   };
 
   React.useEffect(() => {
@@ -85,6 +85,7 @@ const Payments = observer(({ isShowAddress, setShowAddress }: any) => {
 
   const onChangeCurrency = (name: string): void => {
     setShowAddress(false);
+    checkout.changePaypalShow(false);
     checkout.clearActiveAddress();
     checkout.setActivePayment(name);
   };
@@ -123,7 +124,8 @@ const Payments = observer(({ isShowAddress, setShowAddress }: any) => {
         </Button>
       </div>
       {checkout.activePayment === 'card' &&
-      checkout.getActiveAddress === 'card' ? (
+      checkout.getActiveAddress === 'card' &&
+      checkout.isPaypalShow ? (
         <div className="box-dark payments__send">
           <Paypal />
         </div>
@@ -135,7 +137,7 @@ const Payments = observer(({ isShowAddress, setShowAddress }: any) => {
         isShowAddress && (
           <div className="box-dark payments__send">
             <div className="payments__send-title text-bold text-gradient">
-              Send your
+              Send your{' '}
               {checkout.activePayment.toUpperCase() === 'USDC'
                 ? cart.subTotal / rates['USDT']
                 : new BigNumber(cart.subTotal)

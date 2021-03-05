@@ -1,5 +1,9 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
+import { useFormikContext } from 'formik';
+import { observer } from 'mobx-react-lite';
+
+import { useMst } from '../../store/root';
 
 import './Paypal.scss';
 
@@ -11,14 +15,16 @@ declare global {
 
 const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
-const PayPal: React.FC = () => {
+const PayPal: React.FC = observer(() => {
+  const { cart } = useMst();
+  const formik = useFormikContext();
   const createOrder = (data: any, actions: any) => {
     console.log(data, actions, 'createOrder');
     return actions.order.create({
       purchase_units: [
         {
           amount: {
-            value: '0.02',
+            value: cart.subTotal + '',
           },
         },
       ],
@@ -26,8 +32,17 @@ const PayPal: React.FC = () => {
   };
 
   const onApprove = (data: any, actions: any) => {
-    console.log(data, actions, 'onApprove');
-    actions.order.get().then((res: any) => console.log(res, 'onApprove get'));
+    console.log(data, actions, 'paypal');
+    actions.order.get().then((res: any) => console.log(res, 'paypal get'));
+    const { orderID } = data;
+
+    const values: any = formik.values;
+    formik.setValues({
+      ...values,
+      currency: 'paypal',
+      paypal_id: orderID,
+    });
+    formik.handleSubmit();
     return actions.order.capture();
   };
   return (
@@ -38,6 +53,6 @@ const PayPal: React.FC = () => {
       />
     </div>
   );
-};
+});
 
 export default PayPal;

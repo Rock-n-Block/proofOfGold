@@ -25,6 +25,8 @@ export let Store = RootModel.create({
   cart: {},
   checkout: {
     activePayment: 'card',
+    isPaypalShow: false,
+    isShowModal: false,
   },
 });
 

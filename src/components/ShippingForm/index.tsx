@@ -16,6 +16,7 @@ export interface ProductReviewFormProps {
   full_address: string;
   town: string;
   county: string;
+  paypal_id?: string;
   phone: string;
   notes: string;
   currency?: string;

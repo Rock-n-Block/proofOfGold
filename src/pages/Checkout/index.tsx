@@ -13,7 +13,7 @@ import successImg from '../../assets/img/icons/success.svg';
 import { ReactComponent as CloseImg } from '../../assets/img/icons/close.svg';
 
 const ChackoutPage: React.FC = observer(() => {
-  const { user, cart } = useMst();
+  const { user, cart, checkout } = useMst();
   const history = useHistory();
   const [isModalVisible, setModalVisible] = React.useState<boolean>(false);
 
@@ -62,8 +62,8 @@ const ChackoutPage: React.FC = observer(() => {
         centered={true}
         footer={false}
         closable={false}
-        visible={isModalVisible}
-        onCancel={() => setModalVisible(false)}
+        visible={checkout.isShowModal}
+        onCancel={() => checkout.changeShowModal(false)}
         className="modal checkout__modal">
         <div className="modal__box checkout__modal-box">
           <img src={successImg} alt="" />

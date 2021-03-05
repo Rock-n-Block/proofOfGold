@@ -10,8 +10,16 @@ export const CheckoutStore = types
     activePayment: types.string,
     addresses: types.maybe(Addresses),
     activeAddress: types.maybe(types.string),
+    isPaypalShow: types.boolean,
+    isShowModal: types.boolean,
   })
   .actions((self) => {
+    const changeShowModal = (value: boolean) => {
+      self.isShowModal = value;
+    };
+    const changePaypalShow = (value: boolean) => {
+      self.isPaypalShow = value;
+    };
     const setActivePayment = (payment: string) => {
       self.activePayment = payment;
     };
@@ -28,7 +36,13 @@ export const CheckoutStore = types
       }
     });
 
-    return { setActivePayment, getAddresses, clearActiveAddress };
+    return {
+      setActivePayment,
+      getAddresses,
+      clearActiveAddress,
+      changePaypalShow,
+      changeShowModal,
+    };
   })
   .views((self) => ({
     get getActiveAddress() {

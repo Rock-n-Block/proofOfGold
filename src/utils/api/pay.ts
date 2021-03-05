@@ -9,6 +9,7 @@ export interface ICheckout {
   items: ICheckoutProduct[];
   currency: string;
   shipping_address?: any;
+  paypal_id?: string;
 }
 
 export default {
