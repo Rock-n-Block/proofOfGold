@@ -26,14 +26,14 @@ class CheckOrderStatus extends Component<RouteComponentProps, any> {
       })
       .catch((err) => console.log(err, 'check status'));
   }
-  // componentDidUpdate(prevProps: RouteComponentProps) {
-  //   if (
-  //     this.props.location.pathname !== prevProps.location.pathname &&
-  //     window.localStorage['order_id']
-  //   ) {
-  //     this.checkOrder();
-  //   }
-  // }
+  componentDidUpdate(prevProps: RouteComponentProps) {
+    if (
+      this.props.location.pathname !== prevProps.location.pathname &&
+      window.localStorage['order_id']
+    ) {
+      this.checkOrder();
+    }
+  }
 
   componentDidMount() {
     if (window.localStorage['order_id']) {

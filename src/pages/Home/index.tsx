@@ -113,9 +113,19 @@ const HomePage: React.FC = observer(() => {
         </SwiperSlide>
         <SwiperSlide className="home__slider-slide">
           {window.innerWidth < 776 ? (
-            <img src={slideMImg2} alt="" className="home__slider-slide-bg" />
+            <img
+              loading="lazy"
+              src={slideMImg2}
+              alt=""
+              className="home__slider-slide-bg"
+            />
           ) : (
-            <img src={slideImg2} alt="" className="home__slider-slide-bg" />
+            <img
+              loading="lazy"
+              src={slideImg2}
+              alt=""
+              className="home__slider-slide-bg"
+            />
           )}
           <div className="row home__slider-slide-row">
             <div className="h1-lg home__slider-slide-title text-gradient">
@@ -132,9 +142,19 @@ const HomePage: React.FC = observer(() => {
         </SwiperSlide>
         <SwiperSlide className="home__slider-slide">
           {window.innerWidth < 776 ? (
-            <img src={slideMImg3} alt="" className="home__slider-slide-bg" />
+            <img
+              loading="lazy"
+              src={slideMImg3}
+              alt=""
+              className="home__slider-slide-bg"
+            />
           ) : (
-            <img src={slideImg3} alt="" className="home__slider-slide-bg" />
+            <img
+              loading="lazy"
+              src={slideImg3}
+              alt=""
+              className="home__slider-slide-bg"
+            />
           )}
           <div className="row home__slider-slide-row">
             <div className="h1-lg home__slider-slide-title text-gradient">

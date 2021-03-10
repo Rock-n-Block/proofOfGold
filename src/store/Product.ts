@@ -21,7 +21,7 @@ export const Product = types.model({
   supply: types.number,
   sold: types.number,
   price: types.number,
-  description: types.maybe(types.string),
+  description: types.maybeNull(types.string),
   reviews: types.maybe(types.array(Review)),
   bonus_coins: types.maybe(types.number),
   lucky_prize: types.maybe(types.number),
@@ -33,7 +33,7 @@ export const ProductsStore = types
   })
   .views((self) => ({
     get getCoins() {
-      return self.products.filter((product) => product.group === 'gold_coins');
+      return self.products.filter((product) => product.group === 'gold_coin');
     },
     get getBars() {
       return self.products.filter((product) => product.group === 'gold_bars');

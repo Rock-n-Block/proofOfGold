@@ -29,7 +29,7 @@ const ProductCard: React.FC<IProduct> = observer(
     return (
       <div
         className={classNames('p-card', {
-          'p-card__coin': group === 'gold_coins',
+          'p-card__coin': group === 'gold_coin',
         })}>
         <Link to={`/product/${id}`} className="p-card__img">
           <img src={`https://${image}`} alt="" />

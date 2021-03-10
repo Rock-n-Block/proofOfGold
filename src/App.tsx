@@ -24,7 +24,6 @@ import {
   SecurityPage,
 } from './pages';
 import { useMst } from './store/root';
-import CheckOrderStatus from './CheckOrderStatus';
 
 import './styles/index.scss';
 
@@ -63,9 +62,7 @@ const App: React.FC = observer(() => {
           render={() =>
             user.isLogin ? (
               cart.items.length ? (
-                <CheckOrderStatus>
-                  <CheckoutPage />
-                </CheckOrderStatus>
+                <CheckoutPage />
               ) : (
                 <Redirect to="/" />
               )

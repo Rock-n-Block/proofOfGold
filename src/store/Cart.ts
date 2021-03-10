@@ -1,4 +1,5 @@
 import { types, getParent, destroy } from 'mobx-state-tree';
+import BigNumber from 'bignumber.js';
 
 import { Product, ProductsStore } from './Product';
 
@@ -9,7 +10,7 @@ const CartEntry = types
   })
   .views((self) => ({
     get price() {
-      return self.product.price * self.quantity;
+      return +new BigNumber(self.product.price).times(self.quantity).toString();
     },
   }))
   .actions((self) => ({
@@ -34,7 +35,9 @@ export const CartStore = types
   })
   .views((self) => ({
     get subTotal() {
-      return self.items.reduce((sum, e) => sum + e.price, 0);
+      return self.items.reduce((sum, e) => {
+        return +new BigNumber(sum).plus(e.price).toString();
+      }, 0);
     },
     get subQuantity() {
       return self.items.reduce((sum, e) => sum + e.quantity, 0);
