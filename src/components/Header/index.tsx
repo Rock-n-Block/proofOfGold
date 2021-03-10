@@ -27,8 +27,9 @@ const Header: React.FC = observer(() => {
   const outsideClick = (e: any) => {
     const path = e.path || (e.composedPath && e.composedPath());
     if (
-      !path.includes(searchPopapRef.current) &&
-      !path.includes(searchRef.current)
+      (!path.includes(searchPopapRef.current) &&
+        !path.includes(searchRef.current)) ||
+      (path.includes(searchRef.current) && isPopapOpen)
     ) {
       setPopapOpen(false);
     }
@@ -40,8 +41,13 @@ const Header: React.FC = observer(() => {
     };
   }, []);
 
-  const onSearchOpen = (): void => {
-    setPopapOpen(true);
+  const onSearchOpen = (e: any): void => {
+    e.stopPropagation();
+    if (isPopapOpen) {
+      setPopapOpen(false);
+    } else {
+      setPopapOpen(true);
+    }
     setTimeout(() => {
       searchInputRef.current.input.focus();
     }, 100);

@@ -240,7 +240,7 @@ const ProductReviewForm: React.FC<
               className="ch-form__input input"
               defaultChecked={values.save_shipping}
               onChange={handleChange}>
-              Want to update your shipping addres?
+              Want to update your shipping address?
             </Checkbox>
           </Form.Item>
           {!isBillingValid && (

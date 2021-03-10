@@ -173,6 +173,21 @@
     }
   }
 }
+@media (max-width: 1450px) {
+  .home {
+    &__slider {
+      &-slide {
+        &-bg {
+          height: 100%;
+          left: 50%;
+          top: 0;
+          width: auto;
+          transform: translate3d(-50%, 0, 0);
+        }
+      }
+    }
+  }
+}
 @media (max-width: 991px) {
   .home {
     &__contact {
@@ -187,18 +202,6 @@
       &-box {
         & + & {
           margin-left: 30px;
-        }
-      }
-    }
-    &__slider {
-      &-slide {
-        padding: 80px 0;
-        &-bg {
-          height: 100%;
-          left: 50%;
-          top: 0;
-          width: auto;
-          transform: translate3d(-55%, 0, 0);
         }
       }
     }

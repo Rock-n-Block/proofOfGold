@@ -25,6 +25,7 @@
     cursor: pointer;
     &-box {
       display: flex;
+      z-index: 10;
       align-items: center;
     }
   }
@@ -67,8 +68,8 @@
     &__close {
       &-box {
         position: absolute;
-        top: -7px;
-        right: -7px;
+        top: 15px;
+        right: 15px;
       }
     }
   }

@@ -29,6 +29,19 @@
   }
 }
 
+@media (max-width: 1025px) {
+  .addresses {
+    &__box {
+      display: flex;
+      flex-direction: column;
+    }
+    &__item {
+      & + & {
+        margin-top: 30px;
+      }
+    }
+  }
+}
 @media (max-width: 500px) {
   .addresses {
     &__box {

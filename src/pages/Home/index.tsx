@@ -27,6 +27,7 @@ import icon4 from '../../assets/img/icons/4.svg';
 import icon5 from '../../assets/img/icons/5.svg';
 import icon6 from '../../assets/img/icons/6.svg';
 import icon7 from '../../assets/img/icons/7.svg';
+import { url } from 'inspector';
 
 SwiperCore.use([Pagination, EffectFade]);
 
