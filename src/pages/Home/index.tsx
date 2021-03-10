@@ -314,7 +314,6 @@ const HomePage: React.FC = observer(() => {
           <Link to="/franchise" className="home__about-btn">
             <Button colorScheme="black">Learn more</Button>
           </Link>
-          <div className="home__about-title h2">About POG (Proof of Gold)</div>
 
           <div className="home__about-cards">
             {about.map((card, index) => (

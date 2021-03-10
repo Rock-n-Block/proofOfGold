@@ -12,13 +12,15 @@
     &-links {
       display: flex;
       justify-content: flex-start;
-      grid-gap: 30%;
       margin-bottom: 51px;
 
       &-block {
         display: flex;
         flex-direction: column;
         text-transform: uppercase;
+        & + & {
+          margin-left: 30%;
+        }
 
         &-title {
           margin-bottom: 13px;
@@ -69,6 +71,9 @@
         flex-direction: column;
 
         &-block {
+          & + & {
+            margin-left: 0;
+          }
           &:nth-child(1) {
             margin-bottom: 60px;
           }

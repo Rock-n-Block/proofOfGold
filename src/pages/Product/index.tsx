@@ -88,7 +88,8 @@ const ProductPage = observer(() => {
               <div className="product__info text">
                 <div className="product__info-item">
                   <div className="product__info-item-title">
-                    Total Bars in this Series:
+                    Total {product.group === 'gold_coin' ? 'Coins' : 'Bars'} in
+                    this Series:
                   </div>
                   <div className="product__info-item-value text-gradient">
                     {product.total_supply}

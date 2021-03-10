@@ -14,12 +14,14 @@
   }
   a {
     word-wrap: break-word;
+    color: $gold;
   }
   &__rights {
     margin-top: 60px;
     &-title {
       text-transform: uppercase;
       margin-bottom: 20px;
+      width: max-content !important;
     }
     &-text {
       max-width: 984px;

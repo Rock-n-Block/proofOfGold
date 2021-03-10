@@ -20,6 +20,9 @@
   }
   &__collection {
     margin-top: 30px;
+    &-title {
+      width: max-content !important;
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import './Legal.scss';
 
 const LegalPage: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState(0);
-  const tabs = ['Impressum', 'Terms and Condition', 'Privacy Policy'];
+  const tabs = ['Impressum', 'Terms and Conditions', 'Privacy Policy'];
   return (
     <div className="legal">
       <div className="row">
@@ -345,9 +345,9 @@ const LegalPage: React.FC = () => {
                 </p>
                 <p>
                   <a
-                    href="mailto:Office@denariousglobal.com"
+                    href="mailto:Office@denariusglobal.com"
                     className="text-gradient">
-                    Office@denariousglobal.com
+                    Office@denariusglobal.com
                   </a>
                 </p>
                 <p>Attention: Data Protection Officer</p>
@@ -407,7 +407,7 @@ const LegalPage: React.FC = () => {
                   sell.
                 </p>
                 <p>
-                  FOR INFORMATION ABOUT DUC ANT THE RISKS ASSOCIATED WITH THE
+                  FOR INFORMATION ABOUT DUC AND THE RISKS ASSOCIATED WITH THE
                   PURCHASE OF DUC, SEE{' '}
                   <a
                     href="HTTPS://WWW.DUCATUSCOINS.COM/LEGAL.HTML"

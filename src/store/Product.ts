@@ -33,10 +33,35 @@ export const ProductsStore = types
   })
   .views((self) => ({
     get getCoins() {
-      return self.products.filter((product) => product.group === 'gold_coin');
+      return self.products
+        .filter((product) => product.group === 'gold_coin')
+        .sort((product1, product2) => {
+          if (product1.price - product2.price < 0 && product1.supply >= 0) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
     },
     get getBars() {
-      return self.products.filter((product) => product.group === 'gold_bars');
+      return self.products
+        .filter((product) => product.group === 'gold_bars')
+        .sort((product1, product2) => {
+          if (product1.price - product2.price < 0 && product1.supply >= 0) {
+            return -1;
+          } else {
+            return 1;
+          }
+        });
+    },
+    get getSortedProducts() {
+      return self.products.slice().sort((product1, product2) => {
+        if (product1.price - product2.price < 0 && product1.supply >= 0) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
     },
     getProduct(id: string) {
       return self.products.find((product) => product.id === id);
