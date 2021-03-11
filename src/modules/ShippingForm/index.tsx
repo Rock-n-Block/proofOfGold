@@ -33,7 +33,7 @@ export default observer(
     shipping_address,
     isBillingValid,
     isShippingValid,
-    openNotif,
+    checkSupplyErrors,
   }: any) => {
     const { user, cart, checkout } = useMst();
     const [isShowAddress, setShowAddress] = React.useState(false);
@@ -127,31 +127,13 @@ export default observer(
             apiData.shipping_address = formData;
           }
 
-          let supplyErrors = [];
-
-          for (let index = 0; index < cart.items.length; index++) {
-            const productId = cart.items[index].product.id;
-
-            const { data: productFromApi } = await storeApi.getProduct(
-              productId,
-            );
-
-            if (productFromApi.supply <= 0) {
-              supplyErrors.push(productFromApi.name);
-            }
-          }
-
-          if (!supplyErrors.length) {
-            const { data }: any = await payApi.checkout(apiData);
-            window.localStorage['order_id'] = data.id;
-            if (values.currency !== 'paypal') {
-              setShowAddress(true);
-            } else {
-              checkout.changeShowModal(true);
-              cart.deleteAll();
-            }
+          const { data }: any = await payApi.checkout(apiData);
+          window.localStorage['order_id'] = data.id;
+          if (values.currency !== 'paypal') {
+            setShowAddress(true);
           } else {
-            supplyErrors.map((name) => openNotif(name));
+            checkout.changeShowModal(true);
+            cart.deleteAll();
           }
         } catch (err) {
           console.log('checkout');
@@ -165,6 +147,7 @@ export default observer(
         isBillingValid={isBillingValid}
         isShowAddress={isShowAddress}
         setShowAddress={setShowAddress}
+        checkSupplyErrors={checkSupplyErrors}
       />
     );
   },

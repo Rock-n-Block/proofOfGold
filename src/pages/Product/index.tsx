@@ -116,7 +116,9 @@ const ProductPage = observer(() => {
                   Seal and is registered on the DucatusX Blockchain.
                 </div>
               </div>
-              <div className="product__instok">{product.supply} in stock</div>
+              <div className="product__instok">
+                {product.supply >= 0 ? product.supply : 0} in stock
+              </div>
             </div>
             <div className="product__img">
               <img src={`https://${product.image}`} alt="" />

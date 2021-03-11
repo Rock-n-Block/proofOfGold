@@ -38,6 +38,7 @@ const ProductReviewForm: React.FC<
     isBillingValid,
     isShowAddress,
     setShowAddress,
+    checkSupplyErrors,
   }: any) => {
     return (
       <div className="checkout__content">
@@ -264,6 +265,7 @@ const ProductReviewForm: React.FC<
         <CheckoutOrders
           setShowAddress={setShowAddress}
           isShowAddress={isShowAddress}
+          checkSupplyErrors={checkSupplyErrors}
         />
       </div>
     );

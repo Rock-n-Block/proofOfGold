@@ -6,6 +6,7 @@ import { Modal, notification } from 'antd';
 import { useMst } from '../../store/root';
 import { ShippingForm } from '../../modules';
 import { Button } from '../../components';
+import { storeApi } from '../../utils/api';
 
 import './Checkout.scss';
 
@@ -15,7 +16,6 @@ import { ReactComponent as CloseImg } from '../../assets/img/icons/close.svg';
 const ChackoutPage: React.FC = observer(() => {
   const { user, cart, checkout } = useMst();
   const history = useHistory();
-  const [isModalVisible, setModalVisible] = React.useState<boolean>(false);
 
   const openNotificationWithIcon = (name: string) => {
     notification.open({
@@ -24,6 +24,30 @@ const ChackoutPage: React.FC = observer(() => {
       placement: 'bottomRight',
       closeIcon: <CloseImg />,
     });
+  };
+
+  const checkSupplyErrors = async () => {
+    try {
+      let supplyErrors = [];
+
+      for (let index = 0; index < cart.items.length; index++) {
+        const productId = cart.items[index].product.id;
+
+        const { data: productFromApi } = await storeApi.getProduct(productId);
+
+        if (productFromApi.supply <= 0) {
+          supplyErrors.push(productFromApi.name);
+        }
+      }
+      if (!supplyErrors.length) {
+        return false;
+      } else {
+        supplyErrors.map((name) => openNotificationWithIcon(name));
+        return true;
+      }
+    } catch (error) {
+      return new Error(error);
+    }
   };
 
   React.useEffect(() => {
@@ -53,7 +77,7 @@ const ChackoutPage: React.FC = observer(() => {
         <div className="checkout__title text-gradient h1-md">Checkout</div>
         <ShippingForm
           {...user}
-          openNotif={openNotificationWithIcon}
+          checkSupplyErrors={checkSupplyErrors}
           isBillingValid={!!user.billing_address?.first_name}
           isShippingValid={!!user.shipping_address?.first_name}
         />
