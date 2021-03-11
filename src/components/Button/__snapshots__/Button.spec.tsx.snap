@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component Renders Button 1`] = `
+<Button
+  className="text-md btn btn-md btn-gold"
+  disabled={false}
+/>
+`;

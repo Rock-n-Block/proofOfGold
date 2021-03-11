@@ -17,9 +17,9 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   className,
-  size,
+  size = 'md',
   centered,
-  colorScheme,
+  colorScheme = 'gold',
   onClick,
   icon,
   disabled = false,
