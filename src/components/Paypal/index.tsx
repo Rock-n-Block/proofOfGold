@@ -13,7 +13,10 @@ declare global {
   }
 }
 
-const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
+const PayPalButton = window.paypal?.Buttons.driver('react', {
+  React,
+  ReactDOM,
+});
 
 const PayPal: React.FC = observer(() => {
   const { cart } = useMst();

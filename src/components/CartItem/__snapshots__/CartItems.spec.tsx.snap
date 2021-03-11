@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CartItem component Should deleteCurrent deleted 1`] = `
+<div
+  className="c-item"
+>
+  <div
+    className="c-item__wrapper"
+  >
+    <div
+      className="c-item__close-box"
+    >
+      <img
+        className="c-item__close"
+        onClick={[Function]}
+        src={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+      />
+    </div>
+    <Link
+      to="/product/4"
+    >
+      <img
+        alt=""
+        className="c-item__img"
+        src="https://d-pog.com/media/1614960293.494851.png"
+      />
+    </Link>
+  </div>
+  <div
+    className="c-item__box"
+  >
+    <div
+      className="c-item__elem"
+    >
+      <span
+        className="text-bold"
+      >
+        PRODUCT
+      </span>
+      <div
+        className="c-item__name"
+      >
+        21 grams – Ducatus Prime Gold Coin
+      </div>
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        PRICE
+      </span>
+      <div
+        className=" text-lg text-gradient c-item__cost"
+      >
+        $
+        1,877.21
+      </div>
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        QUANTITY
+      </span>
+      <Memo(Counter)
+        isInput={false}
+        max={1597}
+        min={0}
+        onChange={[Function]}
+        onDecrease={[Function]}
+        onIncrease={[Function]}
+        value={1}
+      />
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        SUBTOTAL
+      </span>
+      <div
+        className=" text-lg text-gradient c-item__cost"
+      >
+        $
+        1,877.21
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render CartItem component should CartItem Render 1`] = `
+<div
+  className="c-item"
+>
+  <div
+    className="c-item__wrapper"
+  >
+    <div
+      className="c-item__close-box"
+    >
+      <img
+        className="c-item__close"
+        onClick={[Function]}
+        src={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+      />
+    </div>
+    <Link
+      to="/product/4"
+    >
+      <img
+        alt=""
+        className="c-item__img"
+        src="https://d-pog.com/media/1614960293.494851.png"
+      />
+    </Link>
+  </div>
+  <div
+    className="c-item__box"
+  >
+    <div
+      className="c-item__elem"
+    >
+      <span
+        className="text-bold"
+      >
+        PRODUCT
+      </span>
+      <div
+        className="c-item__name"
+      >
+        21 grams – Ducatus Prime Gold Coin
+      </div>
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        PRICE
+      </span>
+      <div
+        className=" text-lg text-gradient c-item__cost"
+      >
+        $
+        1,877.21
+      </div>
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        QUANTITY
+      </span>
+      <Memo(Counter)
+        isInput={false}
+        max={1597}
+        min={0}
+        onChange={[Function]}
+        onDecrease={[Function]}
+        onIncrease={[Function]}
+        value={1}
+      />
+    </div>
+    <div
+      className="c-item__elem"
+    >
+      <span>
+        SUBTOTAL
+      </span>
+      <div
+        className=" text-lg text-gradient c-item__cost"
+      >
+        $
+        1,877.21
+      </div>
+    </div>
+  </div>
+</div>
+`;

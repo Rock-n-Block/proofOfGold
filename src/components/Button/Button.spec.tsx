@@ -34,7 +34,7 @@ describe('Button Component', () => {
     });
     expect(button.props().disabled).toBe(true);
   });
-  it('Render click Button', () => {
+  it('Should onClick', () => {
     const result: any =
       Button.defaultProps &&
       Button.defaultProps.onClick &&

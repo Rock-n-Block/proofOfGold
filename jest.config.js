@@ -9,5 +9,6 @@ module.exports = {
   "setupFilesAfterEnv": ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
     "^.+\\.svg": "<rootDir>/src/__mocks__/svgrMock.tsx",
+    "\\.(css|less|sass|scss)$": "<rootDir>/src/__mocks__/styleMock.ts",
   },
 };

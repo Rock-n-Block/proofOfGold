@@ -16,7 +16,7 @@ export interface CartItemProps {
   name: string;
   price: number;
   quantity: number;
-  isFirst: boolean;
+  isFirst?: boolean;
   supply: number;
   totalPrise: number;
   addMore: () => void;

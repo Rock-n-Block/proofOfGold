@@ -43,7 +43,7 @@ if (productsData) {
 export const rootStore = Store;
 
 onSnapshot(rootStore, (snapshot) => {
-  // console.log('Snapshot: ', snapshot);
+  console.log('Snapshot: ', snapshot);
   localStorage.setItem('products', JSON.stringify(snapshot.productsStore));
   localStorage.setItem('cart', JSON.stringify(snapshot.cart));
 });
