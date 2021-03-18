@@ -6,7 +6,7 @@ import { useMst } from '../../store/root';
 import { Payments } from '../../components';
 
 const CheckoutOrders = observer(
-  ({ isShowAddress, setShowAddress, checkSupplyErrors }: any) => {
+  ({ isShowAddress, setShowAddress, checkSupplyErrors, isLoading }: any) => {
     const { cart } = useMst();
 
     return (
@@ -52,6 +52,7 @@ const CheckoutOrders = observer(
           setShowAddress={setShowAddress}
           checkSupplyErrors={checkSupplyErrors}
           cart={cart}
+          isLoading={isLoading}
         />
       </div>
     );

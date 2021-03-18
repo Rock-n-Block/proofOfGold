@@ -14,7 +14,7 @@ interface InfoBlockProps {
 
 const InfoBlock: React.FC<InfoBlockProps> = ({ Icon, text, btnText, link }) => {
   return (
-    <div className="i-block box-fullpage">
+    <div className="i-block">
       <div className="row">
         <div className="i-block__content">
           {Icon ? <Icon /> : ''}

@@ -10,6 +10,7 @@ import { userApi } from '../../utils/api';
 interface LoginFormProps {
   username: string;
   password: string;
+  isLoading: boolean;
 }
 
 export default ({ history }: any) => {
@@ -19,6 +20,7 @@ export default ({ history }: any) => {
     mapPropsToValues: () => ({
       username: '',
       password: '',
+      isLoading: false,
     }),
     validate: (values) => {
       let errors = {};
@@ -28,7 +30,8 @@ export default ({ history }: any) => {
       return errors;
     },
 
-    handleSubmit: (values, { setErrors }) => {
+    handleSubmit: (values, { setErrors, setFieldValue }) => {
+      setFieldValue('isLoading', true);
       userApi
         .getIp()
         .then(({ data }: any) => {
@@ -40,8 +43,10 @@ export default ({ history }: any) => {
             })
             .then(() => {
               history.push('/');
+              setFieldValue('isLoading', false);
             })
             .catch(({ message }) => {
+              setFieldValue('isLoading', false);
               if (message === 'User is not activated') {
                 history.push('/verify');
               }
@@ -56,7 +61,10 @@ export default ({ history }: any) => {
               }
             });
         })
-        .catch((err) => console.log(err, 'get user ip'));
+        .catch((err) => {
+          setFieldValue('isLoading', false);
+          console.log(err, 'get user ip');
+        });
     },
 
     displayName: 'LoginForm',

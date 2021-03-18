@@ -26,7 +26,7 @@ const AccountPage = observer(() => {
   }, []);
 
   return (
-    <div className="account">
+    <main className="account">
       <div className="row account__row">
         {window.innerWidth < 776 ? (
           <h1 className="account__title h2 text-gradient">My Account</h1>
@@ -74,7 +74,7 @@ const AccountPage = observer(() => {
           </Switch>
         </div>
       </div>
-    </div>
+    </main>
   );
 });
 

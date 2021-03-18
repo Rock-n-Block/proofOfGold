@@ -3,6 +3,7 @@ import { Button as BtnAntd } from 'antd';
 import classNames from 'classnames';
 
 import { ReactComponent as Cart } from '../../assets/img/cart.svg';
+import SpinnerImg from '../../assets/img/icons/spinner.svg';
 
 interface ButtonProps {
   size?: 'lg' | 'sm';
@@ -12,6 +13,7 @@ interface ButtonProps {
   className?: string;
   icon?: 'cart';
   disabled?: boolean;
+  loading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -23,11 +25,12 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   icon,
   disabled = false,
+  loading = false,
 }) => {
   return (
     <BtnAntd
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       className={classNames(
         className,
         'text-md btn',
@@ -37,7 +40,8 @@ const Button: React.FC<ButtonProps> = ({
           centered: centered,
         },
       )}>
-      {icon === 'cart' && <Cart />}
+      {icon === 'cart' ? <Cart /> : ''}
+      {loading ? <img className="btn__spinner" src={SpinnerImg} /> : ''}
       {children}
     </BtnAntd>
   );

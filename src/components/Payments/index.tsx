@@ -20,7 +20,7 @@ import usdcImg from '../../assets/img/icons/usdc.svg';
 import copyImg from '../../assets/img/icons/copy.svg';
 
 const Payments = observer(
-  ({ isShowAddress, setShowAddress, checkSupplyErrors }: any) => {
+  ({ isShowAddress, setShowAddress, checkSupplyErrors, isLoading }: any) => {
     const { checkout, cart } = useMst();
     const formik = useFormikContext();
 
@@ -125,6 +125,7 @@ const Payments = observer(
           <Button
             size="lg"
             centered={true}
+            loading={isLoading}
             className="payments__continue"
             onClick={onSubmit}>
             Continue

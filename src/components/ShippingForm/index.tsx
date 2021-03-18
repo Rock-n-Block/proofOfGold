@@ -266,6 +266,7 @@ const ProductReviewForm: React.FC<
           setShowAddress={setShowAddress}
           isShowAddress={isShowAddress}
           checkSupplyErrors={checkSupplyErrors}
+          isLoading={values.isLoading}
         />
       </div>
     );

@@ -24,6 +24,14 @@
   &.centered {
     margin: 0 auto;
   }
+  &:disabled {
+    background: #d6b328;
+    color: black;
+  }
+  &__spinner {
+    width: 20px;
+    margin-right: 10px;
+  }
 
   &-lg {
     padding: 20px;

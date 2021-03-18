@@ -24,6 +24,7 @@ interface ShippingFormProps {
   save_shipping: boolean;
   same_billing: boolean;
   paypal_id?: string;
+  isLoading: boolean;
 }
 
 export default observer(
@@ -55,6 +56,7 @@ export default observer(
         save_shipping: !isShippingValid,
         same_billing: !isBillingValid,
         paypal_id: '',
+        isLoading: false,
       }),
       validate: (values) => {
         let errors = {};
@@ -78,7 +80,8 @@ export default observer(
         return errors;
       },
 
-      handleSubmit: async (values: any) => {
+      handleSubmit: async (values: any, { setFieldValue }) => {
+        setFieldValue('isLoading', true);
         setShowAddress(false);
         const formData = {
           first_name: values.firstname,
@@ -131,12 +134,15 @@ export default observer(
           window.localStorage['order_id'] = data.id;
           if (values.currency !== 'paypal') {
             setShowAddress(true);
+            setFieldValue('isLoading', false);
           } else {
             checkout.changeShowModal(true);
             cart.deleteAll();
+            setFieldValue('isLoading', false);
           }
         } catch (err) {
           console.log('checkout');
+          setFieldValue('isLoading', false);
         }
       },
 

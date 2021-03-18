@@ -15,8 +15,17 @@ body {
   padding-top: 131px;
 }
 #root,
+body,
+html,
 .proof {
   height: 100%;
+}
+main {
+  flex-grow: 2;
+}
+.proof {
+  display: flex;
+  flex-direction: column;
 }
 .row {
   max-width: 1180px;

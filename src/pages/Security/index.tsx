@@ -8,7 +8,7 @@ import './Security.scss';
 const SecurityPage: React.FC = () => {
   const history = useHistory();
   return (
-    <div className="security box-fullpage">
+    <main className="security">
       <div className="row">
         <div className="security__content box-dark">
           <div className="security__text text-md text-uppercase">
@@ -18,7 +18,7 @@ const SecurityPage: React.FC = () => {
           <SecurityForm history={history} />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

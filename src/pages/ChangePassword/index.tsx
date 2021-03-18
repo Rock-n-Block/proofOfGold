@@ -24,7 +24,7 @@ const ChangePasswordPage: React.FC = () => {
     }
   }, [token]);
   return (
-    <div className="ch-password">
+    <main className="ch-password">
       {isValidToken ? (
         <div className="row">
           <h1 className="ch-password__title text-gradient h1-md">
@@ -37,7 +37,7 @@ const ChangePasswordPage: React.FC = () => {
       ) : (
         <InfoBlock text="Your link to change password invalid" />
       )}
-    </div>
+    </main>
   );
 };
 

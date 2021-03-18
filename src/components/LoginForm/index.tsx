@@ -11,12 +11,14 @@ interface LoginFormProps {
   password: string;
 }
 
-const LoginForm: React.FC<FormikProps<LoginFormProps>> = ({
+const LoginForm: React.FC<FormikProps<LoginFormProps> | any> = ({
   touched,
   errors,
   handleChange,
   handleBlur,
   handleSubmit,
+  values,
+  isLoading,
 }) => {
   return (
     <Form name="l-form" className="l-form" layout="vertical">
@@ -61,7 +63,9 @@ const LoginForm: React.FC<FormikProps<LoginFormProps>> = ({
           />
         </div>
       </Form.Item>
-      <Button onClick={handleSubmit}>log in</Button>
+      <Button loading={values.isLoading} onClick={handleSubmit}>
+        log in
+      </Button>
     </Form>
   );
 };

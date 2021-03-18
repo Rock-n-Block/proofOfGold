@@ -10,6 +10,7 @@ interface RegisterFormProps {
   username: string;
   email: string;
   new_password: string;
+  isLoading: boolean;
 }
 
 export default ({ history }: any) => {
@@ -19,6 +20,7 @@ export default ({ history }: any) => {
       username: '',
       email: '',
       new_password: '',
+      isLoading: false,
     }),
     validate: (values) => {
       let errors = {};
@@ -28,7 +30,8 @@ export default ({ history }: any) => {
       return errors;
     },
 
-    handleSubmit: (values, { setErrors }) => {
+    handleSubmit: (values, { setErrors, setFieldValue }) => {
+      setFieldValue('isLoading', true);
       const postData = {
         username: values.username,
         email: values.email,
@@ -44,9 +47,11 @@ export default ({ history }: any) => {
           .then((res) => {
             console.log(res, 'register');
             history.push('/verify');
+            setFieldValue('isLoading', false);
           })
           .catch((err) => {
             if (err.response.data) {
+              setFieldValue('isLoading', false);
               setErrors({
                 ...err.response.data,
               });

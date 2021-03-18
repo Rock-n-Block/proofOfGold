@@ -9,12 +9,14 @@ interface RegisterFormProps {
   username: string;
   new_password: string;
   email: string;
+  isLoading: boolean;
 }
 
-const RegisterForm: React.FC<FormikProps<RegisterFormProps>> = ({
+const RegisterForm: React.FC<FormikProps<RegisterFormProps> | any> = ({
   touched,
   errors,
   handleChange,
+  values,
   handleBlur,
   handleSubmit,
 }) => {
@@ -74,7 +76,9 @@ const RegisterForm: React.FC<FormikProps<RegisterFormProps>> = ({
           />
         </div>
       </Form.Item>
-      <Button onClick={handleSubmit}>Register</Button>
+      <Button loading={values.isLoading} onClick={handleSubmit}>
+        Register
+      </Button>
     </Form>
   );
 };

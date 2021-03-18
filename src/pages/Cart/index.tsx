@@ -34,10 +34,7 @@ const CartPage: React.FC = observer(() => {
   }, [cart]);
 
   return (
-    <div
-      className={classNames('cart', {
-        'box-fullpage': !cart.items.length,
-      })}>
+    <main className="cart">
       <div className="row">
         {cart.items.length ? (
           <>
@@ -81,7 +78,7 @@ const CartPage: React.FC = observer(() => {
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 });
 
