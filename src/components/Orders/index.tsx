@@ -27,7 +27,7 @@ const Orders: React.FC = () => {
             <div className="orders__item-info text-md">
               <div className="orders__item-info-box">
                 <div className="orders__item-info-date">
-                  Order from {moment(order.data).format('MMMM D')}
+                  Order from {moment(order.date).format('MMMM D')}
                 </div>
                 <div className="orders__item-info-cost text-lg text-gradient">
                   ${order.cost}
