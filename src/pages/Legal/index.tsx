@@ -31,9 +31,10 @@ const LegalPage: React.FC = () => {
             <div className="legal__info text-md">
               <p>The POG website is owned by:</p>
               <p>
-                DENARIUS FINANCIAL SERVICES AG.<br></br>
-                Bahnhofstrasse 216300 Zug, <br></br>
-                Switzerland
+                SwissFinanz AG.<br></br>
+                SwissFinanz AG<br></br>
+                Rigistrasse 2<br></br>
+                CH-6300 Zug
               </p>
               <p>For any questions you may have regarding our Company,</p>
               <p>
@@ -110,9 +111,9 @@ const LegalPage: React.FC = () => {
                 Proof of Gold, is subject to change without prior notice.
               </p>
               <p>
-                Denarius Financial Services AG. reserves the right to refuse
-                response to any source of scam that may be destructive to this
-                website and our business.
+                SwissFinanz AG. reserves the right to refuse response to any
+                source of scam that may be destructive to this website and our
+                business.
               </p>
             </div>
             <div className="legal__rights">
@@ -121,7 +122,7 @@ const LegalPage: React.FC = () => {
               </h3>
               <div className="legal__rights-text text-md">
                 <p>
-                  Denarius Financial Services AG., the owner of this website (
+                  SwissFinanz AG., the owner of this website (
                   <a href="https://d-pog.com" className="text-gradient">
                     https://d-pog.com
                   </a>
@@ -208,10 +209,10 @@ const LegalPage: React.FC = () => {
             </div>
             <div className="legal__rights">
               <h4 className="text-md text-gradient text-uppercase">
-                None of Denarius Financial Services AG. or its affiliates shall
-                be liable for any damages, loss or expense including without
-                limitation, special damage, or consequential damage, or economic
-                loss arising from or in connection with:
+                None of SWISSFINANZ AG. or its affiliates shall be liable for
+                any damages, loss or expense including without limitation,
+                special damage, or consequential damage, or economic loss
+                arising from or in connection with:
               </h4>
               <ul className="legal__rights-list text-md">
                 <li>
@@ -238,13 +239,12 @@ const LegalPage: React.FC = () => {
                 </li>
               </ul>
               <p>
-                even if Denarius Financial Services AG. or its agents or
-                employees are advised of the possibility of such damages, losses
-                and expenses. This exclusion clause shall effect to the fullest
-                extent permitted by law. If you are dissatisfied with any
-                portion of this website, or with any of these Terms and
-                Conditions of use, your sole and exclusive remedy is to
-                discontinue using this website.
+                even if SwissFinanz AG. or its agents or employees are advised
+                of the possibility of such damages, losses and expenses. This
+                exclusion clause shall effect to the fullest extent permitted by
+                law. If you are dissatisfied with any portion of this website,
+                or with any of these Terms and Conditions of use, your sole and
+                exclusive remedy is to discontinue using this website.
               </p>
             </div>
             <div className="legal__rights">
@@ -330,11 +330,11 @@ const LegalPage: React.FC = () => {
                   Personal information .
                 </p>
                 <p>
-                  In the Privacy Policy, “we”,”us”,”our” shall mean Denarius
-                  Financial Services AG having its registered office in
-                  Bahnhofstrasse 216300 Zug, Switzerland (as Controller
-                  according to the European General Data Protection Regulation
-                  (“GDPR”) and its affiliated and related companires.
+                  In the Privacy Policy, “we”,”us”,”our” shall mean SwissFinanz
+                  AG having its registered office in Rigistrasse 2, CH-6300 Zug,
+                  Switzerland (as Controller according to the European General
+                  Data Protection Regulation (“GDPR”) and its affiliated and
+                  related companires.
                 </p>
                 <p>
                   If you, at any time, have any queries on this Privacy Policy
@@ -417,14 +417,14 @@ const LegalPage: React.FC = () => {
                   .
                 </p>
                 <p>
-                  By visiting this site, you agree to be bound by DENARIUS
-                  FINANCIAL SERVICES AG. Terms and Conditions and Privacy
-                  Policy. The DUC issued by Centurion Global is intended for
-                  qualified buyers who understand and accept the risks
-                  associated with the ownership of digital assets such as DUC.
-                  Each buyer is advised to conduct his/her own due diligence as
-                  none of Centurion or its affiliates provides any investment
-                  advice, business advice or tax or legal advice.
+                  By visiting this site, you agree to be bound by SwissFinanz
+                  AG. Terms and Conditions and Privacy Policy. The DUC issued by
+                  Centurion Global is intended for qualified buyers who
+                  understand and accept the risks associated with the ownership
+                  of digital assets such as DUC. Each buyer is advised to
+                  conduct his/her own due diligence as none of Centurion or its
+                  affiliates provides any investment advice, business advice or
+                  tax or legal advice.
                 </p>
                 <p>
                   THE INFORMATION PROVIDED ON THIS DOCUMENT OR WEBSITE IS NOT

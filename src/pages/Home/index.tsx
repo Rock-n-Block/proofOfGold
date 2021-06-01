@@ -34,13 +34,11 @@ SwiperCore.use([Pagination, EffectFade]);
 const features = [
   {
     img: icon1,
-    text:
-      'Limited edition and in quantities based on the Fibonacci order on the DucatusX blockchain',
+    text: 'Limited edition and in quantities based on the Fibonacci order on the DucatusX blockchain',
   },
   {
     img: icon2,
-    text:
-      'Ongoing Lucky Gram Promotion for all buyers of any sold-out series, Ducatus will give away gold as prize',
+    text: 'Ongoing Lucky Gram Promotion for all buyers of any sold-out series, Ducatus will give away gold as prize',
   },
   {
     img: icon3,
@@ -48,8 +46,7 @@ const features = [
   },
   {
     img: icon7,
-    text:
-      'Stand a chance to win a complete set of Ducatus Prime Limited Edition Gold Coins and Gold Bars from POG.',
+    text: 'Stand a chance to win a complete set of Ducatus Prime Limited Edition Gold Coins and Gold Bars from POG.',
     link: 'https://joinandwin.centuriongm.com/',
     btnText: 'Join and Win',
   },
@@ -58,14 +55,12 @@ const features = [
 const about = [
   {
     img: icon4,
-    text:
-      'POG offers gold investors all around the world with the highest quality precious metal assets facilitated by a multinational team that is based in Singapore and Dubai, two of the world’s most formidable financial centres.',
+    text: 'POG offers gold investors all around the world with the highest quality precious metal assets facilitated by a multinational team that is based in Singapore and Dubai, two of the world’s most formidable financial centres.',
     title: 'Global Reach',
   },
   {
     img: icon5,
-    text:
-      'POG makes it easy for buyers to purchase a known traditional asset. Simply sign up to create an account, browse through our growing line-up of products, and choose your preferred payment method (Credit card, Bank transfer, PayPal or Cryptocurrency) upon checkout.',
+    text: 'POG makes it easy for buyers to purchase a known traditional asset. Simply sign up to create an account, browse through our growing line-up of products, and choose your preferred payment method (Credit card, Bank transfer, PayPal or Cryptocurrency) upon checkout.',
     title: (
       <Fragment>
         Seamless<br></br> Transactions
@@ -74,8 +69,7 @@ const about = [
   },
   {
     img: icon6,
-    text:
-      'POG offers investors an exclusive selection of limited and carefully crafted 999.99 gold products that are priced at competitive market rates.',
+    text: 'POG offers investors an exclusive selection of limited and carefully crafted 999.99 gold products that are priced at competitive market rates.',
     title: (
       <Fragment>
         Best<br></br> Available Pricing
@@ -331,7 +325,7 @@ const HomePage: React.FC = observer(() => {
               Contact Us
             </div>
             <div className="home__contact-text text">
-              <p>DENARIUS FINANCIAL SERVICES AG.</p>
+              <p>SwissFinanz AG.</p>
               <p>Bahnhofstrasse 216300 Zug,</p>
               <p>Switzerland</p>
               <p>
