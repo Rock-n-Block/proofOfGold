@@ -13,7 +13,7 @@ interface RegisterFormProps {
   isLoading: boolean;
 }
 
-export default ({ history }: any) => {
+export default ({ history, refCode }: any) => {
   const FormWithFormik = withFormik<{}, RegisterFormProps>({
     enableReinitialize: true,
     mapPropsToValues: () => ({
@@ -43,7 +43,7 @@ export default ({ history }: any) => {
         postData.ip = ip;
 
         userApi
-          .register(postData)
+          .register(postData, refCode)
           .then((res) => {
             console.log(res, 'register');
             history.push('/verify');

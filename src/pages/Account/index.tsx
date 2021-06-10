@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Switch, Route, useHistory } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
-import { Orders, AccountAddresses } from '../../components';
+import { Orders, AccountAddresses, ReferralLink } from '../../components';
 import { AccountDetailsForm } from '../../modules';
 import { useMst } from '../../store/root';
 
@@ -50,6 +50,9 @@ const AccountPage = observer(() => {
               to="/account/addresses">
               Addresses
             </NavLink>
+            <NavLink className="text-md account__nav-item" exact to="/account/referral-link">
+              Referral link
+            </NavLink>
             <NavLink className="text-md account__nav-item" exact to="/account">
               Account details
             </NavLink>
@@ -71,6 +74,7 @@ const AccountPage = observer(() => {
               ]}
               component={AccountAddresses}
             />
+            <Route exact path="/account/referral-link" component={ReferralLink} />
           </Switch>
         </div>
       </div>

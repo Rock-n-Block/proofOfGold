@@ -1,0 +1,40 @@
+.ref-link-box {
+  &__description {
+    margin: 22px 0 20px;
+
+    font-family: MB;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+  grid-gap: 18px;
+
+  width: 100%;
+  max-width: 560px;
+  height: 54px;
+
+  &__link {
+    overflow: hidden;
+    height: 100%;
+    padding: 18px 20px;
+
+    font-family: MB;
+    font-size: 14px;
+    line-height: 17px;
+    text-overflow: ellipsis;
+
+    background: #363636;
+    border-radius: 12px;
+  }
+
+  &__copy-button {
+    width: 42px !important;
+    height: 42px !important;
+
+    border-radius: 50% !important;
+  }
+}
