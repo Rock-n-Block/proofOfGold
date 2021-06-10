@@ -31,7 +31,7 @@ interface IAddresses {
 export default {
   getIp: () => axios.get('https://www.cloudflare.com/cdn-cgi/trace'),
   getMe: () => axios.get(`account/${localStorage.access_token}/`),
-  register: (data: IRegister) => axios.post('account/register/', data),
+  register: (data: IRegister, refCode = '') => axios.post(`account/register/${refCode}`, data),
   login: (data: ILogin) => axios.post('account/login', data),
   changeDetails: (data: any) =>
     axios.patch(`account/${localStorage.access_token}/`, data),
@@ -52,4 +52,5 @@ export default {
   checkSecurityCode: (data: any) =>
     axios.post('account/login/check_code', data),
   getOrders: () => axios.get(`payments/user/${localStorage.access_token}`),
+  getReferralCode: () => axios.get(`account/${localStorage.access_token}/referral_code/`)
 };

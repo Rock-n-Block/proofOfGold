@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { LoginForm, RegisterForm } from '../../modules';
 
@@ -7,13 +7,17 @@ import './Login.scss';
 
 const LoginPage = () => {
   const history = useHistory();
+
+  const search = useLocation().search;
+  const refCode = new URLSearchParams(search).get('ref') ?? '';
+
   return (
     <div className="login">
       <div className="row">
         <h1 className="login__title h1-md text-gradient">My Account</h1>
         <div className="login__content">
           <LoginForm history={history} />
-          <RegisterForm history={history} />
+          <RegisterForm history={history} refCode={refCode} />
         </div>
         <div className="login__info text-md">
           <p>By creating an account:</p>
